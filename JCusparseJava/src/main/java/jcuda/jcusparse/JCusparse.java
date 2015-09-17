@@ -1052,6 +1052,222 @@ public class JCusparse
         int idxBase);
 
 
+    /** --- Sparse Level 2 routines --- */
+    public static int cusparseSgemvi(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseSgemviNative(handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer));
+    }
+    private static native int cusparseSgemviNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer);
+
+
+    public static int cusparseSgemvi_bufferSize(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize)
+    {
+        return checkResult(cusparseSgemvi_bufferSizeNative(handle, transA, m, n, nnz, pBufferSize));
+    }
+    private static native int cusparseSgemvi_bufferSizeNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize);
+
+
+    public static int cusparseDgemvi(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDgemviNative(handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer));
+    }
+    private static native int cusparseDgemviNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDgemvi_bufferSize(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize)
+    {
+        return checkResult(cusparseDgemvi_bufferSizeNative(handle, transA, m, n, nnz, pBufferSize));
+    }
+    private static native int cusparseDgemvi_bufferSizeNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize);
+
+
+    public static int cusparseCgemvi(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCgemviNative(handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer));
+    }
+    private static native int cusparseCgemviNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCgemvi_bufferSize(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize)
+    {
+        return checkResult(cusparseCgemvi_bufferSizeNative(handle, transA, m, n, nnz, pBufferSize));
+    }
+    private static native int cusparseCgemvi_bufferSizeNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize);
+
+
+    public static int cusparseZgemvi(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZgemviNative(handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer));
+    }
+    private static native int cusparseZgemviNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        Pointer alpha, /** host or device pointer */
+        Pointer A, 
+        int lda, 
+        int nnz, 
+        Pointer xVal, 
+        Pointer xInd, 
+        Pointer beta, /** host or device pointer */
+        Pointer y, 
+        int idxBase, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZgemvi_bufferSize(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize)
+    {
+        return checkResult(cusparseZgemvi_bufferSizeNative(handle, transA, m, n, nnz, pBufferSize));
+    }
+    private static native int cusparseZgemvi_bufferSizeNative(
+        cusparseHandle handle, 
+        int transA, 
+        int m, 
+        int n, 
+        int nnz, 
+        Pointer pBufferSize);
+    
     /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
        where A is a sparse matrix in CSR storage format, x and y are dense vectors. */
     public static int cusparseScsrmv(

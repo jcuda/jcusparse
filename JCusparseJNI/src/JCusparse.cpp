@@ -3182,6 +3182,712 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDrotiNative(JNIEnv
 }
 
 /** --- Sparse Level 2 routines --- */
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgemviNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jobject alpha, jobject A, jint lda, jint nnz, jobject xVal, jobject xInd, jobject beta, jobject y, jint idxBase, jobject pBuffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (A == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'A' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // lda is primitive
+    // nnz is primitive
+    if (xVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xVal' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (xInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xInd' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (y == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'y' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // idxBase is primitive
+    if (pBuffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseSgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSgemvi(handle=%p, transA=%d, m=%d, n=%d, alpha=%p, A=%p, lda=%d, nnz=%d, xVal=%p, xInd=%p, beta=%p, y=%p, idxBase=%d, pBuffer=%p)\n",
+        handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    float* alpha_native;
+    float* A_native;
+    int lda_native = 0;
+    int nnz_native = 0;
+    float* xVal_native;
+    int* xInd_native;
+    float* beta_native;
+    float* y_native;
+    cusparseIndexBase_t idxBase_native;
+    void* pBuffer_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (float*)alpha_pointerData->getPointer(env);
+    A_native = (float*)getPointer(env, A);
+    lda_native = (int)lda;
+    nnz_native = (int)nnz;
+    xVal_native = (float*)getPointer(env, xVal);
+    xInd_native = (int*)getPointer(env, xInd);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (float*)beta_pointerData->getPointer(env);
+    y_native = (float*)getPointer(env, y);
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    pBuffer_native = (void*)getPointer(env, pBuffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSgemvi(handle_native, transA_native, m_native, n_native, alpha_native, A_native, lda_native, nnz_native, xVal_native, xInd_native, beta_native, y_native, idxBase_native, pBuffer_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // A is a native pointer
+    // lda is primitive
+    // nnz is primitive
+    // xVal is a native pointer
+    // xInd is a native pointer
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // y is a native pointer
+    // idxBase is primitive
+    // pBuffer is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgemvi_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jint nnz, jobject pBufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseSgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (pBufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBufferSize' is null for cusparseSgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSgemvi_bufferSize(handle=%p, transA=%d, m=%d, n=%d, nnz=%d, pBufferSize=%p)\n",
+        handle, transA, m, n, nnz, pBufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    int* pBufferSize_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    pBufferSize_native = (int*)getPointer(env, pBufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // pBufferSize is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgemviNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jobject alpha, jobject A, jint lda, jint nnz, jobject xVal, jobject xInd, jobject beta, jobject y, jint idxBase, jobject pBuffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (A == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'A' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // lda is primitive
+    // nnz is primitive
+    if (xVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xVal' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (xInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xInd' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (y == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'y' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // idxBase is primitive
+    if (pBuffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseDgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDgemvi(handle=%p, transA=%d, m=%d, n=%d, alpha=%p, A=%p, lda=%d, nnz=%d, xVal=%p, xInd=%p, beta=%p, y=%p, idxBase=%d, pBuffer=%p)\n",
+        handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    double* alpha_native;
+    double* A_native;
+    int lda_native = 0;
+    int nnz_native = 0;
+    double* xVal_native;
+    int* xInd_native;
+    double* beta_native;
+    double* y_native;
+    cusparseIndexBase_t idxBase_native;
+    void* pBuffer_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (double*)alpha_pointerData->getPointer(env);
+    A_native = (double*)getPointer(env, A);
+    lda_native = (int)lda;
+    nnz_native = (int)nnz;
+    xVal_native = (double*)getPointer(env, xVal);
+    xInd_native = (int*)getPointer(env, xInd);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (double*)beta_pointerData->getPointer(env);
+    y_native = (double*)getPointer(env, y);
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    pBuffer_native = (void*)getPointer(env, pBuffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDgemvi(handle_native, transA_native, m_native, n_native, alpha_native, A_native, lda_native, nnz_native, xVal_native, xInd_native, beta_native, y_native, idxBase_native, pBuffer_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // A is a native pointer
+    // lda is primitive
+    // nnz is primitive
+    // xVal is a native pointer
+    // xInd is a native pointer
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // y is a native pointer
+    // idxBase is primitive
+    // pBuffer is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgemvi_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jint nnz, jobject pBufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseDgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (pBufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBufferSize' is null for cusparseDgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDgemvi_bufferSize(handle=%p, transA=%d, m=%d, n=%d, nnz=%d, pBufferSize=%p)\n",
+        handle, transA, m, n, nnz, pBufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    int* pBufferSize_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    pBufferSize_native = (int*)getPointer(env, pBufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // pBufferSize is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgemviNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jobject alpha, jobject A, jint lda, jint nnz, jobject xVal, jobject xInd, jobject beta, jobject y, jint idxBase, jobject pBuffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (A == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'A' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // lda is primitive
+    // nnz is primitive
+    if (xVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xVal' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (xInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xInd' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (y == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'y' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // idxBase is primitive
+    if (pBuffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseCgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCgemvi(handle=%p, transA=%d, m=%d, n=%d, alpha=%p, A=%p, lda=%d, nnz=%d, xVal=%p, xInd=%p, beta=%p, y=%p, idxBase=%d, pBuffer=%p)\n",
+        handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    cuComplex* alpha_native;
+    cuComplex* A_native;
+    int lda_native = 0;
+    int nnz_native = 0;
+    cuComplex* xVal_native;
+    int* xInd_native;
+    cuComplex* beta_native;
+    cuComplex* y_native;
+    cusparseIndexBase_t idxBase_native;
+    void* pBuffer_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (cuComplex*)alpha_pointerData->getPointer(env);
+    A_native = (cuComplex*)getPointer(env, A);
+    lda_native = (int)lda;
+    nnz_native = (int)nnz;
+    xVal_native = (cuComplex*)getPointer(env, xVal);
+    xInd_native = (int*)getPointer(env, xInd);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (cuComplex*)beta_pointerData->getPointer(env);
+    y_native = (cuComplex*)getPointer(env, y);
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    pBuffer_native = (void*)getPointer(env, pBuffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCgemvi(handle_native, transA_native, m_native, n_native, alpha_native, A_native, lda_native, nnz_native, xVal_native, xInd_native, beta_native, y_native, idxBase_native, pBuffer_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // A is a native pointer
+    // lda is primitive
+    // nnz is primitive
+    // xVal is a native pointer
+    // xInd is a native pointer
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // y is a native pointer
+    // idxBase is primitive
+    // pBuffer is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgemvi_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jint nnz, jobject pBufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseCgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (pBufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBufferSize' is null for cusparseCgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCgemvi_bufferSize(handle=%p, transA=%d, m=%d, n=%d, nnz=%d, pBufferSize=%p)\n",
+        handle, transA, m, n, nnz, pBufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    int* pBufferSize_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    pBufferSize_native = (int*)getPointer(env, pBufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // pBufferSize is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgemviNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jobject alpha, jobject A, jint lda, jint nnz, jobject xVal, jobject xInd, jobject beta, jobject y, jint idxBase, jobject pBuffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (A == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'A' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // lda is primitive
+    // nnz is primitive
+    if (xVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xVal' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (xInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'xInd' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (y == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'y' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // idxBase is primitive
+    if (pBuffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseZgemvi");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseZgemvi(handle=%p, transA=%d, m=%d, n=%d, alpha=%p, A=%p, lda=%d, nnz=%d, xVal=%p, xInd=%p, beta=%p, y=%p, idxBase=%d, pBuffer=%p)\n",
+        handle, transA, m, n, alpha, A, lda, nnz, xVal, xInd, beta, y, idxBase, pBuffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    cuDoubleComplex* alpha_native;
+    cuDoubleComplex* A_native;
+    int lda_native = 0;
+    int nnz_native = 0;
+    cuDoubleComplex* xVal_native;
+    int* xInd_native;
+    cuDoubleComplex* beta_native;
+    cuDoubleComplex* y_native;
+    cusparseIndexBase_t idxBase_native;
+    void* pBuffer_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (cuDoubleComplex*)alpha_pointerData->getPointer(env);
+    A_native = (cuDoubleComplex*)getPointer(env, A);
+    lda_native = (int)lda;
+    nnz_native = (int)nnz;
+    xVal_native = (cuDoubleComplex*)getPointer(env, xVal);
+    xInd_native = (int*)getPointer(env, xInd);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (cuDoubleComplex*)beta_pointerData->getPointer(env);
+    y_native = (cuDoubleComplex*)getPointer(env, y);
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    pBuffer_native = (void*)getPointer(env, pBuffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseZgemvi(handle_native, transA_native, m_native, n_native, alpha_native, A_native, lda_native, nnz_native, xVal_native, xInd_native, beta_native, y_native, idxBase_native, pBuffer_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // A is a native pointer
+    // lda is primitive
+    // nnz is primitive
+    // xVal is a native pointer
+    // xInd is a native pointer
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // y is a native pointer
+    // idxBase is primitive
+    // pBuffer is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgemvi_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jint nnz, jobject pBufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseZgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (pBufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBufferSize' is null for cusparseZgemvi_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseZgemvi_bufferSize(handle=%p, transA=%d, m=%d, n=%d, nnz=%d, pBufferSize=%p)\n",
+        handle, transA, m, n, nnz, pBufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    int* pBufferSize_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    pBufferSize_native = (int*)getPointer(env, pBufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseZgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
+
+    // Write back native variable values
+    // handle is a read-only native pointer
+    // transA is primitive
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // pBufferSize is a native pointer
+
+    // Return the result
+    jint jniResult;
+    jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+
+/** --- Sparse Level 2 routines --- */
 /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
 where A is a sparse matrix in CSR storage format, x and y are dense vectors. */
 JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrmvNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint m, jint n, jint nnz, jobject alpha, jobject descrA, jobject csrSortedValA, jobject csrSortedRowPtrA, jobject csrSortedColIndA, jobject x, jobject beta, jobject y)
