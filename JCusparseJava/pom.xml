@@ -5,19 +5,13 @@
     <parent>
         <groupId>org.jcuda</groupId>
         <artifactId>jcuda-parent</artifactId>
-        <version>0.7.5b</version>
+        <version>0.7.5c</version>
         <relativePath>../../jcuda-common/JCudaParentPOM/pom.xml</relativePath>
     </parent>
 
     <artifactId>jcusparse</artifactId>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.jcuda</groupId>
-            <artifactId>jcuda</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -28,85 +22,18 @@
 
         <dependency>
             <groupId>org.jcuda</groupId>
-            <artifactId>JCusparse-native</artifactId>
+            <artifactId>jcuda</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jcuda</groupId>
+            <artifactId>jcusparse-natives</artifactId>
             <version>${project.version}</version>
             <classifier>${jcuda.os}-${jcuda.arch}</classifier>
-            <type>${jcuda.ext}</type>
         </dependency>
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-
-                    <execution>
-                        <phase>process-test-resources</phase>
-                        <id>copy-natives</id>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.jcuda</groupId>
-                                    <artifactId>JCusparse-native</artifactId>
-                                    <classifier>${jcuda.os}-${jcuda.arch}</classifier>
-                                    <type>${jcuda.ext}</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                                    <destFileName>${jcuda.prefix}JCusparse-${jcuda.os}-${jcuda.arch}.${jcuda.ext}</destFileName>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-
-                </executions>
-            </plugin>
-        </plugins>
-
-        <pluginManagement>
-            <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.maven.plugins
-                                        </groupId>
-                                        <artifactId>
-                                            maven-dependency-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [2.10,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>
-                                                copy-dependencies
-                                            </goal>
-                                            <goal>copy</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
 </project>

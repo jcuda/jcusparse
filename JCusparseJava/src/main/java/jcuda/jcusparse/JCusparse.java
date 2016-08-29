@@ -29,6 +29,7 @@
 package jcuda.jcusparse;
 
 import jcuda.*;
+import jcuda.runtime.JCuda;
 import jcuda.runtime.cudaStream_t;
 
 /**
@@ -70,7 +71,10 @@ public class JCusparse
     {
         if (!initialized)
         {
-            LibUtils.loadLibrary("JCusparse");
+            String libraryBaseName = "JCusparse-" + JCuda.getJCudaVersion();
+            String libraryName = 
+                LibUtils.createPlatformLibraryName(libraryBaseName);
+            LibUtils.loadLibrary(libraryName);
             initialized = true;
         }
     }

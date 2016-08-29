@@ -1,4 +1,6 @@
-JCusparseJava/target/
+/JCusparseJava/target/
 /JCusparseJava/.settings
 /JCusparseJava/.classpath
 /JCusparseJava/.project
+/target
+/nativeLibraries
