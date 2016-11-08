@@ -292,6 +292,44 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSetStreamNative(JN
     return jniResult;
 }
 
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseGetStreamNative(JNIEnv *env, jclass cls, jobject handle, jobject streamId)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseGetStream");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (streamId == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'streamId' is null for cusparseGetStream");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseGetStream(handle=%p, streamId=%p)\n",
+        handle, streamId);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cudaStream_t streamId_native;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    // streamId is write-only
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseGetStream(handle_native, &streamId_native);
+
+    // Write back native variable values
+    // handle is read-only
+    setNativePointerValue(env, streamId, (jlong)streamId_native);
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
 /** CUSPARSE type creation, destruction, set and get routines */
 JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseGetPointerModeNative(JNIEnv *env, jclass cls, jobject handle, jintArray mode)
 {

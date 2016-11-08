@@ -85,6 +85,14 @@ extern "C" {
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseGetStreamNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;Ljcuda/runtime/cudaStream_t;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseGetStreamNative
+        (JNIEnv *, jclass, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseGetPointerModeNative
     * Signature: (Ljcuda/jcusparse/cusparseHandle;[I)I
     */

@@ -219,6 +219,17 @@ public class JCusparse
         cudaStream_t streamId);
 
 
+    public static int cusparseGetStream(
+        cusparseHandle handle, 
+        cudaStream_t streamId)
+    {
+        return checkResult(cusparseGetStreamNative(handle, streamId));
+    }
+    private static native int cusparseGetStreamNative(
+        cusparseHandle handle, 
+        cudaStream_t streamId);
+
+
     /** CUSPARSE type creation, destruction, set and get routines */
     public static int cusparseGetPointerMode(
         cusparseHandle handle, 
