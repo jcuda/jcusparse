@@ -2563,7 +2563,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseScsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
     }
@@ -2577,7 +2577,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDcsrsv2_bufferSizeExt(
@@ -2590,7 +2590,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
     }
@@ -2604,7 +2604,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCcsrsv2_bufferSizeExt(
@@ -2617,7 +2617,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
     }
@@ -2631,7 +2631,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZcsrsv2_bufferSizeExt(
@@ -2644,7 +2644,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
     }
@@ -2658,7 +2658,7 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseScsrsv2_analysis(
@@ -3074,7 +3074,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
     }
@@ -3090,7 +3090,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDbsrsv2_bufferSizeExt(
@@ -3105,7 +3105,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
     }
@@ -3121,7 +3121,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCbsrsv2_bufferSizeExt(
@@ -3136,7 +3136,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
     }
@@ -3152,7 +3152,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZbsrsv2_bufferSizeExt(
@@ -3167,7 +3167,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
     }
@@ -3183,7 +3183,7 @@ public class JCusparse
         Pointer bsrSortedColIndA, 
         int blockSize, 
         bsrsv2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseSbsrsv2_analysis(
@@ -3549,19 +3549,19 @@ public class JCusparse
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
         Pointer x)
     {
-        return checkResult(cusparseShybsv_solveNative(handle, trans, alpha, descra, hybA, info, f, x));
+        return checkResult(cusparseShybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
     }
     private static native int cusparseShybsv_solveNative(
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
@@ -3572,19 +3572,19 @@ public class JCusparse
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
         Pointer x)
     {
-        return checkResult(cusparseChybsv_solveNative(handle, trans, alpha, descra, hybA, info, f, x));
+        return checkResult(cusparseChybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
     }
     private static native int cusparseChybsv_solveNative(
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
@@ -3595,19 +3595,19 @@ public class JCusparse
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
         Pointer x)
     {
-        return checkResult(cusparseDhybsv_solveNative(handle, trans, alpha, descra, hybA, info, f, x));
+        return checkResult(cusparseDhybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
     }
     private static native int cusparseDhybsv_solveNative(
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
@@ -3618,19 +3618,19 @@ public class JCusparse
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
         Pointer x)
     {
-        return checkResult(cusparseZhybsv_solveNative(handle, trans, alpha, descra, hybA, info, f, x));
+        return checkResult(cusparseZhybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
     }
     private static native int cusparseZhybsv_solveNative(
         cusparseHandle handle, 
         int trans, 
         Pointer alpha, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         cusparseHybMat hybA, 
         cusparseSolveAnalysisInfo info, 
         Pointer f, 
@@ -4408,12 +4408,12 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx)
     {
-        return checkResult(cusparseScsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, F, ldf, X, ldx));
+        return checkResult(cusparseScsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
     }
     private static native int cusparseScsrsm_solveNative(
         cusparseHandle handle, 
@@ -4426,8 +4426,8 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx);
 
@@ -4443,12 +4443,12 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx)
     {
-        return checkResult(cusparseDcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, F, ldf, X, ldx));
+        return checkResult(cusparseDcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
     }
     private static native int cusparseDcsrsm_solveNative(
         cusparseHandle handle, 
@@ -4461,8 +4461,8 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx);
 
@@ -4478,12 +4478,12 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx)
     {
-        return checkResult(cusparseCcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, F, ldf, X, ldx));
+        return checkResult(cusparseCcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
     }
     private static native int cusparseCcsrsm_solveNative(
         cusparseHandle handle, 
@@ -4496,8 +4496,8 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx);
 
@@ -4513,12 +4513,12 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx)
     {
-        return checkResult(cusparseZcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, F, ldf, X, ldx));
+        return checkResult(cusparseZcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
     }
     private static native int cusparseZcsrsm_solveNative(
         cusparseHandle handle, 
@@ -4531,17 +4531,540 @@ public class JCusparse
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx);
 
 
+    public static int cusparseCreateCsrsm2Info(
+        csrsm2Info info)
+    {
+        return checkResult(cusparseCreateCsrsm2InfoNative(info));
+    }
+    private static native int cusparseCreateCsrsm2InfoNative(
+        csrsm2Info info);
+
+
+    public static int cusparseDestroyCsrsm2Info(
+        csrsm2Info info)
+    {
+        return checkResult(cusparseDestroyCsrsm2InfoNative(info));
+    }
+    private static native int cusparseDestroyCsrsm2InfoNative(
+        csrsm2Info info);
+
+
+    public static int cusparseXcsrsm2_zeroPivot(
+        cusparseHandle handle, 
+        csrsm2Info info, 
+        Pointer position)
+    {
+        return checkResult(cusparseXcsrsm2_zeroPivotNative(handle, info, position));
+    }
+    private static native int cusparseXcsrsm2_zeroPivotNative(
+        cusparseHandle handle, 
+        csrsm2Info info, 
+        Pointer position);
+
+
+    public static int cusparseScsrsm2_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize)
+    {
+        return checkResult(cusparseScsrsm2_bufferSizeExtNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBufferSize));
+    }
+    private static native int cusparseScsrsm2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize);
+
+
+    public static int cusparseDcsrsm2_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize)
+    {
+        return checkResult(cusparseDcsrsm2_bufferSizeExtNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBufferSize));
+    }
+    private static native int cusparseDcsrsm2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize);
+
+
+    public static int cusparseCcsrsm2_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize)
+    {
+        return checkResult(cusparseCcsrsm2_bufferSizeExtNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBufferSize));
+    }
+    private static native int cusparseCcsrsm2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize);
+
+
+    public static int cusparseZcsrsm2_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize)
+    {
+        return checkResult(cusparseZcsrsm2_bufferSizeExtNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBufferSize));
+    }
+    private static native int cusparseZcsrsm2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        long[] pBufferSize);
+
+
+    public static int cusparseScsrsm2_analysis(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseScsrsm2_analysisNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseScsrsm2_analysisNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDcsrsm2_analysis(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDcsrsm2_analysisNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseDcsrsm2_analysisNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCcsrsm2_analysis(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCcsrsm2_analysisNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseCcsrsm2_analysisNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZcsrsm2_analysis(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZcsrsm2_analysisNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseZcsrsm2_analysisNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseScsrsm2_solve(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseScsrsm2_solveNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseScsrsm2_solveNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDcsrsm2_solve(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDcsrsm2_solveNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseDcsrsm2_solveNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCcsrsm2_solve(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCcsrsm2_solveNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseCcsrsm2_solveNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZcsrsm2_solve(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZcsrsm2_solveNative(handle, algo, transA, transB, m, nrhs, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, info, policy, pBuffer));
+    }
+    private static native int cusparseZcsrsm2_solveNative(
+        cusparseHandle handle, 
+        int algo, /** algo = 0, 1 */
+        int transA, 
+        int transB, 
+        int m, 
+        int nrhs, 
+        int nnz, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer B, 
+        int ldb, 
+        csrsm2Info info, 
+        int policy, 
+        Pointer pBuffer);
+
+
     /**
      * <pre>
-     * Description: Solution of triangular linear system op(A) * X = alpha * F,
+     * Description: Solution of triangular linear system op(A) * X = alpha * B,
        with multiple right-hand-sides, where A is a sparse matrix in CSR storage 
-       format, rhs F and solution X are dense tall matrices.
+       format, rhs B and solution X are dense tall matrices.
      * This routine implements algorithm 2 for this problem.
      * </pre>
      */
@@ -4712,7 +5235,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -4730,7 +5253,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDbsrsm2_bufferSizeExt(
@@ -4747,7 +5270,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -4765,7 +5288,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCbsrsm2_bufferSizeExt(
@@ -4782,7 +5305,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -4800,7 +5323,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZbsrsm2_bufferSizeExt(
@@ -4817,7 +5340,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -4835,7 +5358,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseSbsrsm2_analysis(
@@ -5001,14 +5524,14 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, F, ldf, X, ldx, policy, pBuffer));
+        return checkResult(cusparseSbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, B, ldb, X, ldx, policy, pBuffer));
     }
     private static native int cusparseSbsrsm2_solveNative(
         cusparseHandle handle, 
@@ -5025,8 +5548,8 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
@@ -5048,14 +5571,14 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, F, ldf, X, ldx, policy, pBuffer));
+        return checkResult(cusparseDbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, B, ldb, X, ldx, policy, pBuffer));
     }
     private static native int cusparseDbsrsm2_solveNative(
         cusparseHandle handle, 
@@ -5072,8 +5595,8 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
@@ -5095,14 +5618,14 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseCbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, F, ldf, X, ldx, policy, pBuffer));
+        return checkResult(cusparseCbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, B, ldb, X, ldx, policy, pBuffer));
     }
     private static native int cusparseCbsrsm2_solveNative(
         cusparseHandle handle, 
@@ -5119,8 +5642,8 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
@@ -5142,14 +5665,14 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseZbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, F, ldf, X, ldx, policy, pBuffer));
+        return checkResult(cusparseZbsrsm2_solveNative(handle, dirA, transA, transXY, mb, n, nnzb, alpha, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, B, ldb, X, ldx, policy, pBuffer));
     }
     private static native int cusparseZbsrsm2_solveNative(
         cusparseHandle handle, 
@@ -5166,8 +5689,8 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrsm2Info info, 
-        Pointer F, 
-        int ldf, 
+        Pointer B, 
+        int ldb, 
         Pointer X, 
         int ldx, 
         int policy, 
@@ -5520,7 +6043,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseScsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -5533,7 +6056,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDcsrilu02_bufferSizeExt(
@@ -5545,7 +6068,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -5558,7 +6081,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCcsrilu02_bufferSizeExt(
@@ -5570,7 +6093,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -5583,7 +6106,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZcsrilu02_bufferSizeExt(
@@ -5595,7 +6118,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -5608,7 +6131,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseScsrilu02_analysis(
@@ -6059,7 +6582,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -6074,7 +6597,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDbsrilu02_bufferSizeExt(
@@ -6088,7 +6611,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -6103,7 +6626,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCbsrilu02_bufferSizeExt(
@@ -6117,7 +6640,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -6132,7 +6655,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZbsrilu02_bufferSizeExt(
@@ -6146,7 +6669,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -6161,7 +6684,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsrilu02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseSbsrilu02_analysis(
@@ -6293,7 +6816,7 @@ public class JCusparse
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6302,14 +6825,14 @@ public class JCusparse
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSbsrilu02Native(handle, dirA, mb, nnzb, descra, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
+        return checkResult(cusparseSbsrilu02Native(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
     }
     private static native int cusparseSbsrilu02Native(
         cusparseHandle handle, 
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6324,7 +6847,7 @@ public class JCusparse
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6333,14 +6856,14 @@ public class JCusparse
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDbsrilu02Native(handle, dirA, mb, nnzb, descra, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
+        return checkResult(cusparseDbsrilu02Native(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
     }
     private static native int cusparseDbsrilu02Native(
         cusparseHandle handle, 
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6355,7 +6878,7 @@ public class JCusparse
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6364,14 +6887,14 @@ public class JCusparse
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseCbsrilu02Native(handle, dirA, mb, nnzb, descra, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
+        return checkResult(cusparseCbsrilu02Native(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
     }
     private static native int cusparseCbsrilu02Native(
         cusparseHandle handle, 
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6386,7 +6909,7 @@ public class JCusparse
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6395,14 +6918,14 @@ public class JCusparse
         int policy, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseZbsrilu02Native(handle, dirA, mb, nnzb, descra, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
+        return checkResult(cusparseZbsrilu02Native(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockDim, info, policy, pBuffer));
     }
     private static native int cusparseZbsrilu02Native(
         cusparseHandle handle, 
         int dirA, 
         int mb, 
         int nnzb, 
-        cusparseMatDescr descra, 
+        cusparseMatDescr descrA, 
         Pointer bsrSortedVal, 
         Pointer bsrSortedRowPtr, 
         Pointer bsrSortedColInd, 
@@ -6658,7 +7181,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseScsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -6671,7 +7194,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDcsric02_bufferSizeExt(
@@ -6683,7 +7206,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -6696,7 +7219,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCcsric02_bufferSizeExt(
@@ -6708,7 +7231,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -6721,7 +7244,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZcsric02_bufferSizeExt(
@@ -6733,7 +7256,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
     }
@@ -6746,7 +7269,7 @@ public class JCusparse
         Pointer csrSortedRowPtr, 
         Pointer csrSortedColInd, 
         csric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseScsric02_analysis(
@@ -7129,7 +7652,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -7144,7 +7667,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDbsric02_bufferSizeExt(
@@ -7158,7 +7681,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -7173,7 +7696,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCbsric02_bufferSizeExt(
@@ -7187,7 +7710,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -7202,7 +7725,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZbsric02_bufferSizeExt(
@@ -7216,7 +7739,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
     }
@@ -7231,7 +7754,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int blockSize, 
         bsric02Info info, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseSbsric02_analysis(
@@ -7484,10 +8007,10 @@ public class JCusparse
 
     /**
      * <pre>
-     * Description: Solution of tridiagonal linear system A * X = F,
+     * Description: Solution of tridiagonal linear system A * X = B,
        with multiple right-hand-sides. The coefficient matrix A is 
        composed of lower (dl), main (d) and upper (du) diagonals, and 
-       the right-hand-sides F are overwritten with the solution X. 
+       the right-hand-sides B are overwritten with the solution X. 
      * These routine use pivoting.
      * </pre>
      */
@@ -7785,10 +8308,10 @@ public class JCusparse
 
     /**
      * <pre>
-     * Description: Solution of tridiagonal linear system A * X = F,
+     * Description: Solution of tridiagonal linear system A * X = B,
        with multiple right-hand-sides. The coefficient matrix A is 
        composed of lower (dl), main (d) and upper (du) diagonals, and 
-       the right-hand-sides F are overwritten with the solution X. 
+       the right-hand-sides B are overwritten with the solution X. 
      * These routine does not use pivoting.
      * </pre>
      */
@@ -8385,6 +8908,446 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    public static int cusparseSgtsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseSgtsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, dl, d, du, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseSgtsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseDgtsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseDgtsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, dl, d, du, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseDgtsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseCgtsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseCgtsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, dl, d, du, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseCgtsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseZgtsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseZgtsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, dl, d, du, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseZgtsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseSgtsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseSgtsvInterleavedBatchNative(handle, algo, m, dl, d, du, x, batchCount, pBuffer));
+    }
+    private static native int cusparseSgtsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDgtsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDgtsvInterleavedBatchNative(handle, algo, m, dl, d, du, x, batchCount, pBuffer));
+    }
+    private static native int cusparseDgtsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCgtsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCgtsvInterleavedBatchNative(handle, algo, m, dl, d, du, x, batchCount, pBuffer));
+    }
+    private static native int cusparseCgtsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZgtsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZgtsvInterleavedBatchNative(handle, algo, m, dl, d, du, x, batchCount, pBuffer));
+    }
+    private static native int cusparseZgtsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    /**
+     * <pre>
+     * Description: Solution of pentadiagonal linear system A * X = B,
+       with multiple right-hand-sides. The coefficient matrix A is 
+       composed of lower (ds, dl), main (d) and upper (du, dw) diagonals, and 
+       the right-hand-sides B are overwritten with the solution X. 
+     * </pre>
+     */
+    public static int cusparseSgpsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseSgpsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseSgpsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseDgpsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseDgpsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseDgpsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseCgpsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseCgpsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseCgpsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseZgpsvInterleavedBatch_bufferSizeExt(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseZgpsvInterleavedBatch_bufferSizeExtNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBufferSizeInBytes));
+    }
+    private static native int cusparseZgpsvInterleavedBatch_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseSgpsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseSgpsvInterleavedBatchNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBuffer));
+    }
+    private static native int cusparseSgpsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDgpsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDgpsvInterleavedBatchNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBuffer));
+    }
+    private static native int cusparseDgpsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCgpsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCgpsvInterleavedBatchNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBuffer));
+    }
+    private static native int cusparseCgpsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZgpsvInterleavedBatch(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZgpsvInterleavedBatchNative(handle, algo, m, ds, dl, d, du, dw, x, batchCount, pBuffer));
+    }
+    private static native int cusparseZgpsvInterleavedBatchNative(
+        cusparseHandle handle, 
+        int algo, 
+        int m, 
+        Pointer ds, 
+        Pointer dl, 
+        Pointer d, 
+        Pointer du, 
+        Pointer dw, 
+        Pointer x, 
+        int batchCount, 
+        Pointer pBuffer);
+
+
     /** --- Sparse Level 4 routines --- */
     /** Description: Compute sparse - sparse matrix multiplication for matrices 
        stored in CSR format. */
@@ -8657,7 +9620,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseScsrgemm2_bufferSizeExtNative(handle, m, n, k, alpha, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, beta, descrD, nnzD, csrSortedRowPtrD, csrSortedColIndD, info, pBufferSizeInBytes));
     }
@@ -8681,7 +9644,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDcsrgemm2_bufferSizeExt(
@@ -8704,7 +9667,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseDcsrgemm2_bufferSizeExtNative(handle, m, n, k, alpha, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, beta, descrD, nnzD, csrSortedRowPtrD, csrSortedColIndD, info, pBufferSizeInBytes));
     }
@@ -8728,7 +9691,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseCcsrgemm2_bufferSizeExt(
@@ -8751,7 +9714,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseCcsrgemm2_bufferSizeExtNative(handle, m, n, k, alpha, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, beta, descrD, nnzD, csrSortedRowPtrD, csrSortedColIndD, info, pBufferSizeInBytes));
     }
@@ -8775,7 +9738,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseZcsrgemm2_bufferSizeExt(
@@ -8798,7 +9761,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseZcsrgemm2_bufferSizeExtNative(handle, m, n, k, alpha, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, beta, descrD, nnzD, csrSortedRowPtrD, csrSortedColIndD, info, pBufferSizeInBytes));
     }
@@ -8822,7 +9785,7 @@ public class JCusparse
         Pointer csrSortedRowPtrD, 
         Pointer csrSortedColIndD, 
         csrgemm2Info info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseXcsrgemm2Nnz(
@@ -9335,6 +10298,419 @@ public class JCusparse
         Pointer csrSortedColIndC);
 
 
+    public static int cusparseScsrgeam2_bufferSizeExt(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseScsrgeam2_bufferSizeExtNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
+    }
+    private static native int cusparseScsrgeam2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseDcsrgeam2_bufferSizeExt(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseDcsrgeam2_bufferSizeExtNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
+    }
+    private static native int cusparseDcsrgeam2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseCcsrgeam2_bufferSizeExt(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseCcsrgeam2_bufferSizeExtNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
+    }
+    private static native int cusparseCcsrgeam2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseZcsrgeam2_bufferSizeExt(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
+    {
+        return checkResult(cusparseZcsrgeam2_bufferSizeExtNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
+    }
+    private static native int cusparseZcsrgeam2_bufferSizeExtNative(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
+
+
+    public static int cusparseXcsrgeam2Nnz(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer nnzTotalDevHostPtr, 
+        Pointer workspace)
+    {
+        return checkResult(cusparseXcsrgeam2NnzNative(handle, m, n, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, workspace));
+    }
+    private static native int cusparseXcsrgeam2NnzNative(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer nnzTotalDevHostPtr, 
+        Pointer workspace);
+
+
+    public static int cusparseScsrgeam2(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseScsrgeam2Native(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
+    }
+    private static native int cusparseScsrgeam2Native(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer);
+
+
+    public static int cusparseDcsrgeam2(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseDcsrgeam2Native(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
+    }
+    private static native int cusparseDcsrgeam2Native(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer);
+
+
+    public static int cusparseCcsrgeam2(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseCcsrgeam2Native(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
+    }
+    private static native int cusparseCcsrgeam2Native(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer);
+
+
+    public static int cusparseZcsrgeam2(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer)
+    {
+        return checkResult(cusparseZcsrgeam2Native(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
+    }
+    private static native int cusparseZcsrgeam2Native(
+        cusparseHandle handle, 
+        int m, 
+        int n, 
+        Pointer alpha, 
+        cusparseMatDescr descrA, 
+        int nnzA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
+        Pointer beta, 
+        cusparseMatDescr descrB, 
+        int nnzB, 
+        Pointer csrSortedValB, 
+        Pointer csrSortedRowPtrB, 
+        Pointer csrSortedColIndB, 
+        cusparseMatDescr descrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        Pointer pBuffer);
+
+
     /** --- Sparse Matrix Reorderings --- */
     /** Description: Find an approximate coloring of a matrix stored in CSR format. */
     public static int cusparseScsrcolor(
@@ -9571,20 +10947,20 @@ public class JCusparse
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         float tol)
     {
-        return checkResult(cusparseSnnz_compressNative(handle, m, descr, csrValA, csrRowPtrA, nnzPerRow, nnzC, tol));
+        return checkResult(cusparseSnnz_compressNative(handle, m, descr, csrSortedValA, csrSortedRowPtrA, nnzPerRow, nnzC, tol));
     }
     private static native int cusparseSnnz_compressNative(
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         float tol);
@@ -9594,20 +10970,20 @@ public class JCusparse
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         double tol)
     {
-        return checkResult(cusparseDnnz_compressNative(handle, m, descr, csrValA, csrRowPtrA, nnzPerRow, nnzC, tol));
+        return checkResult(cusparseDnnz_compressNative(handle, m, descr, csrSortedValA, csrSortedRowPtrA, nnzPerRow, nnzC, tol));
     }
     private static native int cusparseDnnz_compressNative(
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         double tol);
@@ -9617,20 +10993,20 @@ public class JCusparse
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         cuComplex tol)
     {
-        return checkResult(cusparseCnnz_compressNative(handle, m, descr, csrValA, csrRowPtrA, nnzPerRow, nnzC, tol));
+        return checkResult(cusparseCnnz_compressNative(handle, m, descr, csrSortedValA, csrSortedRowPtrA, nnzPerRow, nnzC, tol));
     }
     private static native int cusparseCnnz_compressNative(
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         cuComplex tol);
@@ -9640,20 +11016,20 @@ public class JCusparse
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         cuDoubleComplex tol)
     {
-        return checkResult(cusparseZnnz_compressNative(handle, m, descr, csrValA, csrRowPtrA, nnzPerRow, nnzC, tol));
+        return checkResult(cusparseZnnz_compressNative(handle, m, descr, csrSortedValA, csrSortedRowPtrA, nnzPerRow, nnzC, tol));
     }
     private static native int cusparseZnnz_compressNative(
         cusparseHandle handle, 
         int m, 
         cusparseMatDescr descr, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
         Pointer nnzPerRow, 
         Pointer nnzC, 
         cuDoubleComplex tol);
@@ -9664,131 +11040,131 @@ public class JCusparse
         cusparseHandle handle, 
         int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, 
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         float tol)
     {
-        return checkResult(cusparseScsr2csr_compressNative(handle, m, n, descra, csrValA, csrColIndA, csrRowPtrA, nnzA, nnzPerRow, csrValC, csrColIndC, csrRowPtrC, tol));
+        return checkResult(cusparseScsr2csr_compressNative(handle, m, n, descrA, csrSortedValA, csrSortedColIndA, csrSortedRowPtrA, nnzA, nnzPerRow, csrSortedValC, csrSortedColIndC, csrSortedRowPtrC, tol));
     }
     private static native int cusparseScsr2csr_compressNative(
         cusparseHandle handle, 
         int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, 
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, 
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         float tol);
 
 
     public static int cusparseDcsr2csr_compress(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         double tol)
     {
-        return checkResult(cusparseDcsr2csr_compressNative(handle, m, n, descra, csrValA, csrColIndA, csrRowPtrA, nnzA, nnzPerRow, csrValC, csrColIndC, csrRowPtrC, tol));
+        return checkResult(cusparseDcsr2csr_compressNative(handle, m, n, descrA, csrSortedValA, csrSortedColIndA, csrSortedRowPtrA, nnzA, nnzPerRow, csrSortedValC, csrSortedColIndC, csrSortedRowPtrC, tol));
     }
     private static native int cusparseDcsr2csr_compressNative(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         double tol);
 
 
     public static int cusparseCcsr2csr_compress(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         cuComplex tol)
     {
-        return checkResult(cusparseCcsr2csr_compressNative(handle, m, n, descra, csrValA, csrColIndA, csrRowPtrA, nnzA, nnzPerRow, csrValC, csrColIndC, csrRowPtrC, tol));
+        return checkResult(cusparseCcsr2csr_compressNative(handle, m, n, descrA, csrSortedValA, csrSortedColIndA, csrSortedRowPtrA, nnzA, nnzPerRow, csrSortedValC, csrSortedColIndC, csrSortedRowPtrC, tol));
     }
     private static native int cusparseCcsr2csr_compressNative(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         cuComplex tol);
 
 
     public static int cusparseZcsr2csr_compress(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         cuDoubleComplex tol)
     {
-        return checkResult(cusparseZcsr2csr_compressNative(handle, m, n, descra, csrValA, csrColIndA, csrRowPtrA, nnzA, nnzPerRow, csrValC, csrColIndC, csrRowPtrC, tol));
+        return checkResult(cusparseZcsr2csr_compressNative(handle, m, n, descrA, csrSortedValA, csrSortedColIndA, csrSortedRowPtrA, nnzA, nnzPerRow, csrSortedValC, csrSortedColIndC, csrSortedRowPtrC, tol));
     }
     private static native int cusparseZcsr2csr_compressNative(
         cusparseHandle handle, 
-        int m, //number of rows
+        int m, 
         int n, 
-        cusparseMatDescr descra, 
-        Pointer csrValA, //csr values array-the elements which are below a certain tolerance will be remvoed
-        Pointer csrColIndA, 
-        Pointer csrRowPtrA, //corresponding input noncompressed row pointer
+        cusparseMatDescr descrA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedColIndA, 
+        Pointer csrSortedRowPtrA, 
         int nnzA, 
         Pointer nnzPerRow, 
-        Pointer csrValC, 
-        Pointer csrColIndC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedColIndC, 
+        Pointer csrSortedRowPtrC, 
         cuDoubleComplex tol);
 
 
@@ -11399,7 +12775,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11413,7 +12789,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDgebsr2gebsc_bufferSizeExt(
@@ -11426,7 +12802,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11440,7 +12816,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCgebsr2gebsc_bufferSizeExt(
@@ -11453,7 +12829,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11467,7 +12843,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZgebsr2gebsc_bufferSizeExt(
@@ -11480,7 +12856,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11494,7 +12870,7 @@ public class JCusparse
         Pointer bsrSortedColInd, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseSgebsr2gebsc(
@@ -11947,7 +13323,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseScsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11962,7 +13338,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDcsr2gebsr_bufferSizeExt(
@@ -11976,7 +13352,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -11991,7 +13367,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCcsr2gebsr_bufferSizeExt(
@@ -12005,7 +13381,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -12020,7 +13396,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZcsr2gebsr_bufferSizeExt(
@@ -12034,7 +13410,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
     }
@@ -12049,7 +13425,7 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         int rowBlockDim, 
         int colBlockDim, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseXcsr2gebsrNnz(
@@ -12389,7 +13765,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseSgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
     }
@@ -12407,7 +13783,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseDgebsr2gebsr_bufferSizeExt(
@@ -12424,7 +13800,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseDgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
     }
@@ -12442,7 +13818,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseCgebsr2gebsr_bufferSizeExt(
@@ -12459,7 +13835,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseCgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
     }
@@ -12477,7 +13853,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseZgebsr2gebsr_bufferSizeExt(
@@ -12494,7 +13870,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize)
+        long[] pBufferSize)
     {
         return checkResult(cusparseZgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
     }
@@ -12512,7 +13888,7 @@ public class JCusparse
         int colBlockDimA, 
         int rowBlockDimC, 
         int colBlockDimC, 
-        int[] pBufferSize);
+        long[] pBufferSize);
 
 
     public static int cusparseXgebsr2gebsrNnz(
@@ -12749,7 +14125,7 @@ public class JCusparse
         int nnz, 
         Pointer cooRowsA, 
         Pointer cooColsA, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseXcoosort_bufferSizeExtNative(handle, m, n, nnz, cooRowsA, cooColsA, pBufferSizeInBytes));
     }
@@ -12760,7 +14136,7 @@ public class JCusparse
         int nnz, 
         Pointer cooRowsA, 
         Pointer cooColsA, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseXcoosortByRow(
@@ -12817,7 +14193,7 @@ public class JCusparse
         int nnz, 
         Pointer csrRowPtrA, 
         Pointer csrColIndA, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseXcsrsort_bufferSizeExtNative(handle, m, n, nnz, csrRowPtrA, csrColIndA, pBufferSizeInBytes));
     }
@@ -12828,7 +14204,7 @@ public class JCusparse
         int nnz, 
         Pointer csrRowPtrA, 
         Pointer csrColIndA, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseXcsrsort(
@@ -12864,7 +14240,7 @@ public class JCusparse
         int nnz, 
         Pointer cscColPtrA, 
         Pointer cscRowIndA, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseXcscsort_bufferSizeExtNative(handle, m, n, nnz, cscColPtrA, cscRowIndA, pBufferSizeInBytes));
     }
@@ -12875,7 +14251,7 @@ public class JCusparse
         int nnz, 
         Pointer cscColPtrA, 
         Pointer cscRowIndA, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseXcscsort(
@@ -12914,7 +14290,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseScsru2csr_bufferSizeExtNative(handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, info, pBufferSizeInBytes));
     }
@@ -12927,7 +14303,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDcsru2csr_bufferSizeExt(
@@ -12939,7 +14315,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseDcsru2csr_bufferSizeExtNative(handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, info, pBufferSizeInBytes));
     }
@@ -12952,7 +14328,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseCcsru2csr_bufferSizeExt(
@@ -12964,7 +14340,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseCcsru2csr_bufferSizeExtNative(handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, info, pBufferSizeInBytes));
     }
@@ -12977,7 +14353,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseZcsru2csr_bufferSizeExt(
@@ -12989,7 +14365,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
         return checkResult(cusparseZcsru2csr_bufferSizeExtNative(handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, info, pBufferSizeInBytes));
     }
@@ -13002,7 +14378,7 @@ public class JCusparse
         Pointer csrRowPtr, 
         Pointer csrColInd, 
         csru2csrInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseScsru2csr(
@@ -13231,12 +14607,12 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes)
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseSpruneDense2csr_bufferSizeExtNative(handle, m, n, A, lda, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBufferSizeInBytes));
+        return checkResult(cusparseSpruneDense2csr_bufferSizeExtNative(handle, m, n, A, lda, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
     }
     private static native int cusparseSpruneDense2csr_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13246,10 +14622,10 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes);
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDpruneDense2csr_bufferSizeExt(
@@ -13260,12 +14636,12 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes)
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseDpruneDense2csr_bufferSizeExtNative(handle, m, n, A, lda, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBufferSizeInBytes));
+        return checkResult(cusparseDpruneDense2csr_bufferSizeExtNative(handle, m, n, A, lda, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
     }
     private static native int cusparseDpruneDense2csr_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13275,10 +14651,10 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes);
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseSpruneDense2csrNnz(
@@ -13316,11 +14692,11 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneDense2csrNnzNative(handle, m, n, A, lda, threshold, descrC, csrRowPtrC, nnzTotalDevHostPtr, pBuffer));
+        return checkResult(cusparseDpruneDense2csrNnzNative(handle, m, n, A, lda, threshold, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, pBuffer));
     }
     private static native int cusparseDpruneDense2csrNnzNative(
         cusparseHandle handle, 
@@ -13330,7 +14706,7 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer);
 
@@ -13343,12 +14719,12 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneDense2csrNative(handle, m, n, A, lda, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBuffer));
+        return checkResult(cusparseSpruneDense2csrNative(handle, m, n, A, lda, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
     }
     private static native int cusparseSpruneDense2csrNative(
         cusparseHandle handle, 
@@ -13358,9 +14734,9 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer);
 
 
@@ -13372,12 +14748,12 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneDense2csrNative(handle, m, n, A, lda, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBuffer));
+        return checkResult(cusparseDpruneDense2csrNative(handle, m, n, A, lda, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
     }
     private static native int cusparseDpruneDense2csrNative(
         cusparseHandle handle, 
@@ -13387,9 +14763,9 @@ public class JCusparse
         int lda, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer);
 
 
@@ -13399,17 +14775,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes)
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseSpruneCsr2csr_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBufferSizeInBytes));
+        return checkResult(cusparseSpruneCsr2csr_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
     }
     private static native int cusparseSpruneCsr2csr_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13417,15 +14793,15 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes);
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDpruneCsr2csr_bufferSizeExt(
@@ -13434,17 +14810,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes)
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseDpruneCsr2csr_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBufferSizeInBytes));
+        return checkResult(cusparseDpruneCsr2csr_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBufferSizeInBytes));
     }
     private static native int cusparseDpruneCsr2csr_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13452,15 +14828,15 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
-        int[] pBufferSizeInBytes);
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseSpruneCsr2csrNnz(
@@ -13469,16 +14845,16 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrRowPtrC, nnzTotalDevHostPtr, pBuffer));
+        return checkResult(cusparseSpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, pBuffer));
     }
     private static native int cusparseSpruneCsr2csrNnzNative(
         cusparseHandle handle, 
@@ -13486,12 +14862,12 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         Pointer pBuffer);
 
@@ -13502,16 +14878,16 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrRowPtrC, nnzTotalDevHostPtr, pBuffer));
+        return checkResult(cusparseDpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, pBuffer));
     }
     private static native int cusparseDpruneCsr2csrNnzNative(
         cusparseHandle handle, 
@@ -13519,12 +14895,12 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         Pointer pBuffer);
 
@@ -13535,17 +14911,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneCsr2csrNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBuffer));
+        return checkResult(cusparseSpruneCsr2csrNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
     }
     private static native int cusparseSpruneCsr2csrNative(
         cusparseHandle handle, 
@@ -13553,14 +14929,14 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer);
 
 
@@ -13570,17 +14946,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneCsr2csrNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, threshold, descrC, csrValC, csrRowPtrC, csrColIndC, pBuffer));
+        return checkResult(cusparseDpruneCsr2csrNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, pBuffer));
     }
     private static native int cusparseDpruneCsr2csrNative(
         cusparseHandle handle, 
@@ -13588,14 +14964,14 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         Pointer threshold, 
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         Pointer pBuffer);
 
 
@@ -13607,13 +14983,13 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseSpruneDense2csrByPercentage_bufferSizeExtNative(handle, m, n, A, lda, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBufferSizeInBytes));
+        return checkResult(cusparseSpruneDense2csrByPercentage_bufferSizeExtNative(handle, m, n, A, lda, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBufferSizeInBytes));
     }
     private static native int cusparseSpruneDense2csrByPercentage_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13623,11 +14999,11 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDpruneDense2csrByPercentage_bufferSizeExt(
@@ -13638,13 +15014,13 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseDpruneDense2csrByPercentage_bufferSizeExtNative(handle, m, n, A, lda, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBufferSizeInBytes));
+        return checkResult(cusparseDpruneDense2csrByPercentage_bufferSizeExtNative(handle, m, n, A, lda, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBufferSizeInBytes));
     }
     private static native int cusparseDpruneDense2csrByPercentage_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13654,11 +15030,11 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseSpruneDense2csrNnzByPercentage(
@@ -13727,13 +15103,13 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneDense2csrByPercentageNative(handle, m, n, A, lda, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBuffer));
+        return checkResult(cusparseSpruneDense2csrByPercentageNative(handle, m, n, A, lda, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBuffer));
     }
     private static native int cusparseSpruneDense2csrByPercentageNative(
         cusparseHandle handle, 
@@ -13743,9 +15119,9 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -13758,13 +15134,13 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneDense2csrByPercentageNative(handle, m, n, A, lda, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBuffer));
+        return checkResult(cusparseDpruneDense2csrByPercentageNative(handle, m, n, A, lda, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBuffer));
     }
     private static native int cusparseDpruneDense2csrByPercentageNative(
         cusparseHandle handle, 
@@ -13774,9 +15150,9 @@ public class JCusparse
         int lda, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -13787,18 +15163,18 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseSpruneCsr2csrByPercentage_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBufferSizeInBytes));
+        return checkResult(cusparseSpruneCsr2csrByPercentage_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBufferSizeInBytes));
     }
     private static native int cusparseSpruneCsr2csrByPercentage_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13806,16 +15182,16 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseDpruneCsr2csrByPercentage_bufferSizeExt(
@@ -13824,18 +15200,18 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes)
+        long[] pBufferSizeInBytes)
     {
-        return checkResult(cusparseDpruneCsr2csrByPercentage_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBufferSizeInBytes));
+        return checkResult(cusparseDpruneCsr2csrByPercentage_bufferSizeExtNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBufferSizeInBytes));
     }
     private static native int cusparseDpruneCsr2csrByPercentage_bufferSizeExtNative(
         cusparseHandle handle, 
@@ -13843,16 +15219,16 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
-        int[] pBufferSizeInBytes);
+        long[] pBufferSizeInBytes);
 
 
     public static int cusparseSpruneCsr2csrNnzByPercentage(
@@ -13861,17 +15237,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneCsr2csrNnzByPercentageNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrRowPtrC, nnzTotalDevHostPtr, info, pBuffer));
+        return checkResult(cusparseSpruneCsr2csrNnzByPercentageNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, info, pBuffer));
     }
     private static native int cusparseSpruneCsr2csrNnzByPercentageNative(
         cusparseHandle handle, 
@@ -13879,12 +15255,12 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         pruneInfo info, 
         Pointer pBuffer);
@@ -13896,17 +15272,17 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneCsr2csrNnzByPercentageNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrRowPtrC, nnzTotalDevHostPtr, info, pBuffer));
+        return checkResult(cusparseDpruneCsr2csrNnzByPercentageNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, info, pBuffer));
     }
     private static native int cusparseDpruneCsr2csrNnzByPercentageNative(
         cusparseHandle handle, 
@@ -13914,12 +15290,12 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrRowPtrC, 
+        Pointer csrSortedRowPtrC, 
         Pointer nnzTotalDevHostPtr, /** can be on host or device */
         pruneInfo info, 
         Pointer pBuffer);
@@ -13931,18 +15307,18 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseSpruneCsr2csrByPercentageNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBuffer));
+        return checkResult(cusparseSpruneCsr2csrByPercentageNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBuffer));
     }
     private static native int cusparseSpruneCsr2csrByPercentageNative(
         cusparseHandle handle, 
@@ -13950,14 +15326,14 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -13968,18 +15344,18 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer)
     {
-        return checkResult(cusparseDpruneCsr2csrByPercentageNative(handle, m, n, nnzA, descrA, csrValA, csrRowPtrA, csrColIndA, percentage, descrC, csrValC, csrRowPtrC, csrColIndC, info, pBuffer));
+        return checkResult(cusparseDpruneCsr2csrByPercentageNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, percentage, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC, info, pBuffer));
     }
     private static native int cusparseDpruneCsr2csrByPercentageNative(
         cusparseHandle handle, 
@@ -13987,14 +15363,14 @@ public class JCusparse
         int n, 
         int nnzA, 
         cusparseMatDescr descrA, 
-        Pointer csrValA, 
-        Pointer csrRowPtrA, 
-        Pointer csrColIndA, 
+        Pointer csrSortedValA, 
+        Pointer csrSortedRowPtrA, 
+        Pointer csrSortedColIndA, 
         float percentage, /** between 0 to 100 */
         cusparseMatDescr descrC, 
-        Pointer csrValC, 
-        Pointer csrRowPtrC, 
-        Pointer csrColIndC, 
+        Pointer csrSortedValC, 
+        Pointer csrSortedRowPtrC, 
+        Pointer csrSortedColIndC, 
         pruneInfo info, 
         Pointer pBuffer);
 

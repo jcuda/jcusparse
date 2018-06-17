@@ -966,34 +966,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -1102,34 +1102,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSbsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDbsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCbsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZbsrsv2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsv2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsv2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -1453,6 +1453,126 @@ extern "C" {
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCreateCsrsm2InfoNative
+    * Signature: (Ljcuda/jcusparse/csrsm2Info;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCreateCsrsm2InfoNative
+        (JNIEnv *, jclass, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDestroyCsrsm2InfoNative
+    * Signature: (Ljcuda/jcusparse/csrsm2Info;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDestroyCsrsm2InfoNative
+        (JNIEnv *, jclass, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseXcsrsm2_zeroPivotNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;Ljcuda/jcusparse/csrsm2Info;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrsm2_1zeroPivotNative
+        (JNIEnv *, jclass, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseScsrsm2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDcsrsm2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCcsrsm2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZcsrsm2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseScsrsm2_analysisNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1analysisNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDcsrsm2_analysisNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1analysisNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCcsrsm2_analysisNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1analysisNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZcsrsm2_analysisNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1analysisNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseScsrsm2_solveNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1solveNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDcsrsm2_solveNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1solveNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCcsrsm2_solveNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1solveNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZcsrsm2_solveNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/csrsm2Info;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1solveNative
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseXbsrsm2_zeroPivotNative
     * Signature: (Ljcuda/jcusparse/cusparseHandle;Ljcuda/jcusparse/bsrsm2Info;Ljcuda/Pointer;)I
     */
@@ -1494,34 +1614,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSbsrsm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDbsrsm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCbsrsm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZbsrsm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrsm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -1702,34 +1822,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -1870,34 +1990,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSbsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDbsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCbsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZbsrilu02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsrilu02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrilu02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -2038,34 +2158,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -2174,34 +2294,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSbsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDbsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCbsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZbsric02_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/jcusparse/bsric02Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsric02_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -2557,6 +2677,134 @@ extern "C" {
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseSgtsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDgtsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCgtsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZgtsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseSgtsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDgtsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCgtsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZgtsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseSgpsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgpsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDgpsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgpsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCgpsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgpsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZgpsvInterleavedBatch_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;I[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgpsvInterleavedBatch_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseSgpsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgpsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDgpsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgpsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCgpsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgpsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZgpsvInterleavedBatchNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;ILjcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgpsvInterleavedBatchNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jint, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseXcsrgemmNnzNative
     * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIIILjcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;)I
     */
@@ -2614,34 +2862,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsrgemm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgemm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsrgemm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgemm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsrgemm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgemm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsrgemm2_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csrgemm2Info;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgemm2_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -2722,6 +2970,78 @@ extern "C" {
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeamNative
         (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseScsrgeam2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgeam2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDcsrgeam2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgeam2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCcsrgeam2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgeam2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZcsrgeam2_bufferSizeExtNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeam2_1bufferSizeExtNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseXcsrgeam2NnzNative
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrgeam2NnzNative
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseScsrgeam2Native
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgeam2Native
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseDcsrgeam2Native
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgeam2Native
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseCcsrgeam2Native
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgeam2Native
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject);
+
+    /*
+    * Class:     jcuda_jcusparse_JCusparse
+    * Method:    cusparseZcsrgeam2Native
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;ILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
+    */
+    JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeam2Native
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3334,34 +3654,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSgebsr2gebsc_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsc_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDgebsr2gebsc_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsc_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCgebsr2gebsc_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsc_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZgebsr2gebsc_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsc_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3470,34 +3790,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;II[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3574,34 +3894,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSgebsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDgebsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCgebsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZgebsr2gebsr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;IIII[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jobject, jobject, jobject, jint, jint, jint, jint, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3654,10 +3974,10 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseXcoosort_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcoosort_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3678,10 +3998,10 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseXcsrsort_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrsort_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3694,10 +4014,10 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseXcscsort_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcscsort_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3710,34 +4030,34 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseScsru2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsru2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDcsru2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsru2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseCcsru2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsru2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseZcsru2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/csru2csrInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsru2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3806,18 +4126,18 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSpruneDense2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;ILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;ILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDpruneDense2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;ILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;ILjcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3854,18 +4174,18 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSpruneCsr2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDpruneCsr2csr_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csr_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3902,18 +4222,18 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSpruneDense2csrByPercentage_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;IFLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;IFLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csrByPercentage_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jfloat, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jfloat, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDpruneDense2csrByPercentage_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;IFLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IILjcuda/Pointer;IFLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csrByPercentage_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jfloat, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jobject, jint, jfloat, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
@@ -3950,18 +4270,18 @@ extern "C" {
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseSpruneCsr2csrByPercentage_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;FLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;FLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csrByPercentage_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jfloat, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jfloat, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
     * Method:    cusparseDpruneCsr2csrByPercentage_bufferSizeExtNative
-    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;FLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[I)I
+    * Signature: (Ljcuda/jcusparse/cusparseHandle;IIILjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;FLjcuda/jcusparse/cusparseMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/jcusparse/pruneInfo;[J)I
     */
     JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csrByPercentage_1bufferSizeExtNative
-        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jfloat, jobject, jobject, jobject, jobject, jobject, jintArray);
+        (JNIEnv *, jclass, jobject, jint, jint, jint, jobject, jobject, jobject, jobject, jfloat, jobject, jobject, jobject, jobject, jobject, jlongArray);
 
     /*
     * Class:     jcuda_jcusparse_JCusparse
