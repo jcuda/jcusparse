@@ -41983,7 +41983,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsc_1buff
     return jniResult;
 }
 
-JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint baseIdx, jobject pBuffer)
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint idxBase, jobject pBuffer)
 {
     // Null-checks for non-primitive arguments
     if (handle == NULL)
@@ -42027,7 +42027,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     if (pBuffer == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseSgebsr2gebsc");
@@ -42035,8 +42035,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
     }
 
     // Log message
-    Logger::log(LOG_TRACE, "Executing cusparseSgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, baseIdx=%d, pBuffer=%p)\n",
-        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, baseIdx, pBuffer);
+    Logger::log(LOG_TRACE, "Executing cusparseSgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, idxBase=%d, pBuffer=%p)\n",
+        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, idxBase, pBuffer);
 
     // Native variable declarations
     cusparseHandle_t handle_native;
@@ -42052,7 +42052,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
     int * bscRowInd_native = NULL;
     int * bscColPtr_native = NULL;
     cusparseAction_t copyValues_native;
-    cusparseIndexBase_t baseIdx_native;
+    cusparseIndexBase_t idxBase_native;
     void * pBuffer_native = NULL;
 
     // Obtain native variable values
@@ -42069,11 +42069,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
     bscRowInd_native = (int *)getPointer(env, bscRowInd);
     bscColPtr_native = (int *)getPointer(env, bscColPtr);
     copyValues_native = (cusparseAction_t)copyValues;
-    baseIdx_native = (cusparseIndexBase_t)baseIdx;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
     pBuffer_native = (void *)getPointer(env, pBuffer);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, baseIdx_native, pBuffer_native);
+    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, idxBase_native, pBuffer_native);
 
     // Write back native variable values
     // handle is read-only
@@ -42089,7 +42089,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
     // bscRowInd is a native pointer
     // bscColPtr is a native pointer
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     // pBuffer is a native pointer
 
     // Return the result
@@ -42097,7 +42097,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebscNative
     return jniResult;
 }
 
-JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint baseIdx, jobject pBuffer)
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint idxBase, jobject pBuffer)
 {
     // Null-checks for non-primitive arguments
     if (handle == NULL)
@@ -42141,7 +42141,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     if (pBuffer == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseDgebsr2gebsc");
@@ -42149,8 +42149,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
     }
 
     // Log message
-    Logger::log(LOG_TRACE, "Executing cusparseDgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, baseIdx=%d, pBuffer=%p)\n",
-        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, baseIdx, pBuffer);
+    Logger::log(LOG_TRACE, "Executing cusparseDgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, idxBase=%d, pBuffer=%p)\n",
+        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, idxBase, pBuffer);
 
     // Native variable declarations
     cusparseHandle_t handle_native;
@@ -42166,7 +42166,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
     int * bscRowInd_native = NULL;
     int * bscColPtr_native = NULL;
     cusparseAction_t copyValues_native;
-    cusparseIndexBase_t baseIdx_native;
+    cusparseIndexBase_t idxBase_native;
     void * pBuffer_native = NULL;
 
     // Obtain native variable values
@@ -42183,11 +42183,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
     bscRowInd_native = (int *)getPointer(env, bscRowInd);
     bscColPtr_native = (int *)getPointer(env, bscColPtr);
     copyValues_native = (cusparseAction_t)copyValues;
-    baseIdx_native = (cusparseIndexBase_t)baseIdx;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
     pBuffer_native = (void *)getPointer(env, pBuffer);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, baseIdx_native, pBuffer_native);
+    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, idxBase_native, pBuffer_native);
 
     // Write back native variable values
     // handle is read-only
@@ -42203,7 +42203,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
     // bscRowInd is a native pointer
     // bscColPtr is a native pointer
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     // pBuffer is a native pointer
 
     // Return the result
@@ -42211,7 +42211,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebscNative
     return jniResult;
 }
 
-JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint baseIdx, jobject pBuffer)
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint idxBase, jobject pBuffer)
 {
     // Null-checks for non-primitive arguments
     if (handle == NULL)
@@ -42255,7 +42255,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     if (pBuffer == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseCgebsr2gebsc");
@@ -42263,8 +42263,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
     }
 
     // Log message
-    Logger::log(LOG_TRACE, "Executing cusparseCgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, baseIdx=%d, pBuffer=%p)\n",
-        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, baseIdx, pBuffer);
+    Logger::log(LOG_TRACE, "Executing cusparseCgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, idxBase=%d, pBuffer=%p)\n",
+        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, idxBase, pBuffer);
 
     // Native variable declarations
     cusparseHandle_t handle_native;
@@ -42280,7 +42280,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
     int * bscRowInd_native = NULL;
     int * bscColPtr_native = NULL;
     cusparseAction_t copyValues_native;
-    cusparseIndexBase_t baseIdx_native;
+    cusparseIndexBase_t idxBase_native;
     void * pBuffer_native = NULL;
 
     // Obtain native variable values
@@ -42297,11 +42297,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
     bscRowInd_native = (int *)getPointer(env, bscRowInd);
     bscColPtr_native = (int *)getPointer(env, bscColPtr);
     copyValues_native = (cusparseAction_t)copyValues;
-    baseIdx_native = (cusparseIndexBase_t)baseIdx;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
     pBuffer_native = (void *)getPointer(env, pBuffer);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, baseIdx_native, pBuffer_native);
+    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, idxBase_native, pBuffer_native);
 
     // Write back native variable values
     // handle is read-only
@@ -42317,7 +42317,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
     // bscRowInd is a native pointer
     // bscColPtr is a native pointer
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     // pBuffer is a native pointer
 
     // Return the result
@@ -42325,7 +42325,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebscNative
     return jniResult;
 }
 
-JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint baseIdx, jobject pBuffer)
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative(JNIEnv *env, jclass cls, jobject handle, jint mb, jint nb, jint nnzb, jobject bsrSortedVal, jobject bsrSortedRowPtr, jobject bsrSortedColInd, jint rowBlockDim, jint colBlockDim, jobject bscVal, jobject bscRowInd, jobject bscColPtr, jint copyValues, jint idxBase, jobject pBuffer)
 {
     // Null-checks for non-primitive arguments
     if (handle == NULL)
@@ -42369,7 +42369,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     if (pBuffer == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'pBuffer' is null for cusparseZgebsr2gebsc");
@@ -42377,8 +42377,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative
     }
 
     // Log message
-    Logger::log(LOG_TRACE, "Executing cusparseZgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, baseIdx=%d, pBuffer=%p)\n",
-        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, baseIdx, pBuffer);
+    Logger::log(LOG_TRACE, "Executing cusparseZgebsr2gebsc(handle=%p, mb=%d, nb=%d, nnzb=%d, bsrSortedVal=%p, bsrSortedRowPtr=%p, bsrSortedColInd=%p, rowBlockDim=%d, colBlockDim=%d, bscVal=%p, bscRowInd=%p, bscColPtr=%p, copyValues=%d, idxBase=%d, pBuffer=%p)\n",
+        handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, bscVal, bscRowInd, bscColPtr, copyValues, idxBase, pBuffer);
 
     // Native variable declarations
     cusparseHandle_t handle_native;
@@ -42394,7 +42394,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative
     int * bscRowInd_native = NULL;
     int * bscColPtr_native = NULL;
     cusparseAction_t copyValues_native;
-    cusparseIndexBase_t baseIdx_native;
+    cusparseIndexBase_t idxBase_native;
     void * pBuffer_native = NULL;
 
     // Obtain native variable values
@@ -42411,11 +42411,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative
     bscRowInd_native = (int *)getPointer(env, bscRowInd);
     bscColPtr_native = (int *)getPointer(env, bscColPtr);
     copyValues_native = (cusparseAction_t)copyValues;
-    baseIdx_native = (cusparseIndexBase_t)baseIdx;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
     pBuffer_native = (void *)getPointer(env, pBuffer);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, baseIdx_native, pBuffer_native);
+    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsc(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, bscVal_native, bscRowInd_native, bscColPtr_native, copyValues_native, idxBase_native, pBuffer_native);
 
     // Write back native variable values
     // handle is read-only
@@ -42431,7 +42431,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebscNative
     // bscRowInd is a native pointer
     // bscColPtr is a native pointer
     // copyValues is primitive
-    // baseIdx is primitive
+    // idxBase is primitive
     // pBuffer is a native pointer
 
     // Return the result
@@ -50110,6 +50110,1056 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csrByPer
     // csrSortedColIndC is a native pointer
     // info is read-only
     // pBuffer is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsr2cscEx2Native(JNIEnv *env, jclass cls, jobject handle, jint m, jint n, jint nnz, jobject csrVal, jobject csrRowPtr, jobject csrColInd, jobject cscVal, jobject cscColPtr, jobject cscRowInd, jint valType, jint copyValues, jint idxBase, jint alg, jobject buffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (csrVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrVal' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (csrRowPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrRowPtr' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (csrColInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrColInd' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscVal' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscColPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscColPtr' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscRowInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscRowInd' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // valType is primitive
+    // copyValues is primitive
+    // idxBase is primitive
+    // alg is primitive
+    if (buffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'buffer' is null for cusparseCsr2cscEx2");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCsr2cscEx2(handle=%p, m=%d, n=%d, nnz=%d, csrVal=%p, csrRowPtr=%p, csrColInd=%p, cscVal=%p, cscColPtr=%p, cscRowInd=%p, valType=%d, copyValues=%d, idxBase=%d, alg=%d, buffer=%p)\n",
+        handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, cscVal, cscColPtr, cscRowInd, valType, copyValues, idxBase, alg, buffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    void * csrVal_native = NULL;
+    int * csrRowPtr_native = NULL;
+    int * csrColInd_native = NULL;
+    void * cscVal_native = NULL;
+    int * cscColPtr_native = NULL;
+    int * cscRowInd_native = NULL;
+    cudaDataType valType_native;
+    cusparseAction_t copyValues_native;
+    cusparseIndexBase_t idxBase_native;
+    cusparseCsr2CscAlg_t alg_native;
+    void * buffer_native = NULL;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    csrVal_native = (void *)getPointer(env, csrVal);
+    csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
+    csrColInd_native = (int *)getPointer(env, csrColInd);
+    cscVal_native = (void *)getPointer(env, cscVal);
+    cscColPtr_native = (int *)getPointer(env, cscColPtr);
+    cscRowInd_native = (int *)getPointer(env, cscRowInd);
+    valType_native = (cudaDataType)valType;
+    copyValues_native = (cusparseAction_t)copyValues;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    alg_native = (cusparseCsr2CscAlg_t)alg;
+    buffer_native = (void *)getPointer(env, buffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCsr2cscEx2(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, cscVal_native, cscColPtr_native, cscRowInd_native, valType_native, copyValues_native, idxBase_native, alg_native, buffer_native);
+
+    // Write back native variable values
+    // handle is read-only
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // csrVal is a native pointer
+    // csrRowPtr is a native pointer
+    // csrColInd is a native pointer
+    // cscVal is a native pointer
+    // cscColPtr is a native pointer
+    // cscRowInd is a native pointer
+    // valType is primitive
+    // copyValues is primitive
+    // idxBase is primitive
+    // alg is primitive
+    // buffer is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsr2cscEx2_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint m, jint n, jint nnz, jobject csrVal, jobject csrRowPtr, jobject csrColInd, jobject cscVal, jobject cscColPtr, jobject cscRowInd, jint valType, jint copyValues, jint idxBase, jint alg, jlongArray bufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    if (csrVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrVal' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (csrRowPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrRowPtr' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (csrColInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrColInd' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscVal == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscVal' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscColPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscColPtr' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscRowInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscRowInd' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // valType is primitive
+    // copyValues is primitive
+    // idxBase is primitive
+    // alg is primitive
+    if (bufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize' is null for cusparseCsr2cscEx2_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCsr2cscEx2_bufferSize(handle=%p, m=%d, n=%d, nnz=%d, csrVal=%p, csrRowPtr=%p, csrColInd=%p, cscVal=%p, cscColPtr=%p, cscRowInd=%p, valType=%d, copyValues=%d, idxBase=%d, alg=%d, bufferSize=%p)\n",
+        handle, m, n, nnz, csrVal, csrRowPtr, csrColInd, cscVal, cscColPtr, cscRowInd, valType, copyValues, idxBase, alg, bufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    int m_native = 0;
+    int n_native = 0;
+    int nnz_native = 0;
+    void * csrVal_native = NULL;
+    int * csrRowPtr_native = NULL;
+    int * csrColInd_native = NULL;
+    void * cscVal_native = NULL;
+    int * cscColPtr_native = NULL;
+    int * cscRowInd_native = NULL;
+    cudaDataType valType_native;
+    cusparseAction_t copyValues_native;
+    cusparseIndexBase_t idxBase_native;
+    cusparseCsr2CscAlg_t alg_native;
+    size_t * bufferSize_native = NULL;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    m_native = (int)m;
+    n_native = (int)n;
+    nnz_native = (int)nnz;
+    csrVal_native = (void *)getPointer(env, csrVal);
+    csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
+    csrColInd_native = (int *)getPointer(env, csrColInd);
+    cscVal_native = (void *)getPointer(env, cscVal);
+    cscColPtr_native = (int *)getPointer(env, cscColPtr);
+    cscRowInd_native = (int *)getPointer(env, cscRowInd);
+    valType_native = (cudaDataType)valType;
+    copyValues_native = (cusparseAction_t)copyValues;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    alg_native = (cusparseCsr2CscAlg_t)alg;
+    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCsr2cscEx2_bufferSize(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, cscVal_native, cscColPtr_native, cscRowInd_native, valType_native, copyValues_native, idxBase_native, alg_native, bufferSize_native);
+
+    // Write back native variable values
+    // handle is read-only
+    // m is primitive
+    // n is primitive
+    // nnz is primitive
+    // csrVal is a native pointer
+    // csrRowPtr is a native pointer
+    // csrColInd is a native pointer
+    // cscVal is a native pointer
+    // cscColPtr is a native pointer
+    // cscRowInd is a native pointer
+    // valType is primitive
+    // copyValues is primitive
+    // idxBase is primitive
+    // alg is primitive
+    // bufferSize is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+//------------------------------------------------------------------------------
+// SPARSE MATRIX DESCRIPTOR
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCreateCooNative(JNIEnv *env, jclass cls, jobject spMatDescr, jint rows, jint cols, jint nnz, jobject cooRowInd, jobject cooColInd, jobject cooValues, jint cooIdxType, jint idxBase, jint valueType)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseCreateCoo");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // rows is primitive
+    // cols is primitive
+    // nnz is primitive
+    if (cooRowInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooRowInd' is null for cusparseCreateCoo");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cooColInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooColInd' is null for cusparseCreateCoo");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cooValues == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooValues' is null for cusparseCreateCoo");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // cooIdxType is primitive
+    // idxBase is primitive
+    // valueType is primitive
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCreateCoo(spMatDescr=%p, rows=%d, cols=%d, nnz=%d, cooRowInd=%p, cooColInd=%p, cooValues=%p, cooIdxType=%d, idxBase=%d, valueType=%d)\n",
+        spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, cooIdxType, idxBase, valueType);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    int rows_native = 0;
+    int cols_native = 0;
+    int nnz_native = 0;
+    void * cooRowInd_native = NULL;
+    void * cooColInd_native = NULL;
+    void * cooValues_native = NULL;
+    cusparseIndexType_t cooIdxType_native;
+    cusparseIndexBase_t idxBase_native;
+    cudaDataType valueType_native;
+
+    // Obtain native variable values
+    // spMatDescr is write-only
+    rows_native = (int)rows;
+    cols_native = (int)cols;
+    nnz_native = (int)nnz;
+    cooRowInd_native = (void *)getPointer(env, cooRowInd);
+    cooColInd_native = (void *)getPointer(env, cooColInd);
+    cooValues_native = (void *)getPointer(env, cooValues);
+    cooIdxType_native = (cusparseIndexType_t)cooIdxType;
+    idxBase_native = (cusparseIndexBase_t)idxBase;
+    valueType_native = (cudaDataType)valueType;
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCreateCoo(&spMatDescr_native, rows_native, cols_native, nnz_native, cooRowInd_native, cooColInd_native, cooValues_native, cooIdxType_native, idxBase_native, valueType_native);
+
+    // Write back native variable values
+    setNativePointerValue(env, spMatDescr, (jlong)spMatDescr_native);
+    // rows is primitive
+    // cols is primitive
+    // nnz is primitive
+    // cooRowInd is a native pointer
+    // cooColInd is a native pointer
+    // cooValues is a native pointer
+    // cooIdxType is primitive
+    // idxBase is primitive
+    // valueType is primitive
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDestroySpMatNative(JNIEnv *env, jclass cls, jobject spMatDescr)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseDestroySpMat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDestroySpMat(spMatDescr=%p)\n",
+        spMatDescr);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDestroySpMat(spMatDescr_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooGetNative(JNIEnv *env, jclass cls, jobject spMatDescr, jobject rows, jobject cols, jobject nnz, jobject cooRowInd, jobject cooColInd, jobject cooValues, jintArray idxType, jintArray idxBase, jintArray valueType)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (rows == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'rows' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cols == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cols' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (nnz == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'nnz' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cooRowInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooRowInd' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cooColInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooColInd' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cooValues == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cooValues' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (idxType == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'idxType' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (idxBase == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'idxBase' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (valueType == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'valueType' is null for cusparseCooGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCooGet(spMatDescr=%p, rows=%p, cols=%p, nnz=%p, cooRowInd=%p, cooColInd=%p, cooValues=%p, idxType=%p, idxBase=%p, valueType=%p)\n",
+        spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, idxType, idxBase, valueType);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    int * rows_native = NULL;
+    int * cols_native = NULL;
+    int * nnz_native = NULL;
+    void * * cooRowInd_native;
+    void * * cooColInd_native;
+    void * * cooValues_native;
+    cusparseIndexType_t * idxType_native = NULL;
+    cusparseIndexBase_t * idxBase_native = NULL;
+    cudaDataType * valueType_native = NULL;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    rows_native = (int *)getPointer(env, rows);
+    cols_native = (int *)getPointer(env, cols);
+    nnz_native = (int *)getPointer(env, nnz);
+    cooRowInd_native = (void * *)getPointer(env, cooRowInd);
+    cooColInd_native = (void * *)getPointer(env, cooColInd);
+    cooValues_native = (void * *)getPointer(env, cooValues);
+    idxType_native = (cusparseIndexType_t *)getPointer(env, idxType);
+    idxBase_native = (cusparseIndexBase_t *)getPointer(env, idxBase);
+    valueType_native = (cudaDataType *)getPointer(env, valueType);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCooGet(spMatDescr_native, rows_native, cols_native, nnz_native, cooRowInd_native, cooColInd_native, cooValues_native, idxType_native, idxBase_native, valueType_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    // rows is a native pointer
+    // cols is a native pointer
+    // nnz is a native pointer
+    // cooRowInd is a native pointer
+    // cooColInd is a native pointer
+    // cooValues is a native pointer
+    // idxType is a native pointer
+    // idxBase is a native pointer
+    // valueType is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMatGetFormatNative(JNIEnv *env, jclass cls, jobject spMatDescr, jintArray format)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseSpMatGetFormat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (format == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'format' is null for cusparseSpMatGetFormat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMatGetFormat(spMatDescr=%p, format=%p)\n",
+        spMatDescr, format);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    cusparseFormat_t * format_native = NULL;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    format_native = (cusparseFormat_t *)getPointer(env, format);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMatGetFormat(spMatDescr_native, format_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    // format is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMatGetIndexBaseNative(JNIEnv *env, jclass cls, jobject spMatDescr, jintArray idxBase)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseSpMatGetIndexBase");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (idxBase == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'idxBase' is null for cusparseSpMatGetIndexBase");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMatGetIndexBase(spMatDescr=%p, idxBase=%p)\n",
+        spMatDescr, idxBase);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    cusparseIndexBase_t * idxBase_native = NULL;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    idxBase_native = (cusparseIndexBase_t *)getPointer(env, idxBase);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMatGetIndexBase(spMatDescr_native, idxBase_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    // idxBase is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMatSetNumBatchesNative(JNIEnv *env, jclass cls, jobject spMatDescr, jint batchCount)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseSpMatSetNumBatches");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // batchCount is primitive
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMatSetNumBatches(spMatDescr=%p, batchCount=%d)\n",
+        spMatDescr, batchCount);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    int batchCount_native = 0;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    batchCount_native = (int)batchCount;
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMatSetNumBatches(spMatDescr_native, batchCount_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    // batchCount is primitive
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMatGetNumBatchesNative(JNIEnv *env, jclass cls, jobject spMatDescr, jintArray batchCount)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseSpMatGetNumBatches");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (batchCount == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'batchCount' is null for cusparseSpMatGetNumBatches");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMatGetNumBatches(spMatDescr=%p, batchCount=%p)\n",
+        spMatDescr, batchCount);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    int * batchCount_native = NULL;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    batchCount_native = (int *)getPointer(env, batchCount);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMatGetNumBatches(spMatDescr_native, batchCount_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    // batchCount is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+//------------------------------------------------------------------------------
+// DENSE MATRIX DESCRIPTOR
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCreateDnMatNative(JNIEnv *env, jclass cls, jobject dnMatDescr, jlong rows, jlong cols, jlong ld, jobject valuesPtr, jint type, jint order)
+{
+    // Null-checks for non-primitive arguments
+    if (dnMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'dnMatDescr' is null for cusparseCreateDnMat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // rows is primitive
+    // cols is primitive
+    // ld is primitive
+    if (valuesPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'valuesPtr' is null for cusparseCreateDnMat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // type is primitive
+    // order is primitive
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCreateDnMat(dnMatDescr=%p, rows=%ld, cols=%ld, ld=%ld, valuesPtr=%p, type=%d, order=%d)\n",
+        dnMatDescr, rows, cols, ld, valuesPtr, type, order);
+
+    // Native variable declarations
+    cusparseDnMatDescr_t dnMatDescr_native;
+    size_t rows_native = 0;
+    size_t cols_native = 0;
+    int64_t ld_native = 0;
+    void * valuesPtr_native = NULL;
+    cudaDataType type_native;
+    cusparseOrder_t order_native;
+
+    // Obtain native variable values
+    // dnMatDescr is write-only
+    rows_native = (size_t)rows;
+    cols_native = (size_t)cols;
+    ld_native = (int64_t)ld;
+    valuesPtr_native = (void *)getPointer(env, valuesPtr);
+    type_native = (cudaDataType)type;
+    order_native = (cusparseOrder_t)order;
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCreateDnMat(&dnMatDescr_native, rows_native, cols_native, ld_native, valuesPtr_native, type_native, order_native);
+
+    // Write back native variable values
+    setNativePointerValue(env, dnMatDescr, (jlong)dnMatDescr_native);
+    // rows is primitive
+    // cols is primitive
+    // ld is primitive
+    // valuesPtr is a native pointer
+    // type is primitive
+    // order is primitive
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDestroyDnMatNative(JNIEnv *env, jclass cls, jobject dnMatDescr)
+{
+    // Null-checks for non-primitive arguments
+    if (dnMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'dnMatDescr' is null for cusparseDestroyDnMat");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDestroyDnMat(dnMatDescr=%p)\n",
+        dnMatDescr);
+
+    // Native variable declarations
+    cusparseDnMatDescr_t dnMatDescr_native;
+
+    // Obtain native variable values
+    dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDestroyDnMat(dnMatDescr_native);
+
+    // Write back native variable values
+    // dnMatDescr is read-only
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnMatGetNative(JNIEnv *env, jclass cls, jobject dnMatDescr, jlongArray rows, jlongArray cols, jlongArray ld, jobject valuesPtr, jintArray type, jintArray order)
+{
+    // Null-checks for non-primitive arguments
+    if (dnMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'dnMatDescr' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (rows == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'rows' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cols == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cols' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (ld == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'ld' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (valuesPtr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'valuesPtr' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (type == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'type' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (order == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'order' is null for cusparseDnMatGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDnMatGet(dnMatDescr=%p, rows=%p, cols=%p, ld=%p, valuesPtr=%p, type=%p, order=%p)\n",
+        dnMatDescr, rows, cols, ld, valuesPtr, type, order);
+
+    // Native variable declarations
+    cusparseDnMatDescr_t dnMatDescr_native;
+    size_t * rows_native = NULL;
+    size_t * cols_native = NULL;
+    int64_t * ld_native = NULL;
+    void * * valuesPtr_native;
+    cudaDataType * type_native = NULL;
+    cusparseOrder_t * order_native = NULL;
+
+    // Obtain native variable values
+    dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
+    rows_native = (size_t *)getPointer(env, rows);
+    cols_native = (size_t *)getPointer(env, cols);
+    ld_native = (int64_t *)getPointer(env, ld);
+    valuesPtr_native = (void * *)getPointer(env, valuesPtr);
+    type_native = (cudaDataType *)getPointer(env, type);
+    order_native = (cusparseOrder_t *)getPointer(env, order);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDnMatGet(dnMatDescr_native, rows_native, cols_native, ld_native, valuesPtr_native, type_native, order_native);
+
+    // Write back native variable values
+    // dnMatDescr is read-only
+    // rows is a native pointer
+    // cols is a native pointer
+    // ld is a native pointer
+    // valuesPtr is a native pointer
+    // type is a native pointer
+    // order is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnMatSetStridedBatchNative(JNIEnv *env, jclass cls, jobject dnMatDescr, jint batchCount, jlong batchStride)
+{
+    // Null-checks for non-primitive arguments
+    if (dnMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'dnMatDescr' is null for cusparseDnMatSetStridedBatch");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // batchCount is primitive
+    // batchStride is primitive
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDnMatSetStridedBatch(dnMatDescr=%p, batchCount=%d, batchStride=%ld)\n",
+        dnMatDescr, batchCount, batchStride);
+
+    // Native variable declarations
+    cusparseDnMatDescr_t dnMatDescr_native;
+    int batchCount_native = 0;
+    size_t batchStride_native = 0;
+
+    // Obtain native variable values
+    dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
+    batchCount_native = (int)batchCount;
+    batchStride_native = (size_t)batchStride;
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDnMatSetStridedBatch(dnMatDescr_native, batchCount_native, batchStride_native);
+
+    // Write back native variable values
+    // dnMatDescr is read-only
+    // batchCount is primitive
+    // batchStride is primitive
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnMatGetStridedBatchNative(JNIEnv *env, jclass cls, jobject dnMatDescr, jintArray batchCount, jlongArray batchStride)
+{
+    // Null-checks for non-primitive arguments
+    if (dnMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'dnMatDescr' is null for cusparseDnMatGetStridedBatch");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (batchCount == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'batchCount' is null for cusparseDnMatGetStridedBatch");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (batchStride == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'batchStride' is null for cusparseDnMatGetStridedBatch");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseDnMatGetStridedBatch(dnMatDescr=%p, batchCount=%p, batchStride=%p)\n",
+        dnMatDescr, batchCount, batchStride);
+
+    // Native variable declarations
+    cusparseDnMatDescr_t dnMatDescr_native;
+    int * batchCount_native = NULL;
+    size_t * batchStride_native = NULL;
+
+    // Obtain native variable values
+    dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
+    batchCount_native = (int *)getPointer(env, batchCount);
+    batchStride_native = (size_t *)getPointer(env, batchStride);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseDnMatGetStridedBatch(dnMatDescr_native, batchCount_native, batchStride_native);
+
+    // Write back native variable values
+    // dnMatDescr is read-only
+    // batchCount is a native pointer
+    // batchStride is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+//------------------------------------------------------------------------------
+// cusparseSpMM
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint transB, jobject alpha, jobject matA, jobject matB, jobject beta, jobject matC, jint computeType, jint alg, jobject externalBuffer)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // transB is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matA == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matA' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matB == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matB' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matC == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matC' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // computeType is primitive
+    // alg is primitive
+    if (externalBuffer == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpMM");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMM(handle=%p, transA=%d, transB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
+        handle, transA, transB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    cusparseOperation_t transB_native;
+    void * alpha_native = NULL;
+    cusparseSpMatDescr_t matA_native;
+    cusparseDnMatDescr_t matB_native;
+    void * beta_native = NULL;
+    cusparseDnMatDescr_t matC_native;
+    cudaDataType computeType_native;
+    cusparseSpMMAlg_t alg_native;
+    void * externalBuffer_native = NULL;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    transB_native = (cusparseOperation_t)transB;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (void *)alpha_pointerData->getPointer(env);
+    matA_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matA);
+    matB_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matB);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (void *)beta_pointerData->getPointer(env);
+    matC_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matC);
+    computeType_native = (cudaDataType)computeType;
+    alg_native = (cusparseSpMMAlg_t)alg;
+    externalBuffer_native = (void *)getPointer(env, externalBuffer);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMM(handle_native, transA_native, transB_native, alpha_native, matA_native, matB_native, beta_native, matC_native, computeType_native, alg_native, externalBuffer_native);
+
+    // Write back native variable values
+    // handle is read-only
+    // transA is primitive
+    // transB is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // matA is read-only
+    // matB is read-only
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // matC is read-only
+    // computeType is primitive
+    // alg is primitive
+    // externalBuffer is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMM_1bufferSizeNative(JNIEnv *env, jclass cls, jobject handle, jint transA, jint transB, jobject alpha, jobject matA, jobject matB, jobject beta, jobject matC, jint computeType, jint alg, jlongArray bufferSize)
+{
+    // Null-checks for non-primitive arguments
+    if (handle == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'handle' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // transA is primitive
+    // transB is primitive
+    if (alpha == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'alpha' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matA == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matA' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matB == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matB' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (beta == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'beta' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (matC == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'matC' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    // computeType is primitive
+    // alg is primitive
+    if (bufferSize == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize' is null for cusparseSpMM_bufferSize");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseSpMM_bufferSize(handle=%p, transA=%d, transB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, bufferSize=%p)\n",
+        handle, transA, transB, alpha, matA, matB, beta, matC, computeType, alg, bufferSize);
+
+    // Native variable declarations
+    cusparseHandle_t handle_native;
+    cusparseOperation_t transA_native;
+    cusparseOperation_t transB_native;
+    void * alpha_native = NULL;
+    cusparseSpMatDescr_t matA_native;
+    cusparseDnMatDescr_t matB_native;
+    void * beta_native = NULL;
+    cusparseDnMatDescr_t matC_native;
+    cudaDataType computeType_native;
+    cusparseSpMMAlg_t alg_native;
+    size_t * bufferSize_native = NULL;
+
+    // Obtain native variable values
+    handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
+    transA_native = (cusparseOperation_t)transA;
+    transB_native = (cusparseOperation_t)transB;
+    PointerData *alpha_pointerData = initPointerData(env, alpha);
+    if (alpha_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    alpha_native = (void *)alpha_pointerData->getPointer(env);
+    matA_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matA);
+    matB_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matB);
+    PointerData *beta_pointerData = initPointerData(env, beta);
+    if (beta_pointerData == NULL)
+    {
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    beta_native = (void *)beta_pointerData->getPointer(env);
+    matC_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matC);
+    computeType_native = (cudaDataType)computeType;
+    alg_native = (cusparseSpMMAlg_t)alg;
+    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseSpMM_bufferSize(handle_native, transA_native, transB_native, alpha_native, matA_native, matB_native, beta_native, matC_native, computeType_native, alg_native, bufferSize_native);
+
+    // Write back native variable values
+    // handle is read-only
+    // transA is primitive
+    // transB is primitive
+    if (!releasePointerData(env, alpha_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // matA is read-only
+    // matB is read-only
+    if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // matC is read-only
+    // computeType is primitive
+    // alg is primitive
+    // bufferSize is a native pointer
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
