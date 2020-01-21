@@ -29,7 +29,13 @@ package jcuda.jcusparse;
 
 public class cusparseOrder
 {
+    /**
+     * Column-Major Order - Matrix memory layout
+     */
     public static final int CUSPARSE_ORDER_COL = 1;
+    /**
+     * Row-Major Order - Matrix memory layout
+     */
     public static final int CUSPARSE_ORDER_ROW = 2;
 
     /**

@@ -208,6 +208,24 @@ public class JCusparse
         int[] value);
 
 
+    public static String cusparseGetErrorName(
+        int status)
+    {
+        return cusparseGetErrorNameNative(status);
+    }
+    private static native String cusparseGetErrorNameNative(
+        int status);
+
+
+    public static String cusparseGetErrorString(
+        int status)
+    {
+        return cusparseGetErrorStringNative(status);
+    }
+    private static native String cusparseGetErrorStringNative(
+        int status);
+
+
     public static int cusparseSetStream(
         cusparseHandle handle, 
         cudaStream_t streamId)
@@ -230,7 +248,6 @@ public class JCusparse
         cudaStream_t streamId);
 
 
-    /** CUSPARSE type creation, destruction, set and get routines */
     public static int cusparseGetPointerMode(
         cusparseHandle handle, 
         int[] mode)
@@ -253,15 +270,9 @@ public class JCusparse
         int mode);
 
 
-    /** sparse matrix descriptor */
-    /**
-     * <pre>
-     * When the matrix descriptor is created, its fields are initialized to:
-       CUSPARSE_MATRIX_TYPE_GENERAL
-       CUSPARSE_INDEX_BASE_ZERO
-       All other fields are uninitialized
-     * </pre>
-     */
+    //##############################################################################
+    //# HELPER ROUTINES
+    //##############################################################################
     public static int cusparseCreateMatDescr(
         cusparseMatDescr descrA)
     {
@@ -278,17 +289,6 @@ public class JCusparse
     }
     private static native int cusparseDestroyMatDescrNative(
         cusparseMatDescr descrA);
-
-
-    public static int cusparseCopyMatDescr(
-        cusparseMatDescr dest, 
-        cusparseMatDescr src)
-    {
-        return checkResult(cusparseCopyMatDescrNative(dest, src));
-    }
-    private static native int cusparseCopyMatDescrNative(
-        cusparseMatDescr dest, 
-        cusparseMatDescr src);
 
 
     public static int cusparseSetMatType(
@@ -371,7 +371,6 @@ public class JCusparse
         cusparseMatDescr descrA);
 
 
-    /** sparse triangular solve and incomplete-LU and Cholesky (algorithm 1) */
     public static int cusparseCreateSolveAnalysisInfo(
         cusparseSolveAnalysisInfo info)
     {
@@ -407,7 +406,6 @@ public class JCusparse
         Pointer levelInd);
 
 
-    /** sparse triangular solve (algorithm 2) */
     public static int cusparseCreateCsrsv2Info(
         csrsv2Info info)
     {
@@ -426,7 +424,6 @@ public class JCusparse
         csrsv2Info info);
 
 
-    /** incomplete Cholesky (algorithm 2)*/
     public static int cusparseCreateCsric02Info(
         csric02Info info)
     {
@@ -463,7 +460,6 @@ public class JCusparse
         bsric02Info info);
 
 
-    /** incomplete LU (algorithm 2) */
     public static int cusparseCreateCsrilu02Info(
         csrilu02Info info)
     {
@@ -500,7 +496,6 @@ public class JCusparse
         bsrilu02Info info);
 
 
-    /** block-CSR triangular solve (algorithm 2) */
     public static int cusparseCreateBsrsv2Info(
         bsrsv2Info info)
     {
@@ -537,7 +532,6 @@ public class JCusparse
         bsrsm2Info info);
 
 
-    /** hybrid (HYB) format */
     public static int cusparseCreateHybMat(
         cusparseHybMat hybA)
     {
@@ -556,7 +550,6 @@ public class JCusparse
         cusparseHybMat hybA);
 
 
-    /** sorting information */
     public static int cusparseCreateCsru2csrInfo(
         csru2csrInfo info)
     {
@@ -575,7 +568,6 @@ public class JCusparse
         csru2csrInfo info);
 
 
-    /** coloring info */
     public static int cusparseCreateColorInfo(
         cusparseColorInfo info)
     {
@@ -594,29 +586,6 @@ public class JCusparse
         cusparseColorInfo info);
 
 
-    public static int cusparseSetColorAlgs(
-        cusparseColorInfo info, 
-        int alg)
-    {
-        return checkResult(cusparseSetColorAlgsNative(info, alg));
-    }
-    private static native int cusparseSetColorAlgsNative(
-        cusparseColorInfo info, 
-        int alg);
-
-
-    public static int cusparseGetColorAlgs(
-        cusparseColorInfo info, 
-        int[] alg)
-    {
-        return checkResult(cusparseGetColorAlgsNative(info, alg));
-    }
-    private static native int cusparseGetColorAlgsNative(
-        cusparseColorInfo info, 
-        int[] alg);
-
-
-    /** prune information */
     public static int cusparseCreatePruneInfo(
         pruneInfo info)
     {
@@ -635,9 +604,9 @@ public class JCusparse
         pruneInfo info);
 
 
-    /** --- Sparse Level 1 routines --- */
-    /** Description: Addition of a scalar multiple of a sparse vector x
-       and a dense vector y. */
+    //##############################################################################
+    //# SPARSE LEVEL 1 ROUTINES
+    //##############################################################################
     public static int cusparseSaxpyi(
         cusparseHandle handle, 
         int nnz, 
@@ -722,7 +691,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: dot product of a sparse vector x and a dense vector y. */
     public static int cusparseSdoti(
         cusparseHandle handle, 
         int nnz, 
@@ -807,8 +775,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: dot product of complex conjugate of a sparse vector x
-       and a dense vector y. */
     public static int cusparseCdotci(
         cusparseHandle handle, 
         int nnz, 
@@ -851,8 +817,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: Gather of non-zero elements from dense vector y into
-       sparse vector x. */
     public static int cusparseSgthr(
         cusparseHandle handle, 
         int nnz, 
@@ -929,8 +893,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: Gather of non-zero elements from desne vector y into
-       sparse vector x (also replacing these elements in y by zeros). */
     public static int cusparseSgthrz(
         cusparseHandle handle, 
         int nnz, 
@@ -1007,8 +969,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: Scatter of elements of the sparse vector x into
-       dense vector y. */
     public static int cusparseSsctr(
         cusparseHandle handle, 
         int nnz, 
@@ -1085,8 +1045,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: Givens rotation, where c and s are cosine and sine,
-       x and y are sparse and dense vectors, respectively. */
     public static int cusparseSroti(
         cusparseHandle handle, 
         int nnz, 
@@ -1133,19 +1091,21 @@ public class JCusparse
         int idxBase);
 
 
-    /** --- Sparse Level 2 routines --- */
+    //##############################################################################
+    //# SPARSE LEVEL 2 ROUTINES
+    //##############################################################################
     public static int cusparseSgemvi(
         cusparseHandle handle, 
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer)
@@ -1157,13 +1117,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer);
@@ -1193,13 +1153,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer)
@@ -1211,13 +1171,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer);
@@ -1247,13 +1207,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer)
@@ -1265,13 +1225,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer);
@@ -1301,13 +1261,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer)
@@ -1319,13 +1279,13 @@ public class JCusparse
         int transA, 
         int m, 
         int n, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         int nnz, 
         Pointer xVal, 
         Pointer xInd, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer y, 
         int idxBase, 
         Pointer pBuffer);
@@ -1350,8 +1310,6 @@ public class JCusparse
         int[] pBufferSize);
 
 
-    /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
-       where A is a sparse matrix in CSR storage format, x and y are dense vectors. */
     public static int cusparseScsrmv(
         cusparseHandle handle, 
         int transA, 
@@ -1484,7 +1442,6 @@ public class JCusparse
         Pointer y);
 
 
-    //Returns number of bytes
     public static int cusparseCsrmvEx_bufferSize(
         cusparseHandle handle, 
         int alg, 
@@ -1583,9 +1540,6 @@ public class JCusparse
         Pointer buffer);
 
 
-    /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
-       where A is a sparse matrix in CSR storage format, x and y are dense vectors
-       using a Merge Path load-balancing implementation. */
     public static int cusparseScsrmv_mp(
         cusparseHandle handle, 
         int transA, 
@@ -1718,8 +1672,6 @@ public class JCusparse
         Pointer y);
 
 
-    /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
-       where A is a sparse matrix in HYB storage format, x and y are dense vectors. */
     public static int cusparseShybmv(
         cusparseHandle handle, 
         int transA, 
@@ -1812,8 +1764,6 @@ public class JCusparse
         Pointer y);
 
 
-    /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
-       where A is a sparse matrix in BSR storage format, x and y are dense vectors. */
     public static int cusparseSbsrmv(
         cusparseHandle handle, 
         int dirA, 
@@ -1962,9 +1912,6 @@ public class JCusparse
         Pointer y);
 
 
-    /** Description: Matrix-vector multiplication  y = alpha * op(A) * x  + beta * y,
-       where A is a sparse matrix in extended BSR storage format, x and y are dense
-       vectors. */
     public static int cusparseSbsrxmv(
         cusparseHandle handle, 
         int dirA, 
@@ -2137,9 +2084,6 @@ public class JCusparse
         Pointer y);
 
 
-    /** Description: Solution of triangular linear system op(A) * x = alpha * f,
-       where A is a sparse matrix in CSR storage format, rhs f and solution x
-       are dense vectors. This routine implements algorithm 1 for the solve. */
     public static int cusparseCsrsv_analysisEx(
         cusparseHandle handle, 
         int transA, 
@@ -2424,14 +2368,6 @@ public class JCusparse
         Pointer x);
 
 
-    /**
-     * <pre>
-     * Description: Solution of triangular linear system op(A) * x = alpha * f,
-       where A is a sparse matrix in CSR storage format, rhs f and solution y
-       are dense vectors. This routine implements algorithm 1 for this problem.
-     * Also, it provides a utility function to query size of buffer used.
-     * </pre>
-     */
     public static int cusparseXcsrsv2_zeroPivot(
         cusparseHandle handle, 
         csrsv2Info info, 
@@ -2551,114 +2487,6 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         csrsv2Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseScsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseScsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
-    }
-    private static native int cusparseScsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDcsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
-    }
-    private static native int cusparseDcsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCcsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
-    }
-    private static native int cusparseCcsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZcsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZcsrsv2_bufferSizeExtNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, pBufferSize));
-    }
-    private static native int cusparseZcsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        csrsv2Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseScsrsv2_analysis(
@@ -2917,14 +2745,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of triangular linear system op(A) * x = alpha * f,
-       where A is a sparse matrix in block-CSR storage format, rhs f and solution y
-       are dense vectors. This routine implements algorithm 2 for this problem.
-     * Also, it provides a utility function to query size of buffer used.
-     * </pre>
-     */
     public static int cusparseXbsrsv2_zeroPivot(
         cusparseHandle handle, 
         bsrsv2Info info, 
@@ -3060,130 +2880,6 @@ public class JCusparse
         int blockDim, 
         bsrsv2Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSbsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseSbsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDbsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseDbsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCbsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseCbsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZbsrsv2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZbsrsv2_bufferSizeExtNative(handle, dirA, transA, mb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseZbsrsv2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int blockSize, 
-        bsrsv2Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseSbsrsv2_analysis(
@@ -3474,9 +3170,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Solution of triangular linear system op(A) * x = alpha * f,
-       where A is a sparse matrix in HYB storage format, rhs f and solution x
-       are dense vectors. */
     public static int cusparseShybsv_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -3637,9 +3330,9 @@ public class JCusparse
         Pointer x);
 
 
-    /** --- Sparse Level 3 routines --- */
-    /** Description: sparse - dense matrix multiplication C = alpha * op(A) * B  + beta * C,
-       where A is a sparse matrix in CSR format, B and C are dense tall matrices.  */
+    //##############################################################################
+    //# SPARSE LEVEL 3 ROUTINES
+    //##############################################################################
     public static int cusparseScsrmm(
         cusparseHandle handle, 
         int transA, 
@@ -3796,9 +3489,6 @@ public class JCusparse
         int ldc);
 
 
-    /** Description: sparse - dense matrix multiplication C = alpha * op(A) * B  + beta * C,
-       where A is a sparse matrix in CSR format, B and C are dense tall matrices.
-       This routine allows transposition of matrix B, which may improve performance. */
     public static int cusparseScsrmm2(
         cusparseHandle handle, 
         int transA, 
@@ -3963,9 +3653,6 @@ public class JCusparse
         int ldc);
 
 
-    /** Description: sparse - dense matrix multiplication C = alpha * op(A) * B  + beta * C,
-       where A is a sparse matrix in block-CSR format, B and C are dense tall matrices.
-       This routine allows transposition of matrix B, which may improve performance. */
     public static int cusparseSbsrmm(
         cusparseHandle handle, 
         int dirA, 
@@ -4146,22 +3833,19 @@ public class JCusparse
         int ldc);
 
 
-    /** Description: dense - sparse matrix multiplication C = alpha * A * B  + beta * C,
-       where A is column-major dense matrix, B is a sparse matrix in CSC format,
-       and C is column-major dense matrix. */
     public static int cusparseSgemmi(
         cusparseHandle handle, 
         int m, 
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc)
     {
@@ -4173,13 +3857,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc);
 
@@ -4190,13 +3874,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc)
     {
@@ -4208,13 +3892,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc);
 
@@ -4225,13 +3909,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc)
     {
@@ -4243,13 +3927,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc);
 
@@ -4260,13 +3944,13 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc)
     {
@@ -4278,25 +3962,17 @@ public class JCusparse
         int n, 
         int k, 
         int nnz, 
-        Pointer alpha, /** host or device pointer */
+        Pointer alpha, 
         Pointer A, 
         int lda, 
         Pointer cscValB, 
         Pointer cscColPtrB, 
         Pointer cscRowIndB, 
-        Pointer beta, /** host or device pointer */
+        Pointer beta, 
         Pointer C, 
         int ldc);
 
 
-    /**
-     * <pre>
-     * Description: Solution of triangular linear system op(A) * X = alpha * F,
-       with multiple right-hand-sides, where A is a sparse matrix in CSR storage
-       format, rhs F and solution X are dense tall matrices.
-     * This routine implements algorithm 1 for this problem.
-     * </pre>
-     */
     public static int cusparseScsrsm_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -4570,7 +4246,7 @@ public class JCusparse
 
     public static int cusparseScsrsm2_bufferSizeExt(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4591,7 +4267,7 @@ public class JCusparse
     }
     private static native int cusparseScsrsm2_bufferSizeExtNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4611,7 +4287,7 @@ public class JCusparse
 
     public static int cusparseDcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4632,7 +4308,7 @@ public class JCusparse
     }
     private static native int cusparseDcsrsm2_bufferSizeExtNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4652,7 +4328,7 @@ public class JCusparse
 
     public static int cusparseCcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4673,7 +4349,7 @@ public class JCusparse
     }
     private static native int cusparseCcsrsm2_bufferSizeExtNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4693,7 +4369,7 @@ public class JCusparse
 
     public static int cusparseZcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4714,7 +4390,7 @@ public class JCusparse
     }
     private static native int cusparseZcsrsm2_bufferSizeExtNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4734,7 +4410,7 @@ public class JCusparse
 
     public static int cusparseScsrsm2_analysis(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4755,7 +4431,7 @@ public class JCusparse
     }
     private static native int cusparseScsrsm2_analysisNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4775,7 +4451,7 @@ public class JCusparse
 
     public static int cusparseDcsrsm2_analysis(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4796,7 +4472,7 @@ public class JCusparse
     }
     private static native int cusparseDcsrsm2_analysisNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4816,7 +4492,7 @@ public class JCusparse
 
     public static int cusparseCcsrsm2_analysis(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4837,7 +4513,7 @@ public class JCusparse
     }
     private static native int cusparseCcsrsm2_analysisNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4857,7 +4533,7 @@ public class JCusparse
 
     public static int cusparseZcsrsm2_analysis(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4878,7 +4554,7 @@ public class JCusparse
     }
     private static native int cusparseZcsrsm2_analysisNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4898,7 +4574,7 @@ public class JCusparse
 
     public static int cusparseScsrsm2_solve(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4919,7 +4595,7 @@ public class JCusparse
     }
     private static native int cusparseScsrsm2_solveNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4939,7 +4615,7 @@ public class JCusparse
 
     public static int cusparseDcsrsm2_solve(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4960,7 +4636,7 @@ public class JCusparse
     }
     private static native int cusparseDcsrsm2_solveNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -4980,7 +4656,7 @@ public class JCusparse
 
     public static int cusparseCcsrsm2_solve(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -5001,7 +4677,7 @@ public class JCusparse
     }
     private static native int cusparseCcsrsm2_solveNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -5021,7 +4697,7 @@ public class JCusparse
 
     public static int cusparseZcsrsm2_solve(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -5042,7 +4718,7 @@ public class JCusparse
     }
     private static native int cusparseZcsrsm2_solveNative(
         cusparseHandle handle, 
-        int algo, /** algo = 0, 1 */
+        int algo, 
         int transA, 
         int transB, 
         int m, 
@@ -5060,14 +4736,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of triangular linear system op(A) * X = alpha * B,
-       with multiple right-hand-sides, where A is a sparse matrix in CSR storage
-       format, rhs B and solution X are dense tall matrices.
-     * This routine implements algorithm 2 for this problem.
-     * </pre>
-     */
     public static int cusparseXbsrsm2_zeroPivot(
         cusparseHandle handle, 
         bsrsm2Info info, 
@@ -5219,146 +4887,6 @@ public class JCusparse
         int blockSize, 
         bsrsm2Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSbsrsm2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseSbsrsm2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDbsrsm2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseDbsrsm2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCbsrsm2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseCbsrsm2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZbsrsm2_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZbsrsm2_bufferSizeExtNative(handle, dirA, transA, transB, mb, n, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseZbsrsm2_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int transA, 
-        int transB, 
-        int mb, 
-        int n, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrsm2Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseSbsrsm2_analysis(
@@ -5697,15 +5225,9 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** --- Preconditioners --- */
-    /**
-     * <pre>
-     * Description: Compute the incomplete-LU factorization with 0 fill-in (ILU0)
-       of the matrix A stored in CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (csrsv_analysis).
-     * This routine implements algorithm 1 for this problem.
-     * </pre>
-     */
+    //##############################################################################
+    //# PRECONDITIONERS
+    //##############################################################################
     public static int cusparseCsrilu0Ex(
         cusparseHandle handle, 
         int trans, 
@@ -5713,8 +5235,6 @@ public class JCusparse
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
         int csrSortedValA_ValMtype, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
@@ -5729,8 +5249,6 @@ public class JCusparse
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
         int csrSortedValA_ValMtype, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info, 
@@ -5743,8 +5261,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -5757,8 +5273,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -5770,8 +5284,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -5784,8 +5296,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -5797,8 +5307,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -5811,8 +5319,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -5824,8 +5330,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -5838,21 +5342,11 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
 
 
-    /**
-     * <pre>
-     * Description: Compute the incomplete-LU factorization with 0 fill-in (ILU0)
-       of the matrix A stored in CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (csrsv2_analysis).
-     * This routine implements algorithm 2 for this problem.
-     * </pre>
-     */
     public static int cusparseScsrilu02_numericBoost(
         cusparseHandle handle, 
         csrilu02Info info, 
@@ -6034,106 +5528,6 @@ public class JCusparse
         int[] pBufferSizeInBytes);
 
 
-    public static int cusparseScsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseScsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseScsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDcsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseDcsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCcsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseCcsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZcsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZcsrilu02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseZcsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csrilu02Info info, 
-        long[] pBufferSize);
-
-
     public static int cusparseScsrilu02_analysis(
         cusparseHandle handle, 
         int m, 
@@ -6248,8 +5642,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6264,8 +5656,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6279,8 +5669,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6295,8 +5683,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6310,8 +5696,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6326,8 +5710,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6341,8 +5723,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6357,8 +5737,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                          to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csrilu02Info info, 
@@ -6366,14 +5744,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Compute the incomplete-LU factorization with 0 fill-in (ILU0)
-       of the matrix A stored in block-CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (bsrsv2_analysis).
-     * This routine implements algorithm 2 for this problem.
-     * </pre>
-     */
     public static int cusparseSbsrilu02_numericBoost(
         cusparseHandle handle, 
         bsrilu02Info info, 
@@ -6569,122 +5939,6 @@ public class JCusparse
         int blockDim, 
         bsrilu02Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSbsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseSbsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDbsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseDbsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCbsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseCbsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZbsrilu02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZbsrilu02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseZbsrilu02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsrilu02Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseSbsrilu02_analysis(
@@ -6935,22 +6189,12 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Compute the incomplete-Cholesky factorization with 0 fill-in (IC0)
-       of the matrix A stored in CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (csrsv_analysis).
-     * This routine implements algorithm 1 for this problem.
-     * </pre>
-     */
     public static int cusparseScsric0(
         cusparseHandle handle, 
         int trans, 
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -6963,8 +6207,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -6976,8 +6218,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -6990,8 +6230,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -7003,8 +6241,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -7017,8 +6253,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
@@ -7030,8 +6264,6 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info)
@@ -7044,21 +6276,11 @@ public class JCusparse
         int m, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_ValM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         cusparseSolveAnalysisInfo info);
 
 
-    /**
-     * <pre>
-     * Description: Compute the incomplete-Cholesky factorization with 0 fill-in (IC0)
-       of the matrix A stored in CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (csrsv2_analysis).
-     * This routine implements algorithm 2 for this problem.
-     * </pre>
-     */
     public static int cusparseXcsric02_zeroPivot(
         cusparseHandle handle, 
         csric02Info info, 
@@ -7170,106 +6392,6 @@ public class JCusparse
         Pointer csrSortedColIndA, 
         csric02Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseScsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseScsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseScsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDcsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseDcsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCcsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseCcsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZcsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZcsric02_bufferSizeExtNative(handle, m, nnz, descrA, csrSortedVal, csrSortedRowPtr, csrSortedColInd, info, pBufferSize));
-    }
-    private static native int cusparseZcsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        csric02Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseScsric02_analysis(
@@ -7386,8 +6508,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7402,8 +6522,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7417,8 +6535,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7433,8 +6549,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7448,8 +6562,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7464,8 +6576,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7479,8 +6589,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7495,8 +6603,6 @@ public class JCusparse
         int nnz, 
         cusparseMatDescr descrA, 
         Pointer csrSortedValA_valM, 
-        /** matrix A values are updated inplace
-                                                         to be the preconditioner M values */
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
         csric02Info info, 
@@ -7504,14 +6610,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Compute the incomplete-Cholesky factorization with 0 fill-in (IC0)
-       of the matrix A stored in block-CSR format based on the information in the opaque
-       structure info that was obtained from the analysis phase (bsrsv2_analysis).
-     * This routine implements algorithm 1 for this problem.
-     * </pre>
-     */
     public static int cusparseXbsric02_zeroPivot(
         cusparseHandle handle, 
         bsric02Info info, 
@@ -7639,122 +6737,6 @@ public class JCusparse
         int blockDim, 
         bsric02Info info, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSbsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseSbsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDbsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseDbsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCbsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseCbsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZbsric02_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZbsric02_bufferSizeExtNative(handle, dirA, mb, nnzb, descrA, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, blockSize, info, pBufferSize));
-    }
-    private static native int cusparseZbsric02_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int blockSize, 
-        bsric02Info info, 
-        long[] pBufferSize);
 
 
     public static int cusparseSbsric02_analysis(
@@ -8005,15 +6987,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of tridiagonal linear system A * X = B,
-       with multiple right-hand-sides. The coefficient matrix A is
-       composed of lower (dl), main (d) and upper (du) diagonals, and
-       the right-hand-sides B are overwritten with the solution X.
-     * These routine use pivoting.
-     * </pre>
-     */
     public static int cusparseSgtsv(
         cusparseHandle handle, 
         int m, 
@@ -8306,15 +7279,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of tridiagonal linear system A * X = B,
-       with multiple right-hand-sides. The coefficient matrix A is
-       composed of lower (dl), main (d) and upper (du) diagonals, and
-       the right-hand-sides B are overwritten with the solution X.
-     * These routine does not use pivoting.
-     * </pre>
-     */
     public static int cusparseSgtsv_nopivot(
         cusparseHandle handle, 
         int m, 
@@ -8607,15 +7571,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of a set of tridiagonal linear systems
-       A_{i} * x_{i} = f_{i} for i=1,...,batchCount. The coefficient
-       matrices A_{i} are composed of lower (dl), main (d) and upper (du)
-       diagonals and stored separated by a batchStride. Also, the
-     * right-hand-sides/solutions f_{i}/x_{i} are separated by a batchStride.
-     * </pre>
-     */
     public static int cusparseSgtsvStridedBatch(
         cusparseHandle handle, 
         int m, 
@@ -9108,14 +8063,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /**
-     * <pre>
-     * Description: Solution of pentadiagonal linear system A * X = B,
-       with multiple right-hand-sides. The coefficient matrix A is
-       composed of lower (ds, dl), main (d) and upper (du, dw) diagonals, and
-       the right-hand-sides B are overwritten with the solution X.
-     * </pre>
-     */
     public static int cusparseSgpsvInterleavedBatch_bufferSizeExt(
         cusparseHandle handle, 
         int algo, 
@@ -9348,9 +8295,9 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** --- Sparse Level 4 routines --- */
-    /** Description: Compute sparse - sparse matrix multiplication for matrices
-       stored in CSR format. */
+    //##############################################################################
+    //# EXTRA ROUTINES
+    //##############################################################################
     public static int cusparseXcsrgemmNnz(
         cusparseHandle handle, 
         int transA, 
@@ -9580,8 +8527,6 @@ public class JCusparse
         Pointer csrSortedColIndC);
 
 
-    /** Description: Compute sparse - sparse matrix multiplication for matrices
-       stored in CSR format. */
     public static int cusparseCreateCsrgemm2Info(
         csrgemm2Info info)
     {
@@ -10081,8 +9026,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Compute sparse - sparse matrix addition of matrices
-       stored in CSR format */
     public static int cusparseXcsrgeamNnz(
         cusparseHandle handle, 
         int m, 
@@ -10711,8 +9654,9 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** --- Sparse Matrix Reorderings --- */
-    /** Description: Find an approximate coloring of a matrix stored in CSR format. */
+    //##############################################################################
+    //# SPARSE MATRIX REORDERING
+    //##############################################################################
     public static int cusparseScsrcolor(
         cusparseHandle handle, 
         int m, 
@@ -10837,9 +9781,9 @@ public class JCusparse
         cusparseColorInfo info);
 
 
-    /** --- Sparse Format Conversion --- */
-    /** Description: This routine finds the total number of non-zero elements and
-       the number of non-zero elements per row or column in the dense matrix A. */
+    //##############################################################################
+    //# SPARSE FORMAT CONVERSION
+    //##############################################################################
     public static int cusparseSnnz(
         cusparseHandle handle, 
         int dirA, 
@@ -10940,9 +9884,9 @@ public class JCusparse
         Pointer nnzTotalDevHostPtr);
 
 
-    /** --- Sparse Format Conversion --- */
-    /** Description: This routine finds the total number of non-zero elements and
-       the number of non-zero elements per row in a noncompressed csr matrix A. */
+    //##############################################################################
+    //# SPARSE FORMAT CONVERSION #
+    //##############################################################################
     public static int cusparseSnnz_compress(
         cusparseHandle handle, 
         int m, 
@@ -11035,7 +9979,6 @@ public class JCusparse
         cuDoubleComplex tol);
 
 
-    /** Description: This routine takes as input a csr form and compresses it to return a compressed csr form*/
     public static int cusparseScsr2csr_compress(
         cusparseHandle handle, 
         int m, 
@@ -11168,9 +10111,6 @@ public class JCusparse
         cuDoubleComplex tol);
 
 
-    /** Description: This routine converts a dense matrix to a sparse matrix
-       in the CSR storage format, using the information computed by the
-       nnz routine. */
     public static int cusparseSdense2csr(
         cusparseHandle handle, 
         int m, 
@@ -11279,8 +10219,6 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
-    /** Description: This routine converts a sparse matrix in CSR storage format
-       to a dense matrix. */
     public static int cusparseScsr2dense(
         cusparseHandle handle, 
         int m, 
@@ -11381,9 +10319,6 @@ public class JCusparse
         int lda);
 
 
-    /** Description: This routine converts a dense matrix to a sparse matrix
-       in the CSC storage format, using the information computed by the
-       nnz routine. */
     public static int cusparseSdense2csc(
         cusparseHandle handle, 
         int m, 
@@ -11492,8 +10427,6 @@ public class JCusparse
         Pointer cscSortedColPtrA);
 
 
-    /** Description: This routine converts a sparse matrix in CSC storage format
-       to a dense matrix. */
     public static int cusparseScsc2dense(
         cusparseHandle handle, 
         int m, 
@@ -11594,9 +10527,6 @@ public class JCusparse
         int lda);
 
 
-    /** Description: This routine compresses the indecis of rows or columns.
-       It can be interpreted as a conversion from COO to CSR sparse storage
-       format. */
     public static int cusparseXcoo2csr(
         cusparseHandle handle, 
         Pointer cooRowInd, 
@@ -11616,9 +10546,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: This routine uncompresses the indecis of rows or columns.
-       It can be interpreted as a conversion from CSR to COO sparse storage
-       format. */
     public static int cusparseXcsr2coo(
         cusparseHandle handle, 
         Pointer csrSortedRowPtr, 
@@ -11638,9 +10565,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: This routine converts a matrix from CSR to CSC sparse
-       storage format. The resulting matrix can be re-interpreted as a
-       transpose of the original matrix in CSR storage format. */
     public static int cusparseCsr2cscEx(
         cusparseHandle handle, 
         int m, 
@@ -11802,8 +10726,6 @@ public class JCusparse
         int idxBase);
 
 
-    /** Description: This routine converts a dense matrix to a sparse matrix
-       in HYB storage format. */
     public static int cusparseSdense2hyb(
         cusparseHandle handle, 
         int m, 
@@ -11912,8 +10834,6 @@ public class JCusparse
         int partitionType);
 
 
-    /** Description: This routine converts a sparse matrix in HYB storage format
-       to a dense matrix. */
     public static int cusparseShyb2dense(
         cusparseHandle handle, 
         cusparseMatDescr descrA, 
@@ -11982,8 +10902,6 @@ public class JCusparse
         int lda);
 
 
-    /** Description: This routine converts a sparse matrix in CSR storage format
-       to a sparse matrix in HYB storage format. */
     public static int cusparseScsr2hyb(
         cusparseHandle handle, 
         int m, 
@@ -12092,8 +11010,6 @@ public class JCusparse
         int partitionType);
 
 
-    /** Description: This routine converts a sparse matrix in HYB storage format
-       to a sparse matrix in CSR storage format. */
     public static int cusparseShyb2csr(
         cusparseHandle handle, 
         cusparseMatDescr descrA, 
@@ -12170,8 +11086,6 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
-    /** Description: This routine converts a sparse matrix in CSC storage format
-       to a sparse matrix in HYB storage format. */
     public static int cusparseScsc2hyb(
         cusparseHandle handle, 
         int m, 
@@ -12280,8 +11194,6 @@ public class JCusparse
         int partitionType);
 
 
-    /** Description: This routine converts a sparse matrix in HYB storage format
-       to a sparse matrix in CSC storage format. */
     public static int cusparseShyb2csc(
         cusparseHandle handle, 
         cusparseMatDescr descrA, 
@@ -12358,8 +11270,6 @@ public class JCusparse
         Pointer cscSortedColPtr);
 
 
-    /** Description: This routine converts a sparse matrix in CSR storage format
-       to a sparse matrix in block-CSR storage format. */
     public static int cusparseXcsr2bsrNnz(
         cusparseHandle handle, 
         int dirA, 
@@ -12521,8 +11431,6 @@ public class JCusparse
         Pointer bsrSortedColIndC);
 
 
-    /** Description: This routine converts a sparse matrix in block-CSR storage format
-       to a sparse matrix in CSR storage format. */
     public static int cusparseSbsr2csr(
         cusparseHandle handle, 
         int dirA, 
@@ -12655,8 +11563,6 @@ public class JCusparse
         Pointer csrSortedColIndC);
 
 
-    /** Description: This routine converts a sparse matrix in general block-CSR storage format
-       to a sparse matrix in general block-CSC storage format. */
     public static int cusparseSgebsr2gebsc_bufferSize(
         cusparseHandle handle, 
         int mb, 
@@ -12763,114 +11669,6 @@ public class JCusparse
         int rowBlockDim, 
         int colBlockDim, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSgebsr2gebsc_bufferSizeExt(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseSgebsr2gebsc_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDgebsr2gebsc_bufferSizeExt(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseDgebsr2gebsc_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCgebsr2gebsc_bufferSizeExt(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseCgebsr2gebsc_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZgebsr2gebsc_bufferSizeExt(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZgebsr2gebsc_bufferSizeExtNative(handle, mb, nb, nnzb, bsrSortedVal, bsrSortedRowPtr, bsrSortedColInd, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseZgebsr2gebsc_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        Pointer bsrSortedVal, 
-        Pointer bsrSortedRowPtr, 
-        Pointer bsrSortedColInd, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
 
 
     public static int cusparseSgebsr2gebsc(
@@ -13021,39 +11819,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: This routine converts a sparse matrix in general block-CSR storage format
-       to a sparse matrix in CSR storage format. */
-    public static int cusparseXgebsr2csr(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseXgebsr2csrNative(handle, dirA, mb, nb, descrA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDim, colBlockDim, descrC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseXgebsr2csrNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
     public static int cusparseSgebsr2csr(
         cusparseHandle handle, 
         int dirA, 
@@ -13194,8 +11959,6 @@ public class JCusparse
         Pointer csrSortedColIndC);
 
 
-    /** Description: This routine converts a sparse matrix in CSR storage format
-       to a sparse matrix in general block-CSR storage format. */
     public static int cusparseScsr2gebsr_bufferSize(
         cusparseHandle handle, 
         int dirA, 
@@ -13310,122 +12073,6 @@ public class JCusparse
         int rowBlockDim, 
         int colBlockDim, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseScsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseScsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseScsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDcsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseDcsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCcsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseCcsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZcsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZcsr2gebsr_bufferSizeExtNative(handle, dirA, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, rowBlockDim, colBlockDim, pBufferSize));
-    }
-    private static native int cusparseZcsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        int rowBlockDim, 
-        int colBlockDim, 
-        long[] pBufferSize);
 
 
     public static int cusparseXcsr2gebsrNnz(
@@ -13609,8 +12256,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: This routine converts a sparse matrix in general block-CSR storage format
-       to a sparse matrix in general block-CSR storage format with different block size. */
     public static int cusparseSgebsr2gebsr_bufferSize(
         cusparseHandle handle, 
         int dirA, 
@@ -13749,146 +12394,6 @@ public class JCusparse
         int rowBlockDimC, 
         int colBlockDimC, 
         int[] pBufferSizeInBytes);
-
-
-    public static int cusparseSgebsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseSgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
-    }
-    private static native int cusparseSgebsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize);
-
-
-    public static int cusparseDgebsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseDgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
-    }
-    private static native int cusparseDgebsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize);
-
-
-    public static int cusparseCgebsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseCgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
-    }
-    private static native int cusparseCgebsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize);
-
-
-    public static int cusparseZgebsr2gebsr_bufferSizeExt(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize)
-    {
-        return checkResult(cusparseZgebsr2gebsr_bufferSizeExtNative(handle, dirA, mb, nb, nnzb, descrA, bsrSortedValA, bsrSortedRowPtrA, bsrSortedColIndA, rowBlockDimA, colBlockDimA, rowBlockDimC, colBlockDimC, pBufferSize));
-    }
-    private static native int cusparseZgebsr2gebsr_bufferSizeExtNative(
-        cusparseHandle handle, 
-        int dirA, 
-        int mb, 
-        int nb, 
-        int nnzb, 
-        cusparseMatDescr descrA, 
-        Pointer bsrSortedValA, 
-        Pointer bsrSortedRowPtrA, 
-        Pointer bsrSortedColIndA, 
-        int rowBlockDimA, 
-        int colBlockDimA, 
-        int rowBlockDimC, 
-        int colBlockDimC, 
-        long[] pBufferSize);
 
 
     public static int cusparseXgebsr2gebsrNnz(
@@ -14102,8 +12607,9 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** --- Sparse Matrix Sorting --- */
-    /** Description: Create a identity sequence p=[0,1,...,n-1]. */
+    //##############################################################################
+    //# SPARSE MATRIX SORTING
+    //##############################################################################
     public static int cusparseCreateIdentityPermutation(
         cusparseHandle handle, 
         int n, 
@@ -14117,7 +12623,6 @@ public class JCusparse
         Pointer p);
 
 
-    /** Description: Sort sparse matrix stored in COO format */
     public static int cusparseXcoosort_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -14185,7 +12690,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Sort sparse matrix stored in CSR format */
     public static int cusparseXcsrsort_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -14232,7 +12736,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Sort sparse matrix stored in CSC format */
     public static int cusparseXcscsort_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -14279,8 +12782,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Wrapper that sorts sparse matrix stored in CSR format
-       (without exposing the permutation). */
     public static int cusparseScsru2csr_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -14489,8 +12990,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    /** Description: Wrapper that un-sorts sparse matrix stored in CSR format
-       (without exposing the permutation). */
     public static int cusparseScsr2csru(
         cusparseHandle handle, 
         int m, 
@@ -14851,7 +13350,7 @@ public class JCusparse
         Pointer threshold, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer)
     {
         return checkResult(cusparseSpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, pBuffer));
@@ -14868,7 +13367,7 @@ public class JCusparse
         Pointer threshold, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer);
 
 
@@ -14884,7 +13383,7 @@ public class JCusparse
         Pointer threshold, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer)
     {
         return checkResult(cusparseDpruneCsr2csrNnzNative(handle, m, n, nnzA, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, threshold, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr, pBuffer));
@@ -14901,7 +13400,7 @@ public class JCusparse
         Pointer threshold, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         Pointer pBuffer);
 
 
@@ -14981,7 +13480,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -14997,7 +13496,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15012,7 +13511,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15028,7 +13527,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15043,10 +13542,10 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer)
     {
@@ -15058,10 +13557,10 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -15072,10 +13571,10 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer)
     {
@@ -15087,10 +13586,10 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -15101,7 +13600,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15117,7 +13616,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15132,7 +13631,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15148,7 +13647,7 @@ public class JCusparse
         int n, 
         Pointer A, 
         int lda, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15166,7 +13665,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15185,7 +13684,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15203,7 +13702,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15222,7 +13721,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15240,10 +13739,10 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer)
     {
@@ -15258,10 +13757,10 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -15275,10 +13774,10 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer)
     {
@@ -15293,10 +13792,10 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr, /** can be on host or device */
+        Pointer nnzTotalDevHostPtr, 
         pruneInfo info, 
         Pointer pBuffer);
 
@@ -15310,7 +13809,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15329,7 +13828,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15347,7 +13846,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15366,7 +13865,7 @@ public class JCusparse
         Pointer csrSortedValA, 
         Pointer csrSortedRowPtrA, 
         Pointer csrSortedColIndA, 
-        float percentage, /** between 0 to 100 */
+        float percentage, 
         cusparseMatDescr descrC, 
         Pointer csrSortedValC, 
         Pointer csrSortedRowPtrC, 
@@ -15445,254 +13944,6 @@ public class JCusparse
         int valType, 
         int copyValues, 
         int idxBase, 
-        int alg, 
-        long[] bufferSize);
-
-
-    //------------------------------------------------------------------------------
-    // SPARSE MATRIX DESCRIPTOR
-    public static int cusparseCreateCoo(
-        cusparseMatDescr spMatDescr, 
-        int rows, 
-        int cols, 
-        int nnz, 
-        Pointer cooRowInd, // COO row indices
-        Pointer cooColInd, // COO column indices
-        Pointer cooValues, // COO values
-        int cooIdxType, 
-        int idxBase, 
-        int valueType)
-    {
-        return checkResult(cusparseCreateCooNative(spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, cooIdxType, idxBase, valueType));
-    }
-    private static native int cusparseCreateCooNative(
-        cusparseMatDescr spMatDescr, 
-        int rows, 
-        int cols, 
-        int nnz, 
-        Pointer cooRowInd, // COO row indices
-        Pointer cooColInd, // COO column indices
-        Pointer cooValues, // COO values
-        int cooIdxType, 
-        int idxBase, 
-        int valueType);
-
-
-    public static int cusparseDestroySpMat(
-        cusparseMatDescr spMatDescr)
-    {
-        return checkResult(cusparseDestroySpMatNative(spMatDescr));
-    }
-    private static native int cusparseDestroySpMatNative(
-        cusparseMatDescr spMatDescr);
-
-
-    public static int cusparseCooGet(
-        cusparseMatDescr spMatDescr, 
-        Pointer rows, 
-        Pointer cols, 
-        Pointer nnz, 
-        Pointer cooRowInd, // COO row indices
-        Pointer cooColInd, // COO column indices
-        Pointer cooValues, // COO values
-        int[] idxType, 
-        int[] idxBase, 
-        int[] valueType)
-    {
-        return checkResult(cusparseCooGetNative(spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, idxType, idxBase, valueType));
-    }
-    private static native int cusparseCooGetNative(
-        cusparseMatDescr spMatDescr, 
-        Pointer rows, 
-        Pointer cols, 
-        Pointer nnz, 
-        Pointer cooRowInd, // COO row indices
-        Pointer cooColInd, // COO column indices
-        Pointer cooValues, // COO values
-        int[] idxType, 
-        int[] idxBase, 
-        int[] valueType);
-
-
-    public static int cusparseSpMatGetFormat(
-        cusparseMatDescr spMatDescr, 
-        int[] format)
-    {
-        return checkResult(cusparseSpMatGetFormatNative(spMatDescr, format));
-    }
-    private static native int cusparseSpMatGetFormatNative(
-        cusparseMatDescr spMatDescr, 
-        int[] format);
-
-
-    public static int cusparseSpMatGetIndexBase(
-        cusparseMatDescr spMatDescr, 
-        int[] idxBase)
-    {
-        return checkResult(cusparseSpMatGetIndexBaseNative(spMatDescr, idxBase));
-    }
-    private static native int cusparseSpMatGetIndexBaseNative(
-        cusparseMatDescr spMatDescr, 
-        int[] idxBase);
-
-
-    public static int cusparseSpMatSetNumBatches(
-        cusparseMatDescr spMatDescr, 
-        int batchCount)
-    {
-        return checkResult(cusparseSpMatSetNumBatchesNative(spMatDescr, batchCount));
-    }
-    private static native int cusparseSpMatSetNumBatchesNative(
-        cusparseMatDescr spMatDescr, 
-        int batchCount);
-
-
-    public static int cusparseSpMatGetNumBatches(
-        cusparseMatDescr spMatDescr, 
-        int[] batchCount)
-    {
-        return checkResult(cusparseSpMatGetNumBatchesNative(spMatDescr, batchCount));
-    }
-    private static native int cusparseSpMatGetNumBatchesNative(
-        cusparseMatDescr spMatDescr, 
-        int[] batchCount);
-
-
-    //------------------------------------------------------------------------------
-    // DENSE MATRIX DESCRIPTOR
-    public static int cusparseCreateDnMat(
-        cusparseMatDescr dnMatDescr, 
-        long rows, 
-        long cols, 
-        long ld, 
-        Pointer valuesPtr, 
-        int type, 
-        int order)
-    {
-        return checkResult(cusparseCreateDnMatNative(dnMatDescr, rows, cols, ld, valuesPtr, type, order));
-    }
-    private static native int cusparseCreateDnMatNative(
-        cusparseMatDescr dnMatDescr, 
-        long rows, 
-        long cols, 
-        long ld, 
-        Pointer valuesPtr, 
-        int type, 
-        int order);
-
-
-    public static int cusparseDestroyDnMat(
-        cusparseMatDescr dnMatDescr)
-    {
-        return checkResult(cusparseDestroyDnMatNative(dnMatDescr));
-    }
-    private static native int cusparseDestroyDnMatNative(
-        cusparseMatDescr dnMatDescr);
-
-
-    public static int cusparseDnMatGet(
-        cusparseMatDescr dnMatDescr, 
-        long[] rows, 
-        long[] cols, 
-        long[] ld, 
-        Pointer valuesPtr, 
-        int[] type, 
-        int[] order)
-    {
-        return checkResult(cusparseDnMatGetNative(dnMatDescr, rows, cols, ld, valuesPtr, type, order));
-    }
-    private static native int cusparseDnMatGetNative(
-        cusparseMatDescr dnMatDescr, 
-        long[] rows, 
-        long[] cols, 
-        long[] ld, 
-        Pointer valuesPtr, 
-        int[] type, 
-        int[] order);
-
-
-    public static int cusparseDnMatSetStridedBatch(
-        cusparseMatDescr dnMatDescr, 
-        int batchCount, 
-        long batchStride)
-    {
-        return checkResult(cusparseDnMatSetStridedBatchNative(dnMatDescr, batchCount, batchStride));
-    }
-    private static native int cusparseDnMatSetStridedBatchNative(
-        cusparseMatDescr dnMatDescr, 
-        int batchCount, 
-        long batchStride);
-
-
-    public static int cusparseDnMatGetStridedBatch(
-        cusparseMatDescr dnMatDescr, 
-        int[] batchCount, 
-        long[] batchStride)
-    {
-        return checkResult(cusparseDnMatGetStridedBatchNative(dnMatDescr, batchCount, batchStride));
-    }
-    private static native int cusparseDnMatGetStridedBatchNative(
-        cusparseMatDescr dnMatDescr, 
-        int[] batchCount, 
-        long[] batchStride);
-
-
-    //------------------------------------------------------------------------------
-    // cusparseSpMM
-    public static int cusparseSpMM(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        Pointer alpha, 
-        cusparseMatDescr matA, 
-        cusparseMatDescr matB, 
-        Pointer beta, 
-        cusparseMatDescr matC, 
-        int computeType, 
-        int alg, 
-        Pointer externalBuffer)
-    {
-        return checkResult(cusparseSpMMNative(handle, transA, transB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
-    }
-    private static native int cusparseSpMMNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        Pointer alpha, 
-        cusparseMatDescr matA, 
-        cusparseMatDescr matB, 
-        Pointer beta, 
-        cusparseMatDescr matC, 
-        int computeType, 
-        int alg, 
-        Pointer externalBuffer);
-
-
-    public static int cusparseSpMM_bufferSize(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        Pointer alpha, 
-        cusparseMatDescr matA, 
-        cusparseMatDescr matB, 
-        Pointer beta, 
-        cusparseMatDescr matC, 
-        int computeType, 
-        int alg, 
-        long[] bufferSize)
-    {
-        return checkResult(cusparseSpMM_bufferSizeNative(handle, transA, transB, alpha, matA, matB, beta, matC, computeType, alg, bufferSize));
-    }
-    private static native int cusparseSpMM_bufferSizeNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        Pointer alpha, 
-        cusparseMatDescr matA, 
-        cusparseMatDescr matB, 
-        Pointer beta, 
-        cusparseMatDescr matC, 
-        int computeType, 
         int alg, 
         long[] bufferSize);
 

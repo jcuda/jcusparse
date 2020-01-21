@@ -27,43 +27,32 @@
  */
 package jcuda.jcusparse;
 
-public class cusparseIndexType
+import jcuda.NativePointerObject;
+
+/**
+ * Java port of a cusparseSpVecDescr
+ */
+public class cusparseSpVecDescr extends NativePointerObject
 {
     /**
-     * 16-bit unsigned integer for matrix/vector
+     * Creates a new, uninitialized cusparseSpVecDescr
      */
-    public static final int CUSPARSE_INDEX_16U = 1;
-    /**
-     * 32-bit signed integer for matrix/vector indices
-     */
-    public static final int CUSPARSE_INDEX_32I = 2;
-    /**
-     * 64-bit signed integer for matrix/vector indices
-     */
-    public static final int CUSPARSE_INDEX_64I = 3;
-
-    /**
-     * Private constructor to prevent instantiation
-     */
-    private cusparseIndexType()
+    public cusparseSpVecDescr()
     {
-        // Private constructor to prevent instantiation
+        // Default constructor
     }
 
-    /**
-     * Returns a string representation of the given constant
+     /**
+     * Returns a String representation of this object.
      *
-     * @return A string representation of the given constant
+     * @return A String representation of this object.
      */
-    public static String stringFor(int n)
+    @Override
+    public String toString()
     {
-        switch (n)
-        {
-            case CUSPARSE_INDEX_16U: return "CUSPARSE_INDEX_16U";
-            case CUSPARSE_INDEX_32I: return "CUSPARSE_INDEX_32I";
-            case CUSPARSE_INDEX_64I: return "CUSPARSE_INDEX_64I";
-        }
-        return "INVALID cusparseIndexType: "+n;
+        return "cusparseSpVecDescr["+
+            "nativePointer=0x"+Long.toHexString(getNativePointer())+"]";
     }
 }
+
 

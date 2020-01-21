@@ -27,16 +27,24 @@
  */
 package jcuda.jcusparse;
 
-//==============================================================================
-//==============================================================================
-// #############
-// # SpMM APIs #
-// #############
 public class cusparseFormat
 {
+    /**
+     * Compressed Sparse Row (CSR)
+     */
     public static final int CUSPARSE_FORMAT_CSR = 1;
+    /**
+     * Compressed Sparse Column (CSC)
+     */
     public static final int CUSPARSE_FORMAT_CSC = 2;
+    /**
+     * Coordinate (COO) - Structure of Arrays
+     */
     public static final int CUSPARSE_FORMAT_COO = 3;
+    /**
+     * Coordinate (COO) - Array of Structures
+     */
+    public static final int CUSPARSE_FORMAT_COO_AOS = 4;
 
     /**
      * Private constructor to prevent instantiation
@@ -58,6 +66,7 @@ public class cusparseFormat
             case CUSPARSE_FORMAT_CSR: return "CUSPARSE_FORMAT_CSR";
             case CUSPARSE_FORMAT_CSC: return "CUSPARSE_FORMAT_CSC";
             case CUSPARSE_FORMAT_COO: return "CUSPARSE_FORMAT_COO";
+            case CUSPARSE_FORMAT_COO_AOS: return "CUSPARSE_FORMAT_COO_AOS";
         }
         return "INVALID cusparseFormat: "+n;
     }

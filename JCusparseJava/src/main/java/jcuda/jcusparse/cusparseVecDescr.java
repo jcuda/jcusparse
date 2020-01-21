@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2015 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -27,47 +27,31 @@
  */
 package jcuda.jcusparse;
 
-public class cusparseSpMMAlg
-{
-    public static final int CUSPARSE_MM_ALG_DEFAULT = 0;
-    /**
-     * non-deterministc results
-     */
-    public static final int CUSPARSE_COOMM_ALG1 = 1;
-    /**
-     * deterministic results
-     */
-    public static final int CUSPARSE_COOMM_ALG2 = 2;
-    /**
-     * non-deterministc results, for large matrices
-     */
-    public static final int CUSPARSE_COOMM_ALG3 = 3;
-    public static final int CUSPARSE_CSRMM_ALG1 = 4;
+import jcuda.NativePointerObject;
 
+/**
+ * Java port of a cusparseVecDescr
+ */
+public class cusparseVecDescr extends NativePointerObject
+{
     /**
-     * Private constructor to prevent instantiation
+     * Creates a new, uninitialized cusparseVecDescr
      */
-    private cusparseSpMMAlg()
+    public cusparseVecDescr()
     {
-        // Private constructor to prevent instantiation
     }
 
-    /**
-     * Returns a string representation of the given constant
+     /**
+     * Returns a String representation of this object.
      *
-     * @return A string representation of the given constant
+     * @return A String representation of this object.
      */
-    public static String stringFor(int n)
+    @Override
+    public String toString()
     {
-        switch (n)
-        {
-            case CUSPARSE_MM_ALG_DEFAULT: return "CUSPARSE_MM_ALG_DEFAULT";
-            case CUSPARSE_COOMM_ALG1: return "CUSPARSE_COOMM_ALG1";
-            case CUSPARSE_COOMM_ALG2: return "CUSPARSE_COOMM_ALG2";
-            case CUSPARSE_COOMM_ALG3: return "CUSPARSE_COOMM_ALG3";
-            case CUSPARSE_CSRMM_ALG1: return "CUSPARSE_CSRMM_ALG1";
-        }
-        return "INVALID cusparseSpMMAlg: "+n;
+        return "cusparseVecDescr["+
+            "nativePointer=0x"+Long.toHexString(getNativePointer())+"]";
     }
 }
+
 

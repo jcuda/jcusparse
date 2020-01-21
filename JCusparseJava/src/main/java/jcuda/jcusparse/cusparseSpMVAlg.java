@@ -27,25 +27,17 @@
  */
 package jcuda.jcusparse;
 
-public class cusparseIndexType
+public class cusparseSpMVAlg
 {
-    /**
-     * 16-bit unsigned integer for matrix/vector
-     */
-    public static final int CUSPARSE_INDEX_16U = 1;
-    /**
-     * 32-bit signed integer for matrix/vector indices
-     */
-    public static final int CUSPARSE_INDEX_32I = 2;
-    /**
-     * 64-bit signed integer for matrix/vector indices
-     */
-    public static final int CUSPARSE_INDEX_64I = 3;
+    public static final int CUSPARSE_MV_ALG_DEFAULT = 0;
+    public static final int CUSPARSE_COOMV_ALG = 1;
+    public static final int CUSPARSE_CSRMV_ALG1 = 2;
+    public static final int CUSPARSE_CSRMV_ALG2 = 3;
 
     /**
      * Private constructor to prevent instantiation
      */
-    private cusparseIndexType()
+    private cusparseSpMVAlg()
     {
         // Private constructor to prevent instantiation
     }
@@ -59,11 +51,12 @@ public class cusparseIndexType
     {
         switch (n)
         {
-            case CUSPARSE_INDEX_16U: return "CUSPARSE_INDEX_16U";
-            case CUSPARSE_INDEX_32I: return "CUSPARSE_INDEX_32I";
-            case CUSPARSE_INDEX_64I: return "CUSPARSE_INDEX_64I";
+            case CUSPARSE_MV_ALG_DEFAULT: return "CUSPARSE_MV_ALG_DEFAULT";
+            case CUSPARSE_COOMV_ALG: return "CUSPARSE_COOMV_ALG";
+            case CUSPARSE_CSRMV_ALG1: return "CUSPARSE_CSRMV_ALG1";
+            case CUSPARSE_CSRMV_ALG2: return "CUSPARSE_CSRMV_ALG2";
         }
-        return "INVALID cusparseIndexType: "+n;
+        return "INVALID cusparseSpMVAlg: "+n;
     }
 }
 
