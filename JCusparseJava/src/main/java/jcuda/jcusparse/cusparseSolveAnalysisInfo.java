@@ -31,6 +31,8 @@ import jcuda.NativePointerObject;
 
 /**
  * Java port of a cusparseSolveAnalysisInfo
+ * 
+ * @deprecated Removed in CUDA 11.0
  */
 public class cusparseSolveAnalysisInfo extends NativePointerObject
 {

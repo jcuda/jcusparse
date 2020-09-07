@@ -371,41 +371,6 @@ public class JCusparse
         cusparseMatDescr descrA);
 
 
-    public static int cusparseCreateSolveAnalysisInfo(
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseCreateSolveAnalysisInfoNative(info));
-    }
-    private static native int cusparseCreateSolveAnalysisInfoNative(
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDestroySolveAnalysisInfo(
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDestroySolveAnalysisInfoNative(info));
-    }
-    private static native int cusparseDestroySolveAnalysisInfoNative(
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseGetLevelInfo(
-        cusparseHandle handle, 
-        cusparseSolveAnalysisInfo info, 
-        int[] nlevels, 
-        Pointer levelPtr, 
-        Pointer levelInd)
-    {
-        return checkResult(cusparseGetLevelInfoNative(handle, info, nlevels, levelPtr, levelInd));
-    }
-    private static native int cusparseGetLevelInfoNative(
-        cusparseHandle handle, 
-        cusparseSolveAnalysisInfo info, 
-        int[] nlevels, 
-        Pointer levelPtr, 
-        Pointer levelInd);
-
-
     public static int cusparseCreateCsrsv2Info(
         csrsv2Info info)
     {
@@ -530,24 +495,6 @@ public class JCusparse
     }
     private static native int cusparseDestroyBsrsm2InfoNative(
         bsrsm2Info info);
-
-
-    public static int cusparseCreateHybMat(
-        cusparseHybMat hybA)
-    {
-        return checkResult(cusparseCreateHybMatNative(hybA));
-    }
-    private static native int cusparseCreateHybMatNative(
-        cusparseHybMat hybA);
-
-
-    public static int cusparseDestroyHybMat(
-        cusparseHybMat hybA)
-    {
-        return checkResult(cusparseDestroyHybMatNative(hybA));
-    }
-    private static native int cusparseDestroyHybMatNative(
-        cusparseHybMat hybA);
 
 
     public static int cusparseCreateCsru2csrInfo(
@@ -688,132 +635,6 @@ public class JCusparse
         Pointer xVal, 
         Pointer xInd, 
         Pointer y, 
-        int idxBase);
-
-
-    public static int cusparseSdoti(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseSdotiNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseSdotiNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase);
-
-
-    public static int cusparseDdoti(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseDdotiNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseDdotiNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase);
-
-
-    public static int cusparseCdoti(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseCdotiNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseCdotiNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase);
-
-
-    public static int cusparseZdoti(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseZdotiNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseZdotiNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase);
-
-
-    public static int cusparseCdotci(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseCdotciNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseCdotciNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase);
-
-
-    public static int cusparseZdotci(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
-        int idxBase)
-    {
-        return checkResult(cusparseZdotciNative(handle, nnz, xVal, xInd, y, resultDevHostPtr, idxBase));
-    }
-    private static native int cusparseZdotciNative(
-        cusparseHandle handle, 
-        int nnz, 
-        Pointer xVal, 
-        Pointer xInd, 
-        Pointer y, 
-        Pointer resultDevHostPtr, 
         int idxBase);
 
 
@@ -1310,138 +1131,6 @@ public class JCusparse
         int[] pBufferSize);
 
 
-    public static int cusparseScsrmv(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseScsrmvNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseScsrmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseDcsrmv(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseDcsrmvNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseDcsrmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseCcsrmv(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseCcsrmvNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseCcsrmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseZcsrmv(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseZcsrmvNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseZcsrmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
     public static int cusparseCsrmvEx_bufferSize(
         cusparseHandle handle, 
         int alg, 
@@ -1538,230 +1227,6 @@ public class JCusparse
         int ytype, 
         int executiontype, 
         Pointer buffer);
-
-
-    public static int cusparseScsrmv_mp(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseScsrmv_mpNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseScsrmv_mpNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseDcsrmv_mp(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseDcsrmv_mpNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseDcsrmv_mpNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseCcsrmv_mp(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseCcsrmv_mpNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseCcsrmv_mpNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseZcsrmv_mp(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseZcsrmv_mpNative(handle, transA, m, n, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, x, beta, y));
-    }
-    private static native int cusparseZcsrmv_mpNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseShybmv(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseShybmvNative(handle, transA, alpha, descrA, hybA, x, beta, y));
-    }
-    private static native int cusparseShybmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseDhybmv(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseDhybmvNative(handle, transA, alpha, descrA, hybA, x, beta, y));
-    }
-    private static native int cusparseDhybmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseChybmv(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseChybmvNative(handle, transA, alpha, descrA, hybA, x, beta, y));
-    }
-    private static native int cusparseChybmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
-
-
-    public static int cusparseZhybmv(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y)
-    {
-        return checkResult(cusparseZhybmvNative(handle, transA, alpha, descrA, hybA, x, beta, y));
-    }
-    private static native int cusparseZhybmvNative(
-        cusparseHandle handle, 
-        int transA, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer x, 
-        Pointer beta, 
-        Pointer y);
 
 
     public static int cusparseSbsrmv(
@@ -2082,290 +1547,6 @@ public class JCusparse
         Pointer x, 
         Pointer beta, 
         Pointer y);
-
-
-    public static int cusparseCsrsv_analysisEx(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        int csrSortedValAtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        int executiontype)
-    {
-        return checkResult(cusparseCsrsv_analysisExNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedValAtype, csrSortedRowPtrA, csrSortedColIndA, info, executiontype));
-    }
-    private static native int cusparseCsrsv_analysisExNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        int csrSortedValAtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        int executiontype);
-
-
-    public static int cusparseScsrsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseScsrsv_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseScsrsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDcsrsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDcsrsv_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseDcsrsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseCcsrsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseCcsrsv_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseCcsrsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseZcsrsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseZcsrsv_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseZcsrsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseCsrsv_solveEx(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        int alphatype, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        int csrSortedValAtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        int ftype, 
-        Pointer x, 
-        int xtype, 
-        int executiontype)
-    {
-        return checkResult(cusparseCsrsv_solveExNative(handle, transA, m, alpha, alphatype, descrA, csrSortedValA, csrSortedValAtype, csrSortedRowPtrA, csrSortedColIndA, info, f, ftype, x, xtype, executiontype));
-    }
-    private static native int cusparseCsrsv_solveExNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        int alphatype, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        int csrSortedValAtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        int ftype, 
-        Pointer x, 
-        int xtype, 
-        int executiontype);
-
-
-    public static int cusparseScsrsv_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseScsrsv_solveNative(handle, transA, m, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, f, x));
-    }
-    private static native int cusparseScsrsv_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseDcsrsv_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseDcsrsv_solveNative(handle, transA, m, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, f, x));
-    }
-    private static native int cusparseDcsrsv_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseCcsrsv_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseCcsrsv_solveNative(handle, transA, m, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, f, x));
-    }
-    private static native int cusparseCcsrsv_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseZcsrsv_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseZcsrsv_solveNative(handle, transA, m, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, f, x));
-    }
-    private static native int cusparseZcsrsv_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
 
 
     public static int cusparseXcsrsv2_zeroPivot(
@@ -3170,489 +2351,9 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    public static int cusparseShybsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseShybsv_analysisNative(handle, transA, descrA, hybA, info));
-    }
-    private static native int cusparseShybsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDhybsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDhybsv_analysisNative(handle, transA, descrA, hybA, info));
-    }
-    private static native int cusparseDhybsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseChybsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseChybsv_analysisNative(handle, transA, descrA, hybA, info));
-    }
-    private static native int cusparseChybsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseZhybsv_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseZhybsv_analysisNative(handle, transA, descrA, hybA, info));
-    }
-    private static native int cusparseZhybsv_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseShybsv_solve(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseShybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
-    }
-    private static native int cusparseShybsv_solveNative(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseChybsv_solve(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseChybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
-    }
-    private static native int cusparseChybsv_solveNative(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseDhybsv_solve(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseDhybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
-    }
-    private static native int cusparseDhybsv_solveNative(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
-    public static int cusparseZhybsv_solve(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x)
-    {
-        return checkResult(cusparseZhybsv_solveNative(handle, trans, alpha, descrA, hybA, info, f, x));
-    }
-    private static native int cusparseZhybsv_solveNative(
-        cusparseHandle handle, 
-        int trans, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer f, 
-        Pointer x);
-
-
     //##############################################################################
     //# SPARSE LEVEL 3 ROUTINES
     //##############################################################################
-    public static int cusparseScsrmm(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseScsrmmNative(handle, transA, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseScsrmmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseDcsrmm(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseDcsrmmNative(handle, transA, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseDcsrmmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseCcsrmm(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseCcsrmmNative(handle, transA, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseCcsrmmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseZcsrmm(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseZcsrmmNative(handle, transA, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseZcsrmmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseScsrmm2(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseScsrmm2Native(handle, transA, transB, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseScsrmm2Native(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseDcsrmm2(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseDcsrmm2Native(handle, transA, transB, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseDcsrmm2Native(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseCcsrmm2(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseCcsrmm2Native(handle, transA, transB, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseCcsrmm2Native(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
-    public static int cusparseZcsrmm2(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc)
-    {
-        return checkResult(cusparseZcsrmm2Native(handle, transA, transB, m, n, k, nnz, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, B, ldb, beta, C, ldc));
-    }
-    private static native int cusparseZcsrmm2Native(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        int nnz, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer B, 
-        int ldb, 
-        Pointer beta, 
-        Pointer C, 
-        int ldc);
-
-
     public static int cusparseSbsrmm(
         cusparseHandle handle, 
         int dirA, 
@@ -3971,246 +2672,6 @@ public class JCusparse
         Pointer beta, 
         Pointer C, 
         int ldc);
-
-
-    public static int cusparseScsrsm_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseScsrsm_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseScsrsm_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDcsrsm_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDcsrsm_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseDcsrsm_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseCcsrsm_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseCcsrsm_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseCcsrsm_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseZcsrsm_analysis(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseZcsrsm_analysisNative(handle, transA, m, nnz, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseZcsrsm_analysisNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int nnz, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseScsrsm_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx)
-    {
-        return checkResult(cusparseScsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
-    }
-    private static native int cusparseScsrsm_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx);
-
-
-    public static int cusparseDcsrsm_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx)
-    {
-        return checkResult(cusparseDcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
-    }
-    private static native int cusparseDcsrsm_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx);
-
-
-    public static int cusparseCcsrsm_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx)
-    {
-        return checkResult(cusparseCcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
-    }
-    private static native int cusparseCcsrsm_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx);
-
-
-    public static int cusparseZcsrsm_solve(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx)
-    {
-        return checkResult(cusparseZcsrsm_solveNative(handle, transA, m, n, alpha, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, info, B, ldb, X, ldx));
-    }
-    private static native int cusparseZcsrsm_solveNative(
-        cusparseHandle handle, 
-        int transA, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        Pointer B, 
-        int ldb, 
-        Pointer X, 
-        int ldx);
 
 
     public static int cusparseCreateCsrsm2Info(
@@ -5228,125 +3689,6 @@ public class JCusparse
     //##############################################################################
     //# PRECONDITIONERS
     //##############################################################################
-    public static int cusparseCsrilu0Ex(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        int csrSortedValA_ValMtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        int executiontype)
-    {
-        return checkResult(cusparseCsrilu0ExNative(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedValA_ValMtype, csrSortedRowPtrA, csrSortedColIndA, info, executiontype));
-    }
-    private static native int cusparseCsrilu0ExNative(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        int csrSortedValA_ValMtype, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info, 
-        int executiontype);
-
-
-    public static int cusparseScsrilu0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseScsrilu0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseScsrilu0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDcsrilu0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDcsrilu0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseDcsrilu0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseCcsrilu0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseCcsrilu0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseCcsrilu0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseZcsrilu0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseZcsrilu0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseZcsrilu0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
     public static int cusparseScsrilu02_numericBoost(
         cusparseHandle handle, 
         csrilu02Info info, 
@@ -6189,98 +4531,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    public static int cusparseScsric0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseScsric0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseScsric0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseDcsric0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseDcsric0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseDcsric0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseCcsric0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseCcsric0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseCcsric0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
-    public static int cusparseZcsric0(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info)
-    {
-        return checkResult(cusparseZcsric0Native(handle, trans, m, descrA, csrSortedValA_ValM, csrSortedRowPtrA, csrSortedColIndA, info));
-    }
-    private static native int cusparseZcsric0Native(
-        cusparseHandle handle, 
-        int trans, 
-        int m, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA_ValM, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseSolveAnalysisInfo info);
-
-
     public static int cusparseXcsric02_zeroPivot(
         cusparseHandle handle, 
         csric02Info info, 
@@ -6987,98 +5237,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    public static int cusparseSgtsv(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseSgtsvNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseSgtsvNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseDgtsv(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseDgtsvNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseDgtsvNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseCgtsv(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseCgtsvNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseCgtsvNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseZgtsv(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseZgtsvNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseZgtsvNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
     public static int cusparseSgtsv2_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -7279,98 +5437,6 @@ public class JCusparse
         Pointer pBuffer);
 
 
-    public static int cusparseSgtsv_nopivot(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseSgtsv_nopivotNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseSgtsv_nopivotNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseDgtsv_nopivot(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseDgtsv_nopivotNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseDgtsv_nopivotNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseCgtsv_nopivot(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseCgtsv_nopivotNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseCgtsv_nopivotNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
-    public static int cusparseZgtsv_nopivot(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb)
-    {
-        return checkResult(cusparseZgtsv_nopivotNative(handle, m, n, dl, d, du, B, ldb));
-    }
-    private static native int cusparseZgtsv_nopivotNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer B, 
-        int ldb);
-
-
     public static int cusparseSgtsv2_nopivot_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -7569,98 +5635,6 @@ public class JCusparse
         Pointer B, 
         int ldb, 
         Pointer pBuffer);
-
-
-    public static int cusparseSgtsvStridedBatch(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride)
-    {
-        return checkResult(cusparseSgtsvStridedBatchNative(handle, m, dl, d, du, x, batchCount, batchStride));
-    }
-    private static native int cusparseSgtsvStridedBatchNative(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride);
-
-
-    public static int cusparseDgtsvStridedBatch(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride)
-    {
-        return checkResult(cusparseDgtsvStridedBatchNative(handle, m, dl, d, du, x, batchCount, batchStride));
-    }
-    private static native int cusparseDgtsvStridedBatchNative(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride);
-
-
-    public static int cusparseCgtsvStridedBatch(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride)
-    {
-        return checkResult(cusparseCgtsvStridedBatchNative(handle, m, dl, d, du, x, batchCount, batchStride));
-    }
-    private static native int cusparseCgtsvStridedBatchNative(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride);
-
-
-    public static int cusparseZgtsvStridedBatch(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride)
-    {
-        return checkResult(cusparseZgtsvStridedBatchNative(handle, m, dl, d, du, x, batchCount, batchStride));
-    }
-    private static native int cusparseZgtsvStridedBatchNative(
-        cusparseHandle handle, 
-        int m, 
-        Pointer dl, 
-        Pointer d, 
-        Pointer du, 
-        Pointer x, 
-        int batchCount, 
-        int batchStride);
 
 
     public static int cusparseSgtsv2StridedBatch_bufferSizeExt(
@@ -8298,235 +6272,6 @@ public class JCusparse
     //##############################################################################
     //# EXTRA ROUTINES
     //##############################################################################
-    public static int cusparseXcsrgemmNnz(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr)
-    {
-        return checkResult(cusparseXcsrgemmNnzNative(handle, transA, transB, m, n, k, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr));
-    }
-    private static native int cusparseXcsrgemmNnzNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr);
-
-
-    public static int cusparseScsrgemm(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseScsrgemmNative(handle, transA, transB, m, n, k, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseScsrgemmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseDcsrgemm(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseDcsrgemmNative(handle, transA, transB, m, n, k, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseDcsrgemmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseCcsrgemm(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseCcsrgemmNative(handle, transA, transB, m, n, k, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseCcsrgemmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseZcsrgemm(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseZcsrgemmNative(handle, transA, transB, m, n, k, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseZcsrgemmNative(
-        cusparseHandle handle, 
-        int transA, 
-        int transB, 
-        int m, 
-        int n, 
-        int k, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
     public static int cusparseCreateCsrgemm2Info(
         csrgemm2Info info)
     {
@@ -9024,221 +6769,6 @@ public class JCusparse
         Pointer csrSortedColIndC, 
         csrgemm2Info info, 
         Pointer pBuffer);
-
-
-    public static int cusparseXcsrgeamNnz(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr)
-    {
-        return checkResult(cusparseXcsrgeamNnzNative(handle, m, n, descrA, nnzA, csrSortedRowPtrA, csrSortedColIndA, descrB, nnzB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedRowPtrC, nnzTotalDevHostPtr));
-    }
-    private static native int cusparseXcsrgeamNnzNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer nnzTotalDevHostPtr);
-
-
-    public static int cusparseScsrgeam(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseScsrgeamNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseScsrgeamNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseDcsrgeam(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseDcsrgeamNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseDcsrgeamNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseCcsrgeam(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseCcsrgeamNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseCcsrgeamNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
-
-
-    public static int cusparseZcsrgeam(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC)
-    {
-        return checkResult(cusparseZcsrgeamNative(handle, m, n, alpha, descrA, nnzA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, beta, descrB, nnzB, csrSortedValB, csrSortedRowPtrB, csrSortedColIndB, descrC, csrSortedValC, csrSortedRowPtrC, csrSortedColIndC));
-    }
-    private static native int cusparseZcsrgeamNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        Pointer alpha, 
-        cusparseMatDescr descrA, 
-        int nnzA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        Pointer beta, 
-        cusparseMatDescr descrB, 
-        int nnzB, 
-        Pointer csrSortedValB, 
-        Pointer csrSortedRowPtrB, 
-        Pointer csrSortedColIndB, 
-        cusparseMatDescr descrC, 
-        Pointer csrSortedValC, 
-        Pointer csrSortedRowPtrC, 
-        Pointer csrSortedColIndC);
 
 
     public static int cusparseScsrgeam2_bufferSizeExt(
@@ -10563,711 +8093,6 @@ public class JCusparse
         int m, 
         Pointer cooRowInd, 
         int idxBase);
-
-
-    public static int cusparseCsr2cscEx(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        int csrSortedValtype, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        int cscSortedValtype, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase, 
-        int executiontype)
-    {
-        return checkResult(cusparseCsr2cscExNative(handle, m, n, nnz, csrSortedVal, csrSortedValtype, csrSortedRowPtr, csrSortedColInd, cscSortedVal, cscSortedValtype, cscSortedRowInd, cscSortedColPtr, copyValues, idxBase, executiontype));
-    }
-    private static native int cusparseCsr2cscExNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        int csrSortedValtype, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        int cscSortedValtype, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase, 
-        int executiontype);
-
-
-    public static int cusparseScsr2csc(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase)
-    {
-        return checkResult(cusparseScsr2cscNative(handle, m, n, nnz, csrSortedVal, csrSortedRowPtr, csrSortedColInd, cscSortedVal, cscSortedRowInd, cscSortedColPtr, copyValues, idxBase));
-    }
-    private static native int cusparseScsr2cscNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase);
-
-
-    public static int cusparseDcsr2csc(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase)
-    {
-        return checkResult(cusparseDcsr2cscNative(handle, m, n, nnz, csrSortedVal, csrSortedRowPtr, csrSortedColInd, cscSortedVal, cscSortedRowInd, cscSortedColPtr, copyValues, idxBase));
-    }
-    private static native int cusparseDcsr2cscNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase);
-
-
-    public static int cusparseCcsr2csc(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase)
-    {
-        return checkResult(cusparseCcsr2cscNative(handle, m, n, nnz, csrSortedVal, csrSortedRowPtr, csrSortedColInd, cscSortedVal, cscSortedRowInd, cscSortedColPtr, copyValues, idxBase));
-    }
-    private static native int cusparseCcsr2cscNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase);
-
-
-    public static int cusparseZcsr2csc(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase)
-    {
-        return checkResult(cusparseZcsr2cscNative(handle, m, n, nnz, csrSortedVal, csrSortedRowPtr, csrSortedColInd, cscSortedVal, cscSortedRowInd, cscSortedColPtr, copyValues, idxBase));
-    }
-    private static native int cusparseZcsr2cscNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        int nnz, 
-        Pointer csrSortedVal, 
-        Pointer csrSortedRowPtr, 
-        Pointer csrSortedColInd, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr, 
-        int copyValues, 
-        int idxBase);
-
-
-    public static int cusparseSdense2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseSdense2hybNative(handle, m, n, descrA, A, lda, nnzPerRow, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseSdense2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseDdense2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseDdense2hybNative(handle, m, n, descrA, A, lda, nnzPerRow, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseDdense2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseCdense2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseCdense2hybNative(handle, m, n, descrA, A, lda, nnzPerRow, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseCdense2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseZdense2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseZdense2hybNative(handle, m, n, descrA, A, lda, nnzPerRow, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseZdense2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer A, 
-        int lda, 
-        Pointer nnzPerRow, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseShyb2dense(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda)
-    {
-        return checkResult(cusparseShyb2denseNative(handle, descrA, hybA, A, lda));
-    }
-    private static native int cusparseShyb2denseNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda);
-
-
-    public static int cusparseDhyb2dense(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda)
-    {
-        return checkResult(cusparseDhyb2denseNative(handle, descrA, hybA, A, lda));
-    }
-    private static native int cusparseDhyb2denseNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda);
-
-
-    public static int cusparseChyb2dense(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda)
-    {
-        return checkResult(cusparseChyb2denseNative(handle, descrA, hybA, A, lda));
-    }
-    private static native int cusparseChyb2denseNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda);
-
-
-    public static int cusparseZhyb2dense(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda)
-    {
-        return checkResult(cusparseZhyb2denseNative(handle, descrA, hybA, A, lda));
-    }
-    private static native int cusparseZhyb2denseNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer A, 
-        int lda);
-
-
-    public static int cusparseScsr2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseScsr2hybNative(handle, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseScsr2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseDcsr2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseDcsr2hybNative(handle, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseDcsr2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseCcsr2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseCcsr2hybNative(handle, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseCcsr2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseZcsr2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseZcsr2hybNative(handle, m, n, descrA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseZcsr2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseShyb2csr(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA)
-    {
-        return checkResult(cusparseShyb2csrNative(handle, descrA, hybA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA));
-    }
-    private static native int cusparseShyb2csrNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA);
-
-
-    public static int cusparseDhyb2csr(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA)
-    {
-        return checkResult(cusparseDhyb2csrNative(handle, descrA, hybA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA));
-    }
-    private static native int cusparseDhyb2csrNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA);
-
-
-    public static int cusparseChyb2csr(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA)
-    {
-        return checkResult(cusparseChyb2csrNative(handle, descrA, hybA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA));
-    }
-    private static native int cusparseChyb2csrNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA);
-
-
-    public static int cusparseZhyb2csr(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA)
-    {
-        return checkResult(cusparseZhyb2csrNative(handle, descrA, hybA, csrSortedValA, csrSortedRowPtrA, csrSortedColIndA));
-    }
-    private static native int cusparseZhyb2csrNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer csrSortedValA, 
-        Pointer csrSortedRowPtrA, 
-        Pointer csrSortedColIndA);
-
-
-    public static int cusparseScsc2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseScsc2hybNative(handle, m, n, descrA, cscSortedValA, cscSortedRowIndA, cscSortedColPtrA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseScsc2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseDcsc2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseDcsc2hybNative(handle, m, n, descrA, cscSortedValA, cscSortedRowIndA, cscSortedColPtrA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseDcsc2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseCcsc2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseCcsc2hybNative(handle, m, n, descrA, cscSortedValA, cscSortedRowIndA, cscSortedColPtrA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseCcsc2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseZcsc2hyb(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType)
-    {
-        return checkResult(cusparseZcsc2hybNative(handle, m, n, descrA, cscSortedValA, cscSortedRowIndA, cscSortedColPtrA, hybA, userEllWidth, partitionType));
-    }
-    private static native int cusparseZcsc2hybNative(
-        cusparseHandle handle, 
-        int m, 
-        int n, 
-        cusparseMatDescr descrA, 
-        Pointer cscSortedValA, 
-        Pointer cscSortedRowIndA, 
-        Pointer cscSortedColPtrA, 
-        cusparseHybMat hybA, 
-        int userEllWidth, 
-        int partitionType);
-
-
-    public static int cusparseShyb2csc(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr)
-    {
-        return checkResult(cusparseShyb2cscNative(handle, descrA, hybA, cscSortedVal, cscSortedRowInd, cscSortedColPtr));
-    }
-    private static native int cusparseShyb2cscNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr);
-
-
-    public static int cusparseDhyb2csc(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr)
-    {
-        return checkResult(cusparseDhyb2cscNative(handle, descrA, hybA, cscSortedVal, cscSortedRowInd, cscSortedColPtr));
-    }
-    private static native int cusparseDhyb2cscNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr);
-
-
-    public static int cusparseChyb2csc(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr)
-    {
-        return checkResult(cusparseChyb2cscNative(handle, descrA, hybA, cscSortedVal, cscSortedRowInd, cscSortedColPtr));
-    }
-    private static native int cusparseChyb2cscNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr);
-
-
-    public static int cusparseZhyb2csc(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr)
-    {
-        return checkResult(cusparseZhyb2cscNative(handle, descrA, hybA, cscSortedVal, cscSortedRowInd, cscSortedColPtr));
-    }
-    private static native int cusparseZhyb2cscNative(
-        cusparseHandle handle, 
-        cusparseMatDescr descrA, 
-        cusparseHybMat hybA, 
-        Pointer cscSortedVal, 
-        Pointer cscSortedRowInd, 
-        Pointer cscSortedColPtr);
 
 
     public static int cusparseXcsr2bsrNnz(
@@ -13945,6 +10770,952 @@ public class JCusparse
         int copyValues, 
         int idxBase, 
         int alg, 
+        long[] bufferSize);
+
+
+    // #############################################################################
+    // # SPARSE VECTOR DESCRIPTOR
+    // #############################################################################
+    public static int cusparseCreateSpVec(
+        cusparseSpVecDescr spVecDescr, 
+        long size, 
+        long nnz, 
+        Pointer indices, 
+        Pointer values, 
+        int idxType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateSpVecNative(spVecDescr, size, nnz, indices, values, idxType, idxBase, valueType));
+    }
+    private static native int cusparseCreateSpVecNative(
+        cusparseSpVecDescr spVecDescr, 
+        long size, 
+        long nnz, 
+        Pointer indices, 
+        Pointer values, 
+        int idxType, 
+        int idxBase, 
+        int valueType);
+
+
+    public static int cusparseDestroySpVec(
+        cusparseSpVecDescr spVecDescr)
+    {
+        return checkResult(cusparseDestroySpVecNative(spVecDescr));
+    }
+    private static native int cusparseDestroySpVecNative(
+        cusparseSpVecDescr spVecDescr);
+
+
+    public static int cusparseSpVecGet(
+        cusparseSpVecDescr spVecDescr, 
+        long[] size, 
+        long[] nnz, 
+        Pointer indices, 
+        Pointer values, 
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType)
+    {
+        return checkResult(cusparseSpVecGetNative(spVecDescr, size, nnz, indices, values, idxType, idxBase, valueType));
+    }
+    private static native int cusparseSpVecGetNative(
+        cusparseSpVecDescr spVecDescr, 
+        long[] size, 
+        long[] nnz, 
+        Pointer indices, 
+        Pointer values, 
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType);
+
+
+    public static int cusparseSpVecGetIndexBase(
+        cusparseSpVecDescr spVecDescr, 
+        int[] idxBase)
+    {
+        return checkResult(cusparseSpVecGetIndexBaseNative(spVecDescr, idxBase));
+    }
+    private static native int cusparseSpVecGetIndexBaseNative(
+        cusparseSpVecDescr spVecDescr, 
+        int[] idxBase);
+
+
+    public static int cusparseSpVecGetValues(
+        cusparseSpVecDescr spVecDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseSpVecGetValuesNative(spVecDescr, values));
+    }
+    private static native int cusparseSpVecGetValuesNative(
+        cusparseSpVecDescr spVecDescr, 
+        Pointer values);
+
+
+    public static int cusparseSpVecSetValues(
+        cusparseSpVecDescr spVecDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseSpVecSetValuesNative(spVecDescr, values));
+    }
+    private static native int cusparseSpVecSetValuesNative(
+        cusparseSpVecDescr spVecDescr, 
+        Pointer values);
+
+
+    // #############################################################################
+    // # DENSE VECTOR DESCRIPTOR
+    // #############################################################################
+    public static int cusparseCreateDnVec(
+        cusparseDnVecDescr dnVecDescr, 
+        long size, 
+        Pointer values, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateDnVecNative(dnVecDescr, size, values, valueType));
+    }
+    private static native int cusparseCreateDnVecNative(
+        cusparseDnVecDescr dnVecDescr, 
+        long size, 
+        Pointer values, 
+        int valueType);
+
+
+    public static int cusparseDestroyDnVec(
+        cusparseDnVecDescr dnVecDescr)
+    {
+        return checkResult(cusparseDestroyDnVecNative(dnVecDescr));
+    }
+    private static native int cusparseDestroyDnVecNative(
+        cusparseDnVecDescr dnVecDescr);
+
+
+    public static int cusparseDnVecGet(
+        cusparseDnVecDescr dnVecDescr, 
+        long[] size, 
+        Pointer values, 
+        int[] valueType)
+    {
+        return checkResult(cusparseDnVecGetNative(dnVecDescr, size, values, valueType));
+    }
+    private static native int cusparseDnVecGetNative(
+        cusparseDnVecDescr dnVecDescr, 
+        long[] size, 
+        Pointer values, 
+        int[] valueType);
+
+
+    public static int cusparseDnVecGetValues(
+        cusparseDnVecDescr dnVecDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseDnVecGetValuesNative(dnVecDescr, values));
+    }
+    private static native int cusparseDnVecGetValuesNative(
+        cusparseDnVecDescr dnVecDescr, 
+        Pointer values);
+
+
+    public static int cusparseDnVecSetValues(
+        cusparseDnVecDescr dnVecDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseDnVecSetValuesNative(dnVecDescr, values));
+    }
+    private static native int cusparseDnVecSetValuesNative(
+        cusparseDnVecDescr dnVecDescr, 
+        Pointer values);
+
+
+    // #############################################################################
+    // # SPARSE MATRIX DESCRIPTOR
+    // #############################################################################
+    public static int cusparseDestroySpMat(
+        cusparseSpMatDescr spMatDescr)
+    {
+        return checkResult(cusparseDestroySpMatNative(spMatDescr));
+    }
+    private static native int cusparseDestroySpMatNative(
+        cusparseSpMatDescr spMatDescr);
+
+
+    public static int cusparseSpMatGetFormat(
+        cusparseSpMatDescr spMatDescr, 
+        int[] format)
+    {
+        return checkResult(cusparseSpMatGetFormatNative(spMatDescr, format));
+    }
+    private static native int cusparseSpMatGetFormatNative(
+        cusparseSpMatDescr spMatDescr, 
+        int[] format);
+
+
+    public static int cusparseSpMatGetIndexBase(
+        cusparseSpMatDescr spMatDescr, 
+        int[] idxBase)
+    {
+        return checkResult(cusparseSpMatGetIndexBaseNative(spMatDescr, idxBase));
+    }
+    private static native int cusparseSpMatGetIndexBaseNative(
+        cusparseSpMatDescr spMatDescr, 
+        int[] idxBase);
+
+
+    public static int cusparseSpMatGetValues(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseSpMatGetValuesNative(spMatDescr, values));
+    }
+    private static native int cusparseSpMatGetValuesNative(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer values);
+
+
+    public static int cusparseSpMatSetValues(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseSpMatSetValuesNative(spMatDescr, values));
+    }
+    private static native int cusparseSpMatSetValuesNative(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer values);
+
+
+    public static int cusparseSpMatGetSize(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz)
+    {
+        return checkResult(cusparseSpMatGetSizeNative(spMatDescr, rows, cols, nnz));
+    }
+    private static native int cusparseSpMatGetSizeNative(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz);
+
+
+    public static int cusparseSpMatSetStridedBatch(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount)
+    {
+        return checkResult(cusparseSpMatSetStridedBatchNative(spMatDescr, batchCount));
+    }
+    private static native int cusparseSpMatSetStridedBatchNative(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount);
+
+
+    public static int cusparseSpMatGetStridedBatch(
+        cusparseSpMatDescr spMatDescr, 
+        int[] batchCount)
+    {
+        return checkResult(cusparseSpMatGetStridedBatchNative(spMatDescr, batchCount));
+    }
+    private static native int cusparseSpMatGetStridedBatchNative(
+        cusparseSpMatDescr spMatDescr, 
+        int[] batchCount);
+
+
+    public static int cusparseCooSetStridedBatch(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount, 
+        long batchStride)
+    {
+        return checkResult(cusparseCooSetStridedBatchNative(spMatDescr, batchCount, batchStride));
+    }
+    private static native int cusparseCooSetStridedBatchNative(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount, 
+        long batchStride);
+
+
+    public static int cusparseCsrSetStridedBatch(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount, 
+        long offsetsBatchStride, 
+        long columnsValuesBatchStride)
+    {
+        return checkResult(cusparseCsrSetStridedBatchNative(spMatDescr, batchCount, offsetsBatchStride, columnsValuesBatchStride));
+    }
+    private static native int cusparseCsrSetStridedBatchNative(
+        cusparseSpMatDescr spMatDescr, 
+        int batchCount, 
+        long offsetsBatchStride, 
+        long columnsValuesBatchStride);
+
+
+    //------------------------------------------------------------------------------
+    // ### CSR ###
+    public static int cusparseCreateCsr(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues, 
+        int csrRowOffsetsType, 
+        int csrColIndType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateCsrNative(spMatDescr, rows, cols, nnz, csrRowOffsets, csrColInd, csrValues, csrRowOffsetsType, csrColIndType, idxBase, valueType));
+    }
+    private static native int cusparseCreateCsrNative(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues, 
+        int csrRowOffsetsType, 
+        int csrColIndType, 
+        int idxBase, 
+        int valueType);
+
+
+    public static int cusparseCsrGet(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues, 
+        int[] csrRowOffsetsType, 
+        int[] csrColIndType, 
+        int[] idxBase, 
+        int[] valueType)
+    {
+        return checkResult(cusparseCsrGetNative(spMatDescr, rows, cols, nnz, csrRowOffsets, csrColInd, csrValues, csrRowOffsetsType, csrColIndType, idxBase, valueType));
+    }
+    private static native int cusparseCsrGetNative(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues, 
+        int[] csrRowOffsetsType, 
+        int[] csrColIndType, 
+        int[] idxBase, 
+        int[] valueType);
+
+
+    public static int cusparseCsrSetPointers(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues)
+    {
+        return checkResult(cusparseCsrSetPointersNative(spMatDescr, csrRowOffsets, csrColInd, csrValues));
+    }
+    private static native int cusparseCsrSetPointersNative(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer csrRowOffsets, 
+        Pointer csrColInd, 
+        Pointer csrValues);
+
+
+    //------------------------------------------------------------------------------
+    // ### COO ###
+    public static int cusparseCreateCoo(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer cooRowInd, 
+        Pointer cooColInd, 
+        Pointer cooValues, 
+        int cooIdxType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateCooNative(spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, cooIdxType, idxBase, valueType));
+    }
+    private static native int cusparseCreateCooNative(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer cooRowInd, 
+        Pointer cooColInd, 
+        Pointer cooValues, 
+        int cooIdxType, 
+        int idxBase, 
+        int valueType);
+
+
+    public static int cusparseCreateCooAoS(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer cooInd, 
+        Pointer cooValues, 
+        int cooIdxType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateCooAoSNative(spMatDescr, rows, cols, nnz, cooInd, cooValues, cooIdxType, idxBase, valueType));
+    }
+    private static native int cusparseCreateCooAoSNative(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer cooInd, 
+        Pointer cooValues, 
+        int cooIdxType, 
+        int idxBase, 
+        int valueType);
+
+
+    public static int cusparseCooGet(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cooRowInd, // COO row indices
+        Pointer cooColInd, // COO column indices
+        Pointer cooValues, // COO values
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType)
+    {
+        return checkResult(cusparseCooGetNative(spMatDescr, rows, cols, nnz, cooRowInd, cooColInd, cooValues, idxType, idxBase, valueType));
+    }
+    private static native int cusparseCooGetNative(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cooRowInd, // COO row indices
+        Pointer cooColInd, // COO column indices
+        Pointer cooValues, // COO values
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType);
+
+
+    public static int cusparseCooAoSGet(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cooInd, // COO indices
+        Pointer cooValues, // COO values
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType)
+    {
+        return checkResult(cusparseCooAoSGetNative(spMatDescr, rows, cols, nnz, cooInd, cooValues, idxType, idxBase, valueType));
+    }
+    private static native int cusparseCooAoSGetNative(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cooInd, // COO indices
+        Pointer cooValues, // COO values
+        int[] idxType, 
+        int[] idxBase, 
+        int[] valueType);
+
+
+    // #############################################################################
+    // # DENSE MATRIX DESCRIPTOR
+    // #############################################################################
+    public static int cusparseCreateDnMat(
+        cusparseDnMatDescr dnMatDescr, 
+        long rows, 
+        long cols, 
+        long ld, 
+        Pointer values, 
+        int valueType, 
+        int order)
+    {
+        return checkResult(cusparseCreateDnMatNative(dnMatDescr, rows, cols, ld, values, valueType, order));
+    }
+    private static native int cusparseCreateDnMatNative(
+        cusparseDnMatDescr dnMatDescr, 
+        long rows, 
+        long cols, 
+        long ld, 
+        Pointer values, 
+        int valueType, 
+        int order);
+
+
+    public static int cusparseDestroyDnMat(
+        cusparseDnMatDescr dnMatDescr)
+    {
+        return checkResult(cusparseDestroyDnMatNative(dnMatDescr));
+    }
+    private static native int cusparseDestroyDnMatNative(
+        cusparseDnMatDescr dnMatDescr);
+
+
+    public static int cusparseDnMatGet(
+        cusparseDnMatDescr dnMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] ld, 
+        Pointer values, 
+        int[] type, 
+        int[] order)
+    {
+        return checkResult(cusparseDnMatGetNative(dnMatDescr, rows, cols, ld, values, type, order));
+    }
+    private static native int cusparseDnMatGetNative(
+        cusparseDnMatDescr dnMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] ld, 
+        Pointer values, 
+        int[] type, 
+        int[] order);
+
+
+    public static int cusparseDnMatGetValues(
+        cusparseDnMatDescr dnMatDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseDnMatGetValuesNative(dnMatDescr, values));
+    }
+    private static native int cusparseDnMatGetValuesNative(
+        cusparseDnMatDescr dnMatDescr, 
+        Pointer values);
+
+
+    public static int cusparseDnMatSetValues(
+        cusparseDnMatDescr dnMatDescr, 
+        Pointer values)
+    {
+        return checkResult(cusparseDnMatSetValuesNative(dnMatDescr, values));
+    }
+    private static native int cusparseDnMatSetValuesNative(
+        cusparseDnMatDescr dnMatDescr, 
+        Pointer values);
+
+
+    public static int cusparseDnMatSetStridedBatch(
+        cusparseDnMatDescr dnMatDescr, 
+        int batchCount, 
+        long batchStride)
+    {
+        return checkResult(cusparseDnMatSetStridedBatchNative(dnMatDescr, batchCount, batchStride));
+    }
+    private static native int cusparseDnMatSetStridedBatchNative(
+        cusparseDnMatDescr dnMatDescr, 
+        int batchCount, 
+        long batchStride);
+
+
+    public static int cusparseDnMatGetStridedBatch(
+        cusparseDnMatDescr dnMatDescr, 
+        int[] batchCount, 
+        long[] batchStride)
+    {
+        return checkResult(cusparseDnMatGetStridedBatchNative(dnMatDescr, batchCount, batchStride));
+    }
+    private static native int cusparseDnMatGetStridedBatchNative(
+        cusparseDnMatDescr dnMatDescr, 
+        int[] batchCount, 
+        long[] batchStride);
+
+
+    // #############################################################################
+    // # VECTOR-VECTOR OPERATIONS
+    // #############################################################################
+    public static int cusparseAxpby(
+        cusparseHandle handle, 
+        Pointer alpha, 
+        cusparseSpVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY)
+    {
+        return checkResult(cusparseAxpbyNative(handle, alpha, vecX, beta, vecY));
+    }
+    private static native int cusparseAxpbyNative(
+        cusparseHandle handle, 
+        Pointer alpha, 
+        cusparseSpVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY);
+
+
+    public static int cusparseGather(
+        cusparseHandle handle, 
+        cusparseDnVecDescr vecY, 
+        cusparseSpVecDescr vecX)
+    {
+        return checkResult(cusparseGatherNative(handle, vecY, vecX));
+    }
+    private static native int cusparseGatherNative(
+        cusparseHandle handle, 
+        cusparseDnVecDescr vecY, 
+        cusparseSpVecDescr vecX);
+
+
+    public static int cusparseScatter(
+        cusparseHandle handle, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY)
+    {
+        return checkResult(cusparseScatterNative(handle, vecX, vecY));
+    }
+    private static native int cusparseScatterNative(
+        cusparseHandle handle, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY);
+
+
+    public static int cusparseRot(
+        cusparseHandle handle, 
+        Pointer c_coeff, 
+        Pointer s_coeff, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY)
+    {
+        return checkResult(cusparseRotNative(handle, c_coeff, s_coeff, vecX, vecY));
+    }
+    private static native int cusparseRotNative(
+        cusparseHandle handle, 
+        Pointer c_coeff, 
+        Pointer s_coeff, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY);
+
+
+    public static int cusparseSpVV_bufferSize(
+        cusparseHandle handle, 
+        int opX, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        Pointer result, 
+        int computeType, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSpVV_bufferSizeNative(handle, opX, vecX, vecY, result, computeType, bufferSize));
+    }
+    private static native int cusparseSpVV_bufferSizeNative(
+        cusparseHandle handle, 
+        int opX, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        Pointer result, 
+        int computeType, 
+        long[] bufferSize);
+
+
+    public static int cusparseSpVV(
+        cusparseHandle handle, 
+        int opX, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        Pointer result, 
+        int computeType, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpVVNative(handle, opX, vecX, vecY, result, computeType, externalBuffer));
+    }
+    private static native int cusparseSpVVNative(
+        cusparseHandle handle, 
+        int opX, 
+        cusparseSpVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        Pointer result, 
+        int computeType, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpMV(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpMVNative(handle, opA, alpha, matA, vecX, beta, vecY, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSpMVNative(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpMV_bufferSize(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSpMV_bufferSizeNative(handle, opA, alpha, matA, vecX, beta, vecY, computeType, alg, bufferSize));
+    }
+    private static native int cusparseSpMV_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        Pointer beta, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize);
+
+
+    public static int cusparseSpMM(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpMMNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSpMMNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpMM_bufferSize(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSpMM_bufferSizeNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, bufferSize));
+    }
+    private static native int cusparseSpMM_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize);
+
+
+    public static int cusparseSpGEMM_createDescr(
+        cusparseSpGEMMDescr descr)
+    {
+        return checkResult(cusparseSpGEMM_createDescrNative(descr));
+    }
+    private static native int cusparseSpGEMM_createDescrNative(
+        cusparseSpGEMMDescr descr);
+
+
+    public static int cusparseSpGEMM_destroyDescr(
+        cusparseSpGEMMDescr descr)
+    {
+        return checkResult(cusparseSpGEMM_destroyDescrNative(descr));
+    }
+    private static native int cusparseSpGEMM_destroyDescrNative(
+        cusparseSpGEMMDescr descr);
+
+
+    public static int cusparseSpGEMM_workEstimation(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize1, 
+        Pointer externalBuffer1)
+    {
+        return checkResult(cusparseSpGEMM_workEstimationNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, spgemmDescr, bufferSize1, externalBuffer1));
+    }
+    private static native int cusparseSpGEMM_workEstimationNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize1, 
+        Pointer externalBuffer1);
+
+
+    public static int cusparseSpGEMM_compute(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize2, 
+        Pointer externalBuffer2)
+    {
+        return checkResult(cusparseSpGEMM_computeNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, spgemmDescr, bufferSize2, externalBuffer2));
+    }
+    private static native int cusparseSpGEMM_computeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize2, 
+        Pointer externalBuffer2);
+
+
+    public static int cusparseSpGEMM_copy(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr)
+    {
+        return checkResult(cusparseSpGEMM_copyNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, spgemmDescr));
+    }
+    private static native int cusparseSpGEMM_copyNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr);
+
+
+    // #############################################################################
+    // # GENERAL MATRIX-MATRIX PATTERN-CONSTRAINED MULTIPLICATION
+    // #############################################################################
+    public static int cusparseConstrainedGeMM(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseConstrainedGeMMNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, externalBuffer));
+    }
+    private static native int cusparseConstrainedGeMMNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseConstrainedGeMM_bufferSize(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseConstrainedGeMM_bufferSizeNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, bufferSize));
+    }
+    private static native int cusparseConstrainedGeMM_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
         long[] bufferSize);
 
 

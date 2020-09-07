@@ -34,23 +34,29 @@ public class cusparseAlgMode
 {
     /**
      * Default, naive
+     * 
+     * @deprecated Removed in CUDA 11.0
      */
     public static final int CUSPARSE_ALG0 = 0;
     
     /**
      * Merge path
+     * 
+     * @deprecated Removed in CUDA 11.0
      */
     public static final int CUSPARSE_ALG1 = 1;
     
     /**
      * Default, naive
+     * 
+     * @deprecated Removed in CUDA 11.0
      */
     public static final int CUSPARSE_ALG_NAIVE = 0;
     
     /**
      * Merge path alias
      */
-    public static final int CUSPARSE_ALG_MERGE_PATH = 1;
+    public static final int CUSPARSE_ALG_MERGE_PATH = 0;
 
     /**
      * Private constructor to prevent instantiation
@@ -69,7 +75,6 @@ public class cusparseAlgMode
     {
         switch (n)
         {
-            case CUSPARSE_ALG_NAIVE: return "CUSPARSE_ALG_NAIVE";
             case CUSPARSE_ALG_MERGE_PATH: return "CUSPARSE_ALG_MERGE_PATH";
         }
         return "INVALID cusparseAlgMode: "+n;

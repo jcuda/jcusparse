@@ -31,6 +31,8 @@ import jcuda.NativePointerObject;
 
 /**
  * Java port of a cusparseHybMat
+ * 
+ * @deprecated Removed in CUDA 11.0
  */
 public class cusparseHybMat extends NativePointerObject
 {
