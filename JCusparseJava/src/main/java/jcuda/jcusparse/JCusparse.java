@@ -554,6 +554,7 @@ public class JCusparse
     //##############################################################################
     //# SPARSE LEVEL 1 ROUTINES
     //##############################################################################
+    @Deprecated
     public static int cusparseSaxpyi(
         cusparseHandle handle, 
         int nnz, 
@@ -575,6 +576,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseDaxpyi(
         cusparseHandle handle, 
         int nnz, 
@@ -596,6 +598,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseCaxpyi(
         cusparseHandle handle, 
         int nnz, 
@@ -617,6 +620,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseZaxpyi(
         cusparseHandle handle, 
         int nnz, 
@@ -638,6 +642,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseSgthr(
         cusparseHandle handle, 
         int nnz, 
@@ -657,6 +662,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseDgthr(
         cusparseHandle handle, 
         int nnz, 
@@ -676,6 +682,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseCgthr(
         cusparseHandle handle, 
         int nnz, 
@@ -695,6 +702,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseZgthr(
         cusparseHandle handle, 
         int nnz, 
@@ -714,6 +722,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseSgthrz(
         cusparseHandle handle, 
         int nnz, 
@@ -733,6 +742,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseDgthrz(
         cusparseHandle handle, 
         int nnz, 
@@ -752,6 +762,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseCgthrz(
         cusparseHandle handle, 
         int nnz, 
@@ -771,6 +782,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseZgthrz(
         cusparseHandle handle, 
         int nnz, 
@@ -790,6 +802,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseSsctr(
         cusparseHandle handle, 
         int nnz, 
@@ -809,6 +822,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseDsctr(
         cusparseHandle handle, 
         int nnz, 
@@ -828,6 +842,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseCsctr(
         cusparseHandle handle, 
         int nnz, 
@@ -847,6 +862,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseZsctr(
         cusparseHandle handle, 
         int nnz, 
@@ -866,6 +882,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseSroti(
         cusparseHandle handle, 
         int nnz, 
@@ -889,6 +906,7 @@ public class JCusparse
         int idxBase);
 
 
+    @Deprecated
     public static int cusparseDroti(
         cusparseHandle handle, 
         int nnz, 
@@ -2534,6 +2552,7 @@ public class JCusparse
         int ldc);
 
 
+    @Deprecated
     public static int cusparseSgemmi(
         cusparseHandle handle, 
         int m, 
@@ -2569,6 +2588,7 @@ public class JCusparse
         int ldc);
 
 
+    @Deprecated
     public static int cusparseDgemmi(
         cusparseHandle handle, 
         int m, 
@@ -2604,6 +2624,7 @@ public class JCusparse
         int ldc);
 
 
+    @Deprecated
     public static int cusparseCgemmi(
         cusparseHandle handle, 
         int m, 
@@ -2639,6 +2660,7 @@ public class JCusparse
         int ldc);
 
 
+    @Deprecated
     public static int cusparseZgemmi(
         cusparseHandle handle, 
         int m, 
@@ -6272,6 +6294,7 @@ public class JCusparse
     //##############################################################################
     //# EXTRA ROUTINES
     //##############################################################################
+    @Deprecated
     public static int cusparseCreateCsrgemm2Info(
         csrgemm2Info info)
     {
@@ -6281,6 +6304,7 @@ public class JCusparse
         csrgemm2Info info);
 
 
+    @Deprecated
     public static int cusparseDestroyCsrgemm2Info(
         csrgemm2Info info)
     {
@@ -6290,6 +6314,7 @@ public class JCusparse
         csrgemm2Info info);
 
 
+    @Deprecated
     public static int cusparseScsrgemm2_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -6337,6 +6362,7 @@ public class JCusparse
         long[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseDcsrgemm2_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -6384,6 +6410,7 @@ public class JCusparse
         long[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseCcsrgemm2_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -6431,6 +6458,7 @@ public class JCusparse
         long[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseZcsrgemm2_bufferSizeExt(
         cusparseHandle handle, 
         int m, 
@@ -6478,6 +6506,7 @@ public class JCusparse
         long[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseXcsrgemm2Nnz(
         cusparseHandle handle, 
         int m, 
@@ -6527,6 +6556,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseScsrgemm2(
         cusparseHandle handle, 
         int m, 
@@ -6588,6 +6618,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseDcsrgemm2(
         cusparseHandle handle, 
         int m, 
@@ -6649,6 +6680,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseCcsrgemm2(
         cusparseHandle handle, 
         int m, 
@@ -6710,6 +6742,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseZcsrgemm2(
         cusparseHandle handle, 
         int m, 
@@ -7641,6 +7674,7 @@ public class JCusparse
         cuDoubleComplex tol);
 
 
+    @Deprecated
     public static int cusparseSdense2csr(
         cusparseHandle handle, 
         int m, 
@@ -7668,6 +7702,7 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
+    @Deprecated
     public static int cusparseDdense2csr(
         cusparseHandle handle, 
         int m, 
@@ -7695,6 +7730,7 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
+    @Deprecated
     public static int cusparseCdense2csr(
         cusparseHandle handle, 
         int m, 
@@ -7722,6 +7758,7 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
+    @Deprecated
     public static int cusparseZdense2csr(
         cusparseHandle handle, 
         int m, 
@@ -7749,6 +7786,7 @@ public class JCusparse
         Pointer csrSortedColIndA);
 
 
+    @Deprecated
     public static int cusparseScsr2dense(
         cusparseHandle handle, 
         int m, 
@@ -7774,6 +7812,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseDcsr2dense(
         cusparseHandle handle, 
         int m, 
@@ -7799,6 +7838,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseCcsr2dense(
         cusparseHandle handle, 
         int m, 
@@ -7824,6 +7864,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseZcsr2dense(
         cusparseHandle handle, 
         int m, 
@@ -7849,6 +7890,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseSdense2csc(
         cusparseHandle handle, 
         int m, 
@@ -7876,6 +7918,7 @@ public class JCusparse
         Pointer cscSortedColPtrA);
 
 
+    @Deprecated
     public static int cusparseDdense2csc(
         cusparseHandle handle, 
         int m, 
@@ -7903,6 +7946,7 @@ public class JCusparse
         Pointer cscSortedColPtrA);
 
 
+    @Deprecated
     public static int cusparseCdense2csc(
         cusparseHandle handle, 
         int m, 
@@ -7930,6 +7974,7 @@ public class JCusparse
         Pointer cscSortedColPtrA);
 
 
+    @Deprecated
     public static int cusparseZdense2csc(
         cusparseHandle handle, 
         int m, 
@@ -7957,6 +8002,7 @@ public class JCusparse
         Pointer cscSortedColPtrA);
 
 
+    @Deprecated
     public static int cusparseScsc2dense(
         cusparseHandle handle, 
         int m, 
@@ -7982,6 +8028,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseDcsc2dense(
         cusparseHandle handle, 
         int m, 
@@ -8007,6 +8054,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseCcsc2dense(
         cusparseHandle handle, 
         int m, 
@@ -8032,6 +8080,7 @@ public class JCusparse
         int lda);
 
 
+    @Deprecated
     public static int cusparseZcsc2dense(
         cusparseHandle handle, 
         int m, 
@@ -11080,6 +11129,35 @@ public class JCusparse
         int valueType);
 
 
+    public static int cusparseCreateCsc(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer csrColOffsets, 
+        Pointer csrRowInd, 
+        Pointer csrValues, 
+        int csrColOffsetsType, 
+        int csrRowIndType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateCscNative(spMatDescr, rows, cols, nnz, csrColOffsets, csrRowInd, csrValues, csrColOffsetsType, csrRowIndType, idxBase, valueType));
+    }
+    private static native int cusparseCreateCscNative(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long nnz, 
+        Pointer csrColOffsets, 
+        Pointer csrRowInd, 
+        Pointer csrValues, 
+        int csrColOffsetsType, 
+        int csrRowIndType, 
+        int idxBase, 
+        int valueType);
+
+
     public static int cusparseCsrGet(
         cusparseSpMatDescr spMatDescr, 
         long[] rows, 
@@ -11122,6 +11200,21 @@ public class JCusparse
         Pointer csrRowOffsets, 
         Pointer csrColInd, 
         Pointer csrValues);
+
+
+    public static int cusparseCscSetPointers(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues)
+    {
+        return checkResult(cusparseCscSetPointersNative(spMatDescr, cscColOffsets, cscRowInd, cscValues));
+    }
+    private static native int cusparseCscSetPointersNative(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues);
 
 
     //------------------------------------------------------------------------------
@@ -11228,6 +11321,21 @@ public class JCusparse
         int[] idxType, 
         int[] idxBase, 
         int[] valueType);
+
+
+    public static int cusparseCooSetPointers(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer cooRows, 
+        Pointer cooColumns, 
+        Pointer cooValues)
+    {
+        return checkResult(cusparseCooSetPointersNative(spMatDescr, cooRows, cooColumns, cooValues));
+    }
+    private static native int cusparseCooSetPointersNative(
+        cusparseSpMatDescr spMatDescr, 
+        Pointer cooRows, 
+        Pointer cooColumns, 
+        Pointer cooValues);
 
 
     // #############################################################################
@@ -11435,6 +11543,91 @@ public class JCusparse
         Pointer result, 
         int computeType, 
         Pointer externalBuffer);
+
+
+    public static int cusparseSparseToDense_bufferSize(
+        cusparseHandle handle, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        int alg, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSparseToDense_bufferSizeNative(handle, matA, matB, alg, bufferSize));
+    }
+    private static native int cusparseSparseToDense_bufferSizeNative(
+        cusparseHandle handle, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        int alg, 
+        long[] bufferSize);
+
+
+    public static int cusparseSparseToDense(
+        cusparseHandle handle, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        int alg, 
+        Pointer buffer)
+    {
+        return checkResult(cusparseSparseToDenseNative(handle, matA, matB, alg, buffer));
+    }
+    private static native int cusparseSparseToDenseNative(
+        cusparseHandle handle, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        int alg, 
+        Pointer buffer);
+
+
+    public static int cusparseDenseToSparse_bufferSize(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseDenseToSparse_bufferSizeNative(handle, matA, matB, alg, bufferSize));
+    }
+    private static native int cusparseDenseToSparse_bufferSizeNative(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        long[] bufferSize);
+
+
+    public static int cusparseDenseToSparse_analysis(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        Pointer buffer)
+    {
+        return checkResult(cusparseDenseToSparse_analysisNative(handle, matA, matB, alg, buffer));
+    }
+    private static native int cusparseDenseToSparse_analysisNative(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        Pointer buffer);
+
+
+    public static int cusparseDenseToSparse_convert(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        Pointer buffer)
+    {
+        return checkResult(cusparseDenseToSparse_convertNative(handle, matA, matB, alg, buffer));
+    }
+    private static native int cusparseDenseToSparse_convertNative(
+        cusparseHandle handle, 
+        cusparseDnMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        int alg, 
+        Pointer buffer);
 
 
     public static int cusparseSpMV(
