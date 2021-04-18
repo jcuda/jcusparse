@@ -28,8 +28,14 @@
 
 package jcuda.jcusparse;
 
-import jcuda.*;
-import jcuda.runtime.JCuda;
+import jcuda.CudaException;
+import jcuda.JCudaVersion;
+import jcuda.LibUtils;
+import jcuda.LibUtilsCuda;
+import jcuda.LogLevel;
+import jcuda.Pointer;
+import jcuda.cuComplex;
+import jcuda.cuDoubleComplex;
 import jcuda.runtime.cudaStream_t;
 
 /**
@@ -71,7 +77,7 @@ public class JCusparse
     {
         if (!initialized)
         {
-            String libraryBaseName = "JCusparse-" + JCuda.getJCudaVersion();
+            String libraryBaseName = "JCusparse-" + JCudaVersion.get();
             String libraryName = 
                 LibUtils.createPlatformLibraryName(libraryBaseName);
             LibUtilsCuda.loadLibrary(libraryName);
