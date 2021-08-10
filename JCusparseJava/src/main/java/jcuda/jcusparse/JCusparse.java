@@ -173,7 +173,9 @@ public class JCusparse
 
 
 
-    /** CUSPARSE initialization and managment routines */
+    //##############################################################################
+    //# INITIALIZATION AND MANAGEMENT ROUTINES
+    //##############################################################################
     public static int cusparseCreate(
         cusparseHandle handle)
     {
@@ -377,6 +379,7 @@ public class JCusparse
         cusparseMatDescr descrA);
 
 
+    @Deprecated
     public static int cusparseCreateCsrsv2Info(
         csrsv2Info info)
     {
@@ -386,6 +389,7 @@ public class JCusparse
         csrsv2Info info);
 
 
+    @Deprecated
     public static int cusparseDestroyCsrsv2Info(
         csrsv2Info info)
     {
@@ -1155,6 +1159,7 @@ public class JCusparse
         int[] pBufferSize);
 
 
+    @Deprecated
     public static int cusparseCsrmvEx_bufferSize(
         cusparseHandle handle, 
         int alg, 
@@ -1204,6 +1209,7 @@ public class JCusparse
         long[] bufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseCsrmvEx(
         cusparseHandle handle, 
         int alg, 
@@ -1573,6 +1579,7 @@ public class JCusparse
         Pointer y);
 
 
+    @Deprecated
     public static int cusparseXcsrsv2_zeroPivot(
         cusparseHandle handle, 
         csrsv2Info info, 
@@ -1586,6 +1593,7 @@ public class JCusparse
         Pointer position);
 
 
+    @Deprecated
     public static int cusparseScsrsv2_bufferSize(
         cusparseHandle handle, 
         int transA, 
@@ -1613,6 +1621,7 @@ public class JCusparse
         int[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseDcsrsv2_bufferSize(
         cusparseHandle handle, 
         int transA, 
@@ -1640,6 +1649,7 @@ public class JCusparse
         int[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseCcsrsv2_bufferSize(
         cusparseHandle handle, 
         int transA, 
@@ -1667,6 +1677,7 @@ public class JCusparse
         int[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseZcsrsv2_bufferSize(
         cusparseHandle handle, 
         int transA, 
@@ -1694,6 +1705,7 @@ public class JCusparse
         int[] pBufferSizeInBytes);
 
 
+    @Deprecated
     public static int cusparseScsrsv2_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -1723,6 +1735,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseDcsrsv2_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -1752,6 +1765,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseCcsrsv2_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -1781,6 +1795,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseZcsrsv2_analysis(
         cusparseHandle handle, 
         int transA, 
@@ -1810,6 +1825,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseScsrsv2_solve(
         cusparseHandle handle, 
         int transA, 
@@ -1845,6 +1861,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseDcsrsv2_solve(
         cusparseHandle handle, 
         int transA, 
@@ -1880,6 +1897,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseCcsrsv2_solve(
         cusparseHandle handle, 
         int transA, 
@@ -1915,6 +1933,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseZcsrsv2_solve(
         cusparseHandle handle, 
         int transA, 
@@ -2702,6 +2721,7 @@ public class JCusparse
         int ldc);
 
 
+    @Deprecated
     public static int cusparseCreateCsrsm2Info(
         csrsm2Info info)
     {
@@ -2711,6 +2731,7 @@ public class JCusparse
         csrsm2Info info);
 
 
+    @Deprecated
     public static int cusparseDestroyCsrsm2Info(
         csrsm2Info info)
     {
@@ -2720,6 +2741,7 @@ public class JCusparse
         csrsm2Info info);
 
 
+    @Deprecated
     public static int cusparseXcsrsm2_zeroPivot(
         cusparseHandle handle, 
         csrsm2Info info, 
@@ -2733,6 +2755,7 @@ public class JCusparse
         Pointer position);
 
 
+    @Deprecated
     public static int cusparseScsrsm2_bufferSizeExt(
         cusparseHandle handle, 
         int algo, 
@@ -2774,6 +2797,7 @@ public class JCusparse
         long[] pBufferSize);
 
 
+    @Deprecated
     public static int cusparseDcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
         int algo, 
@@ -2815,6 +2839,7 @@ public class JCusparse
         long[] pBufferSize);
 
 
+    @Deprecated
     public static int cusparseCcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
         int algo, 
@@ -2856,6 +2881,7 @@ public class JCusparse
         long[] pBufferSize);
 
 
+    @Deprecated
     public static int cusparseZcsrsm2_bufferSizeExt(
         cusparseHandle handle, 
         int algo, 
@@ -2897,6 +2923,7 @@ public class JCusparse
         long[] pBufferSize);
 
 
+    @Deprecated
     public static int cusparseScsrsm2_analysis(
         cusparseHandle handle, 
         int algo, 
@@ -2938,6 +2965,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseDcsrsm2_analysis(
         cusparseHandle handle, 
         int algo, 
@@ -2979,6 +3007,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseCcsrsm2_analysis(
         cusparseHandle handle, 
         int algo, 
@@ -3020,6 +3049,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseZcsrsm2_analysis(
         cusparseHandle handle, 
         int algo, 
@@ -3061,6 +3091,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseScsrsm2_solve(
         cusparseHandle handle, 
         int algo, 
@@ -3102,6 +3133,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseDcsrsm2_solve(
         cusparseHandle handle, 
         int algo, 
@@ -3143,6 +3175,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseCcsrsm2_solve(
         cusparseHandle handle, 
         int algo, 
@@ -3184,6 +3217,7 @@ public class JCusparse
         Pointer pBuffer);
 
 
+    @Deprecated
     public static int cusparseZcsrsm2_solve(
         cusparseHandle handle, 
         int algo, 
@@ -7454,7 +7488,7 @@ public class JCusparse
 
 
     //##############################################################################
-    //# SPARSE FORMAT CONVERSION #
+    //# SPARSE FORMAT CONVERSION
     //##############################################################################
     public static int cusparseSnnz_compress(
         cusparseHandle handle, 
@@ -11104,6 +11138,36 @@ public class JCusparse
         long columnsValuesBatchStride);
 
 
+    public static int cusparseSpMatGetAttribute(
+        cusparseSpMatDescr spMatDescr, 
+        int attribute, 
+        Pointer data, 
+        long dataSize)
+    {
+        return checkResult(cusparseSpMatGetAttributeNative(spMatDescr, attribute, data, dataSize));
+    }
+    private static native int cusparseSpMatGetAttributeNative(
+        cusparseSpMatDescr spMatDescr, 
+        int attribute, 
+        Pointer data, 
+        long dataSize);
+
+
+    public static int cusparseSpMatSetAttribute(
+        cusparseSpMatDescr spMatDescr, 
+        int attribute, 
+        Pointer data, 
+        long dataSize)
+    {
+        return checkResult(cusparseSpMatSetAttributeNative(spMatDescr, attribute, data, dataSize));
+    }
+    private static native int cusparseSpMatSetAttributeNative(
+        cusparseSpMatDescr spMatDescr, 
+        int attribute, 
+        Pointer data, 
+        long dataSize);
+
+
     //------------------------------------------------------------------------------
     // ### CSR ###
     public static int cusparseCreateCsr(
@@ -11140,26 +11204,26 @@ public class JCusparse
         long rows, 
         long cols, 
         long nnz, 
-        Pointer csrColOffsets, 
-        Pointer csrRowInd, 
-        Pointer csrValues, 
-        int csrColOffsetsType, 
-        int csrRowIndType, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues, 
+        int cscColOffsetsType, 
+        int cscRowIndType, 
         int idxBase, 
         int valueType)
     {
-        return checkResult(cusparseCreateCscNative(spMatDescr, rows, cols, nnz, csrColOffsets, csrRowInd, csrValues, csrColOffsetsType, csrRowIndType, idxBase, valueType));
+        return checkResult(cusparseCreateCscNative(spMatDescr, rows, cols, nnz, cscColOffsets, cscRowInd, cscValues, cscColOffsetsType, cscRowIndType, idxBase, valueType));
     }
     private static native int cusparseCreateCscNative(
         cusparseSpMatDescr spMatDescr, 
         long rows, 
         long cols, 
         long nnz, 
-        Pointer csrColOffsets, 
-        Pointer csrRowInd, 
-        Pointer csrValues, 
-        int csrColOffsetsType, 
-        int csrRowIndType, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues, 
+        int cscColOffsetsType, 
+        int cscRowIndType, 
         int idxBase, 
         int valueType);
 
@@ -11252,6 +11316,7 @@ public class JCusparse
         int valueType);
 
 
+    @Deprecated
     public static int cusparseCreateCooAoS(
         cusparseSpMatDescr spMatDescr, 
         long rows, 
@@ -11304,6 +11369,7 @@ public class JCusparse
         int[] valueType);
 
 
+    @Deprecated
     public static int cusparseCooAoSGet(
         cusparseSpMatDescr spMatDescr, 
         long[] rows, 
@@ -11342,6 +11408,35 @@ public class JCusparse
         Pointer cooRows, 
         Pointer cooColumns, 
         Pointer cooValues);
+
+
+    //------------------------------------------------------------------------------
+    // ### BLOCKED ELL ###
+    public static int cusparseCreateBlockedEll(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long ellBlockSize, 
+        long ellCols, 
+        Pointer ellColInd, 
+        Pointer ellValue, 
+        int ellIdxType, 
+        int idxBase, 
+        int valueType)
+    {
+        return checkResult(cusparseCreateBlockedEllNative(spMatDescr, rows, cols, ellBlockSize, ellCols, ellColInd, ellValue, ellIdxType, idxBase, valueType));
+    }
+    private static native int cusparseCreateBlockedEllNative(
+        cusparseSpMatDescr spMatDescr, 
+        long rows, 
+        long cols, 
+        long ellBlockSize, 
+        long ellCols, 
+        Pointer ellColInd, 
+        Pointer ellValue, 
+        int ellIdxType, 
+        int idxBase, 
+        int valueType);
 
 
     // #############################################################################
@@ -11690,33 +11785,204 @@ public class JCusparse
         long[] bufferSize);
 
 
-    public static int cusparseSpMM(
+    public static int cusparseSpSV_createDescr(
+        cusparseSpSVDescr descr)
+    {
+        return checkResult(cusparseSpSV_createDescrNative(descr));
+    }
+    private static native int cusparseSpSV_createDescrNative(
+        cusparseSpSVDescr descr);
+
+
+    public static int cusparseSpSV_destroyDescr(
+        cusparseSpSVDescr descr)
+    {
+        return checkResult(cusparseSpSV_destroyDescrNative(descr));
+    }
+    private static native int cusparseSpSV_destroyDescrNative(
+        cusparseSpSVDescr descr);
+
+
+    public static int cusparseSpSV_bufferSize(
         cusparseHandle handle, 
         int opA, 
-        int opB, 
         Pointer alpha, 
         cusparseSpMatDescr matA, 
-        cusparseDnMatDescr matB, 
-        Pointer beta, 
-        cusparseDnMatDescr matC, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
         int computeType, 
         int alg, 
+        cusparseSpSVDescr spsvDescr, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSpSV_bufferSizeNative(handle, opA, alpha, matA, vecX, vecY, computeType, alg, spsvDescr, bufferSize));
+    }
+    private static native int cusparseSpSV_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        cusparseSpSVDescr spsvDescr, 
+        long[] bufferSize);
+
+
+    public static int cusparseSpSV_analysis(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        cusparseSpSVDescr spsvDescr, 
         Pointer externalBuffer)
     {
-        return checkResult(cusparseSpMMNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+        return checkResult(cusparseSpSV_analysisNative(handle, opA, alpha, matA, vecX, vecY, computeType, alg, spsvDescr, externalBuffer));
     }
-    private static native int cusparseSpMMNative(
+    private static native int cusparseSpSV_analysisNative(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        cusparseSpSVDescr spsvDescr, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpSV_solve(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        cusparseSpSVDescr spsvDescr)
+    {
+        return checkResult(cusparseSpSV_solveNative(handle, opA, alpha, matA, vecX, vecY, computeType, alg, spsvDescr));
+    }
+    private static native int cusparseSpSV_solveNative(
+        cusparseHandle handle, 
+        int opA, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnVecDescr vecX, 
+        cusparseDnVecDescr vecY, 
+        int computeType, 
+        int alg, 
+        cusparseSpSVDescr spsvDescr);
+
+
+    public static int cusparseSpSM_createDescr(
+        cusparseSpSMDescr descr)
+    {
+        return checkResult(cusparseSpSM_createDescrNative(descr));
+    }
+    private static native int cusparseSpSM_createDescrNative(
+        cusparseSpSMDescr descr);
+
+
+    public static int cusparseSpSM_destroyDescr(
+        cusparseSpSMDescr descr)
+    {
+        return checkResult(cusparseSpSM_destroyDescrNative(descr));
+    }
+    private static native int cusparseSpSM_destroyDescrNative(
+        cusparseSpSMDescr descr);
+
+
+    public static int cusparseSpSM_bufferSize(
         cusparseHandle handle, 
         int opA, 
         int opB, 
         Pointer alpha, 
         cusparseSpMatDescr matA, 
         cusparseDnMatDescr matB, 
-        Pointer beta, 
         cusparseDnMatDescr matC, 
         int computeType, 
         int alg, 
+        cusparseSpSMDescr spsmDescr, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSpSM_bufferSizeNative(handle, opA, opB, alpha, matA, matB, matC, computeType, alg, spsmDescr, bufferSize));
+    }
+    private static native int cusparseSpSM_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpSMDescr spsmDescr, 
+        long[] bufferSize);
+
+
+    public static int cusparseSpSM_analysis(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpSMDescr spsmDescr, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpSM_analysisNative(handle, opA, opB, alpha, matA, matB, matC, computeType, alg, spsmDescr, externalBuffer));
+    }
+    private static native int cusparseSpSM_analysisNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpSMDescr spsmDescr, 
         Pointer externalBuffer);
+
+
+    public static int cusparseSpSM_solve(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpSMDescr spsmDescr)
+    {
+        return checkResult(cusparseSpSM_solveNative(handle, opA, opB, alpha, matA, matB, matC, computeType, alg, spsmDescr));
+    }
+    private static native int cusparseSpSM_solveNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpSMDescr spsmDescr);
 
 
     public static int cusparseSpMM_bufferSize(
@@ -11746,6 +12012,64 @@ public class JCusparse
         int computeType, 
         int alg, 
         long[] bufferSize);
+
+
+    public static int cusparseSpMM_preprocess(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpMM_preprocessNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSpMM_preprocessNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpMM(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpMMNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSpMMNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
 
 
     public static int cusparseSpGEMM_createDescr(
@@ -11862,8 +12186,130 @@ public class JCusparse
 
 
     // #############################################################################
-    // # GENERAL MATRIX-MATRIX PATTERN-CONSTRAINED MULTIPLICATION
+    // # SPARSE MATRIX - SPARSE MATRIX MULTIPLICATION (SpGEMM) STRUCTURE REUSE
     // #############################################################################
+    public static int cusparseSpGEMMreuse_workEstimation(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize1, 
+        Pointer externalBuffer1)
+    {
+        return checkResult(cusparseSpGEMMreuse_workEstimationNative(handle, opA, opB, matA, matB, matC, alg, spgemmDescr, bufferSize1, externalBuffer1));
+    }
+    private static native int cusparseSpGEMMreuse_workEstimationNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize1, 
+        Pointer externalBuffer1);
+
+
+    public static int cusparseSpGEMMreuse_nnz(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize2, 
+        Pointer externalBuffer2, 
+        long[] bufferSize3, 
+        Pointer externalBuffer3, 
+        long[] bufferSize4, 
+        Pointer externalBuffer4)
+    {
+        return checkResult(cusparseSpGEMMreuse_nnzNative(handle, opA, opB, matA, matB, matC, alg, spgemmDescr, bufferSize2, externalBuffer2, bufferSize3, externalBuffer3, bufferSize4, externalBuffer4));
+    }
+    private static native int cusparseSpGEMMreuse_nnzNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize2, 
+        Pointer externalBuffer2, 
+        long[] bufferSize3, 
+        Pointer externalBuffer3, 
+        long[] bufferSize4, 
+        Pointer externalBuffer4);
+
+
+    public static int cusparseSpGEMMreuse_copy(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize5, 
+        Pointer externalBuffer5)
+    {
+        return checkResult(cusparseSpGEMMreuse_copyNative(handle, opA, opB, matA, matB, matC, alg, spgemmDescr, bufferSize5, externalBuffer5));
+    }
+    private static native int cusparseSpGEMMreuse_copyNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        cusparseSpMatDescr matC, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr, 
+        long[] bufferSize5, 
+        Pointer externalBuffer5);
+
+
+    public static int cusparseSpGEMMreuse_compute(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr)
+    {
+        return checkResult(cusparseSpGEMMreuse_computeNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, spgemmDescr));
+    }
+    private static native int cusparseSpGEMMreuse_computeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseSpMatDescr matA, 
+        cusparseSpMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        cusparseSpGEMMDescr spgemmDescr);
+
+
+    // #############################################################################
+    // # SAMPLED DENSE-DENSE MATRIX MULTIPLICATION
+    // #############################################################################
+    @Deprecated
     public static int cusparseConstrainedGeMM(
         cusparseHandle handle, 
         int opA, 
@@ -11891,6 +12337,7 @@ public class JCusparse
         Pointer externalBuffer);
 
 
+    @Deprecated
     public static int cusparseConstrainedGeMM_bufferSize(
         cusparseHandle handle, 
         int opA, 
@@ -11916,6 +12363,93 @@ public class JCusparse
         cusparseSpMatDescr matC, 
         int computeType, 
         long[] bufferSize);
+
+
+    public static int cusparseSDDMM_bufferSize(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize)
+    {
+        return checkResult(cusparseSDDMM_bufferSizeNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, bufferSize));
+    }
+    private static native int cusparseSDDMM_bufferSizeNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        long[] bufferSize);
+
+
+    public static int cusparseSDDMM_preprocess(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSDDMM_preprocessNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSDDMM_preprocessNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSDDMM(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSDDMMNative(handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer));
+    }
+    private static native int cusparseSDDMMNative(
+        cusparseHandle handle, 
+        int opA, 
+        int opB, 
+        Pointer alpha, 
+        cusparseDnMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        Pointer beta, 
+        cusparseSpMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer externalBuffer);
 
 
 }
