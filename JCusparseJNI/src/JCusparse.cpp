@@ -36380,21 +36380,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCreateCsrNative(JN
     // rows is primitive
     // cols is primitive
     // nnz is primitive
-    if (csrRowOffsets == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrRowOffsets' is null for cusparseCreateCsr");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
-    if (csrColInd == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrColInd' is null for cusparseCreateCsr");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
-    if (csrValues == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'csrValues' is null for cusparseCreateCsr");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // csrRowOffsets may be NULL
+    // csrColInd may be NULL
+    // csrValues may be NULL
     // csrRowOffsetsType is primitive
     // csrColIndType is primitive
     // idxBase is primitive
