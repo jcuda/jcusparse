@@ -38429,16 +38429,16 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSV_1createDescrN
         descr);
 
     // Native variable declarations
-    cusparseSpSVDescr_t * descr_native;
+    cusparseSpSVDescr_t descr_native;
 
     // Obtain native variable values
-    descr_native = (cusparseSpSVDescr_t *)getNativePointerValue(env, descr);
+    // descr is write-only
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpSV_createDescr(descr_native);
+    cusparseStatus_t jniResult_native = cusparseSpSV_createDescr(&descr_native);
 
     // Write back native variable values
-    // descr is read-only
+    setNativePointerValue(env, descr, (jlong)descr_native);
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38766,16 +38766,16 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSM_1createDescrN
         descr);
 
     // Native variable declarations
-    cusparseSpSMDescr_t * descr_native;
+    cusparseSpSMDescr_t descr_native;
 
     // Obtain native variable values
-    descr_native = (cusparseSpSMDescr_t *)getNativePointerValue(env, descr);
+    // descr is write-only
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpSM_createDescr(descr_native);
+    cusparseStatus_t jniResult_native = cusparseSpSM_createDescr(&descr_native);
 
     // Write back native variable values
-    // descr is read-only
+    setNativePointerValue(env, descr, (jlong)descr_native);
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -39427,16 +39427,16 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1createDesc
         descr);
 
     // Native variable declarations
-    cusparseSpGEMMDescr_t * descr_native;
+    cusparseSpGEMMDescr_t descr_native;
 
     // Obtain native variable values
-    descr_native = (cusparseSpGEMMDescr_t *)getNativePointerValue(env, descr);
+    // descr is write-only
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpGEMM_createDescr(descr_native);
+    cusparseStatus_t jniResult_native = cusparseSpGEMM_createDescr(&descr_native);
 
     // Write back native variable values
-    // descr is read-only
+    setNativePointerValue(env, descr, (jlong)descr_native);
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
