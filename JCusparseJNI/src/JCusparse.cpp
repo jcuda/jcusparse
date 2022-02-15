@@ -28,6 +28,7 @@
 
 #include "JCusparse.hpp"
 #include "JCusparse_common.hpp"
+#include "JNIUtils.hpp"
 #include <iostream>
 #include <string>
 #include <map>
@@ -2729,7 +2730,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgemvi_1bufferSize
     int m_native = 0;
     int n_native = 0;
     int nnz_native = 0;
-    int pBufferSize_native;
+    int * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -2737,10 +2738,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgemvi_1bufferSize
     m_native = (int)m;
     n_native = (int)n;
     nnz_native = (int)nnz;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseSgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -2748,7 +2749,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgemvi_1bufferSize
     // m is primitive
     // n is primitive
     // nnz is primitive
-    if (!set(env, pBufferSize, 0, (jint)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -2903,7 +2904,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgemvi_1bufferSize
     int m_native = 0;
     int n_native = 0;
     int nnz_native = 0;
-    int pBufferSize_native;
+    int * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -2911,10 +2912,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgemvi_1bufferSize
     m_native = (int)m;
     n_native = (int)n;
     nnz_native = (int)nnz;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseDgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -2922,7 +2923,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgemvi_1bufferSize
     // m is primitive
     // n is primitive
     // nnz is primitive
-    if (!set(env, pBufferSize, 0, (jint)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -3077,7 +3078,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgemvi_1bufferSize
     int m_native = 0;
     int n_native = 0;
     int nnz_native = 0;
-    int pBufferSize_native;
+    int * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -3085,10 +3086,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgemvi_1bufferSize
     m_native = (int)m;
     n_native = (int)n;
     nnz_native = (int)nnz;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseCgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -3096,7 +3097,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgemvi_1bufferSize
     // m is primitive
     // n is primitive
     // nnz is primitive
-    if (!set(env, pBufferSize, 0, (jint)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -3251,7 +3252,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgemvi_1bufferSize
     int m_native = 0;
     int n_native = 0;
     int nnz_native = 0;
-    int pBufferSize_native;
+    int * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -3259,10 +3260,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgemvi_1bufferSize
     m_native = (int)m;
     n_native = (int)n;
     nnz_native = (int)nnz;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseZgemvi_bufferSize(handle_native, transA_native, m_native, n_native, nnz_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -3270,7 +3271,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgemvi_1bufferSize
     // m is primitive
     // n is primitive
     // nnz is primitive
-    if (!set(env, pBufferSize, 0, (jint)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -3400,7 +3401,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrmvEx_1bufferSiz
     y_native = (void *)getPointer(env, y);
     ytype_native = (cudaDataType)ytype;
     executiontype_native = (cudaDataType)executiontype;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseCsrmvEx_bufferSize(handle_native, alg_native, transA_native, m_native, n_native, nnz_native, alpha_native, alphatype_native, descrA_native, csrValA_native, csrValAtype_native, csrRowPtrA_native, csrColIndA_native, x_native, xtype_native, beta_native, betatype_native, y_native, ytype_native, executiontype_native, bufferSizeInBytes_native);
@@ -3426,7 +3427,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrmvEx_1bufferSiz
     // y is a native pointer
     // ytype is primitive
     // executiontype is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -4795,7 +4796,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsv2_1bufferSiz
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -4807,10 +4808,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsv2_1bufferSiz
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -4822,7 +4823,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsv2_1bufferSiz
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -4885,7 +4886,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsv2_1bufferSiz
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -4897,10 +4898,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsv2_1bufferSiz
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -4912,7 +4913,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsv2_1bufferSiz
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -4975,7 +4976,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsv2_1bufferSiz
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -4987,10 +4988,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsv2_1bufferSiz
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -5002,7 +5003,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsv2_1bufferSiz
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -5065,7 +5066,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsv2_1bufferSiz
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -5077,10 +5078,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsv2_1bufferSiz
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsrsv2_bufferSize(handle_native, transA_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -5092,7 +5093,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsv2_1bufferSiz
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -6073,7 +6074,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsv2_1bufferSiz
     int * bsrSortedColIndA_native = NULL;
     int blockDim_native = 0;
     bsrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -6087,10 +6088,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsv2_1bufferSiz
     bsrSortedColIndA_native = (int *)getPointer(env, bsrSortedColIndA);
     blockDim_native = (int)blockDim;
     info_native = (bsrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -6104,7 +6105,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsv2_1bufferSiz
     // bsrSortedColIndA is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -6171,7 +6172,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsv2_1bufferSiz
     int * bsrSortedColIndA_native = NULL;
     int blockDim_native = 0;
     bsrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -6185,10 +6186,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsv2_1bufferSiz
     bsrSortedColIndA_native = (int *)getPointer(env, bsrSortedColIndA);
     blockDim_native = (int)blockDim;
     info_native = (bsrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -6202,7 +6203,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsv2_1bufferSiz
     // bsrSortedColIndA is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -6269,7 +6270,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsv2_1bufferSiz
     int * bsrSortedColIndA_native = NULL;
     int blockDim_native = 0;
     bsrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -6283,10 +6284,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsv2_1bufferSiz
     bsrSortedColIndA_native = (int *)getPointer(env, bsrSortedColIndA);
     blockDim_native = (int)blockDim;
     info_native = (bsrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -6300,7 +6301,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsv2_1bufferSiz
     // bsrSortedColIndA is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -6367,7 +6368,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsv2_1bufferSiz
     int * bsrSortedColIndA_native = NULL;
     int blockDim_native = 0;
     bsrsv2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -6381,10 +6382,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsv2_1bufferSiz
     bsrSortedColIndA_native = (int *)getPointer(env, bsrSortedColIndA);
     blockDim_native = (int)blockDim;
     info_native = (bsrsv2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZbsrsv2_bufferSize(handle_native, dirA_native, transA_native, mb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -6398,7 +6399,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsv2_1bufferSiz
     // bsrSortedColIndA is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -8590,7 +8591,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1bufferSiz
     int ldb_native = 0;
     csrsm2Info_t info_native;
     cusparseSolvePolicy_t policy_native;
-    size_t pBufferSize_native;
+    size_t * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -8614,10 +8615,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1bufferSiz
     ldb_native = (int)ldb;
     info_native = (csrsm2Info_t)getNativePointerValue(env, info);
     policy_native = (cusparseSolvePolicy_t)policy;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseScsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -8636,7 +8637,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrsm2_1bufferSiz
     // ldb is primitive
     // info is read-only
     // policy is primitive
-    if (!set(env, pBufferSize, 0, (jlong)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -8721,7 +8722,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1bufferSiz
     int ldb_native = 0;
     csrsm2Info_t info_native;
     cusparseSolvePolicy_t policy_native;
-    size_t pBufferSize_native;
+    size_t * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -8745,10 +8746,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1bufferSiz
     ldb_native = (int)ldb;
     info_native = (csrsm2Info_t)getNativePointerValue(env, info);
     policy_native = (cusparseSolvePolicy_t)policy;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseDcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -8767,7 +8768,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrsm2_1bufferSiz
     // ldb is primitive
     // info is read-only
     // policy is primitive
-    if (!set(env, pBufferSize, 0, (jlong)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -8852,7 +8853,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1bufferSiz
     int ldb_native = 0;
     csrsm2Info_t info_native;
     cusparseSolvePolicy_t policy_native;
-    size_t pBufferSize_native;
+    size_t * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -8876,10 +8877,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1bufferSiz
     ldb_native = (int)ldb;
     info_native = (csrsm2Info_t)getNativePointerValue(env, info);
     policy_native = (cusparseSolvePolicy_t)policy;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseCcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -8898,7 +8899,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrsm2_1bufferSiz
     // ldb is primitive
     // info is read-only
     // policy is primitive
-    if (!set(env, pBufferSize, 0, (jlong)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -8983,7 +8984,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1bufferSiz
     int ldb_native = 0;
     csrsm2Info_t info_native;
     cusparseSolvePolicy_t policy_native;
-    size_t pBufferSize_native;
+    size_t * pBufferSize_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -9007,10 +9008,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1bufferSiz
     ldb_native = (int)ldb;
     info_native = (csrsm2Info_t)getNativePointerValue(env, info);
     policy_native = (cusparseSolvePolicy_t)policy;
-    // pBufferSize is write-only
+    if (!initNative(env, pBufferSize, pBufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, &pBufferSize_native);
+    cusparseStatus_t jniResult_native = cusparseZcsrsm2_bufferSizeExt(handle_native, algo_native, transA_native, transB_native, m_native, nrhs_native, nnz_native, alpha_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, B_native, ldb_native, info_native, policy_native, pBufferSize_native);
 
     // Write back native variable values
     // handle is read-only
@@ -9029,7 +9030,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrsm2_1bufferSiz
     // ldb is primitive
     // info is read-only
     // policy is primitive
-    if (!set(env, pBufferSize, 0, (jlong)pBufferSize_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSize_native, pBufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -10194,7 +10195,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsm2_1bufferSiz
     int * bsrSortedColInd_native = NULL;
     int blockSize_native = 0;
     bsrsm2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -10210,10 +10211,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsm2_1bufferSiz
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockSize_native = (int)blockSize;
     info_native = (bsrsm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -10229,7 +10230,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrsm2_1bufferSiz
     // bsrSortedColInd is a native pointer
     // blockSize is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -10300,7 +10301,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsm2_1bufferSiz
     int * bsrSortedColInd_native = NULL;
     int blockSize_native = 0;
     bsrsm2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -10316,10 +10317,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsm2_1bufferSiz
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockSize_native = (int)blockSize;
     info_native = (bsrsm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -10335,7 +10336,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrsm2_1bufferSiz
     // bsrSortedColInd is a native pointer
     // blockSize is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -10406,7 +10407,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsm2_1bufferSiz
     int * bsrSortedColInd_native = NULL;
     int blockSize_native = 0;
     bsrsm2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -10422,10 +10423,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsm2_1bufferSiz
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockSize_native = (int)blockSize;
     info_native = (bsrsm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -10441,7 +10442,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrsm2_1bufferSiz
     // bsrSortedColInd is a native pointer
     // blockSize is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -10512,7 +10513,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsm2_1bufferSiz
     int * bsrSortedColInd_native = NULL;
     int blockSize_native = 0;
     bsrsm2Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -10528,10 +10529,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsm2_1bufferSiz
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockSize_native = (int)blockSize;
     info_native = (bsrsm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZbsrsm2_bufferSize(handle_native, dirA_native, transA_native, transXY_native, mb_native, n_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockSize_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -10547,7 +10548,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrsm2_1bufferSiz
     // bsrSortedColInd is a native pointer
     // blockSize is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -11957,7 +11958,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrilu02_1bufferS
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -11968,10 +11969,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrilu02_1bufferS
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -11982,7 +11983,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrilu02_1bufferS
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -12043,7 +12044,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrilu02_1bufferS
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -12054,10 +12055,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrilu02_1bufferS
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -12068,7 +12069,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrilu02_1bufferS
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -12129,7 +12130,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrilu02_1bufferS
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -12140,10 +12141,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrilu02_1bufferS
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -12154,7 +12155,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrilu02_1bufferS
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -12215,7 +12216,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrilu02_1bufferS
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -12226,10 +12227,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrilu02_1bufferS
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsrilu02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -12240,7 +12241,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrilu02_1bufferS
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -13343,7 +13344,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrilu02_1bufferS
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -13356,10 +13357,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrilu02_1bufferS
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -13372,7 +13373,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsrilu02_1bufferS
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -13437,7 +13438,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrilu02_1bufferS
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -13450,10 +13451,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrilu02_1bufferS
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -13466,7 +13467,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsrilu02_1bufferS
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -13531,7 +13532,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrilu02_1bufferS
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -13544,10 +13545,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrilu02_1bufferS
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -13560,7 +13561,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsrilu02_1bufferS
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -13625,7 +13626,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrilu02_1bufferS
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsrilu02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -13638,10 +13639,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrilu02_1bufferS
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsrilu02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZbsrilu02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -13654,7 +13655,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsrilu02_1bufferS
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -14545,7 +14546,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsric02_1bufferSi
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -14556,10 +14557,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsric02_1bufferSi
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -14570,7 +14571,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsric02_1bufferSi
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -14631,7 +14632,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsric02_1bufferSi
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -14642,10 +14643,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsric02_1bufferSi
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -14656,7 +14657,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsric02_1bufferSi
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -14717,7 +14718,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsric02_1bufferSi
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -14728,10 +14729,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsric02_1bufferSi
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -14742,7 +14743,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsric02_1bufferSi
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -14803,7 +14804,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsric02_1bufferSi
     int * csrSortedRowPtrA_native = NULL;
     int * csrSortedColIndA_native = NULL;
     csric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -14814,10 +14815,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsric02_1bufferSi
     csrSortedRowPtrA_native = (int *)getPointer(env, csrSortedRowPtrA);
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     info_native = (csric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsric02_bufferSize(handle_native, m_native, nnz_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -14828,7 +14829,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsric02_1bufferSi
     // csrSortedRowPtrA is a native pointer
     // csrSortedColIndA is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -15659,7 +15660,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsric02_1bufferSi
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -15672,10 +15673,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsric02_1bufferSi
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -15688,7 +15689,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSbsric02_1bufferSi
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -15753,7 +15754,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsric02_1bufferSi
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -15766,10 +15767,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsric02_1bufferSi
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -15782,7 +15783,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDbsric02_1bufferSi
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -15847,7 +15848,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsric02_1bufferSi
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -15860,10 +15861,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsric02_1bufferSi
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -15876,7 +15877,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCbsric02_1bufferSi
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -15941,7 +15942,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsric02_1bufferSi
     int * bsrSortedColInd_native = NULL;
     int blockDim_native = 0;
     bsric02Info_t info_native;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -15954,10 +15955,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsric02_1bufferSi
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     blockDim_native = (int)blockDim;
     info_native = (bsric02Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZbsric02_bufferSize(handle_native, dirA_native, mb_native, nnzb_native, descrA_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, blockDim_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -15970,7 +15971,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZbsric02_1bufferSi
     // bsrSortedColInd is a native pointer
     // blockDim is primitive
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -16822,7 +16823,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2_1bufferSize
     du_native = (float *)getPointer(env, du);
     B_native = (float *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSgtsv2_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -16836,7 +16837,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2_1bufferSize
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -16904,7 +16905,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2_1bufferSize
     du_native = (double *)getPointer(env, du);
     B_native = (double *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseDgtsv2_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -16918,7 +16919,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2_1bufferSize
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -16986,7 +16987,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2_1bufferSize
     du_native = (cuComplex *)getPointer(env, du);
     B_native = (cuComplex *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseCgtsv2_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17000,7 +17001,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2_1bufferSize
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -17068,7 +17069,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2_1bufferSize
     du_native = (cuDoubleComplex *)getPointer(env, du);
     B_native = (cuDoubleComplex *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseZgtsv2_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17082,7 +17083,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2_1bufferSize
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -17478,7 +17479,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2_1nopivot_1b
     du_native = (float *)getPointer(env, du);
     B_native = (float *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSgtsv2_nopivot_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17492,7 +17493,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2_1nopivot_1b
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -17560,7 +17561,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2_1nopivot_1b
     du_native = (double *)getPointer(env, du);
     B_native = (double *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseDgtsv2_nopivot_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17574,7 +17575,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2_1nopivot_1b
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -17642,7 +17643,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2_1nopivot_1b
     du_native = (cuComplex *)getPointer(env, du);
     B_native = (cuComplex *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseCgtsv2_nopivot_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17656,7 +17657,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2_1nopivot_1b
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -17724,7 +17725,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2_1nopivot_1b
     du_native = (cuDoubleComplex *)getPointer(env, du);
     B_native = (cuDoubleComplex *)getPointer(env, B);
     ldb_native = (int)ldb;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseZgtsv2_nopivot_bufferSizeExt(handle_native, m_native, n_native, dl_native, d_native, du_native, B_native, ldb_native, bufferSizeInBytes_native);
@@ -17738,7 +17739,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2_1nopivot_1b
     // du is a native pointer
     // B is a native pointer
     // ldb is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18134,7 +18135,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2StridedBatch
     x_native = (float *)getPointer(env, x);
     batchCount_native = (int)batchCount;
     batchStride_native = (int)batchStride;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSgtsv2StridedBatch_bufferSizeExt(handle_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, batchStride_native, bufferSizeInBytes_native);
@@ -18148,7 +18149,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsv2StridedBatch
     // x is a native pointer
     // batchCount is primitive
     // batchStride is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18216,7 +18217,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2StridedBatch
     x_native = (double *)getPointer(env, x);
     batchCount_native = (int)batchCount;
     batchStride_native = (int)batchStride;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseDgtsv2StridedBatch_bufferSizeExt(handle_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, batchStride_native, bufferSizeInBytes_native);
@@ -18230,7 +18231,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsv2StridedBatch
     // x is a native pointer
     // batchCount is primitive
     // batchStride is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18298,7 +18299,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2StridedBatch
     x_native = (cuComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
     batchStride_native = (int)batchStride;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseCgtsv2StridedBatch_bufferSizeExt(handle_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, batchStride_native, bufferSizeInBytes_native);
@@ -18312,7 +18313,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsv2StridedBatch
     // x is a native pointer
     // batchCount is primitive
     // batchStride is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18380,7 +18381,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2StridedBatch
     x_native = (cuDoubleComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
     batchStride_native = (int)batchStride;
-    bufferSizeInBytes_native = (size_t *)getPointer(env, bufferSizeInBytes);
+    if (!initNative(env, bufferSizeInBytes, bufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseZgtsv2StridedBatch_bufferSizeExt(handle_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, batchStride_native, bufferSizeInBytes_native);
@@ -18394,7 +18395,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsv2StridedBatch
     // x is a native pointer
     // batchCount is primitive
     // batchStride is primitive
-    // bufferSizeInBytes is a native pointer
+    if (!releaseNative(env, bufferSizeInBytes_native, bufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18779,7 +18780,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsvInterleavedBa
     float * du_native = NULL;
     float * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -18790,10 +18791,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsvInterleavedBa
     du_native = (float *)getPointer(env, du);
     x_native = (float *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -18804,7 +18805,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgtsvInterleavedBa
     // du is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18861,7 +18862,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsvInterleavedBa
     double * du_native = NULL;
     double * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -18872,10 +18873,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsvInterleavedBa
     du_native = (double *)getPointer(env, du);
     x_native = (double *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -18886,7 +18887,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgtsvInterleavedBa
     // du is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -18943,7 +18944,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsvInterleavedBa
     cuComplex * du_native = NULL;
     cuComplex * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -18954,10 +18955,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsvInterleavedBa
     du_native = (cuComplex *)getPointer(env, du);
     x_native = (cuComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -18968,7 +18969,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgtsvInterleavedBa
     // du is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -19025,7 +19026,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsvInterleavedBa
     cuDoubleComplex * du_native = NULL;
     cuDoubleComplex * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -19036,10 +19037,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsvInterleavedBa
     du_native = (cuDoubleComplex *)getPointer(env, du);
     x_native = (cuDoubleComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZgtsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, dl_native, d_native, du_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -19050,7 +19051,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgtsvInterleavedBa
     // du is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -19447,7 +19448,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgpsvInterleavedBa
     float * dw_native = NULL;
     float * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -19460,10 +19461,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgpsvInterleavedBa
     dw_native = (float *)getPointer(env, dw);
     x_native = (float *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -19476,7 +19477,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgpsvInterleavedBa
     // dw is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -19545,7 +19546,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgpsvInterleavedBa
     double * dw_native = NULL;
     double * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -19558,10 +19559,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgpsvInterleavedBa
     dw_native = (double *)getPointer(env, dw);
     x_native = (double *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -19574,7 +19575,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgpsvInterleavedBa
     // dw is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -19643,7 +19644,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgpsvInterleavedBa
     cuComplex * dw_native = NULL;
     cuComplex * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -19656,10 +19657,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgpsvInterleavedBa
     dw_native = (cuComplex *)getPointer(env, dw);
     x_native = (cuComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -19672,7 +19673,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgpsvInterleavedBa
     // dw is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -19741,7 +19742,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgpsvInterleavedBa
     cuDoubleComplex * dw_native = NULL;
     cuDoubleComplex * x_native = NULL;
     int batchCount_native = 0;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -19754,10 +19755,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgpsvInterleavedBa
     dw_native = (cuDoubleComplex *)getPointer(env, dw);
     x_native = (cuDoubleComplex *)getPointer(env, x);
     batchCount_native = (int)batchCount;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZgpsvInterleavedBatch_bufferSizeExt(handle_native, algo_native, m_native, ds_native, dl_native, d_native, du_native, dw_native, x_native, batchCount_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -19770,7 +19771,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgpsvInterleavedBa
     // dw is a native pointer
     // x is a native pointer
     // batchCount is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -20336,7 +20337,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgemm2_1bufferS
     int * csrSortedRowPtrD_native = NULL;
     int * csrSortedColIndD_native = NULL;
     csrgemm2Info_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -20368,10 +20369,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgemm2_1bufferS
     csrSortedRowPtrD_native = (int *)getPointer(env, csrSortedRowPtrD);
     csrSortedColIndD_native = (int *)getPointer(env, csrSortedColIndD);
     info_native = (csrgemm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -20393,7 +20394,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgemm2_1bufferS
     // csrSortedRowPtrD is a native pointer
     // csrSortedColIndD is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -20504,7 +20505,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgemm2_1bufferS
     int * csrSortedRowPtrD_native = NULL;
     int * csrSortedColIndD_native = NULL;
     csrgemm2Info_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -20536,10 +20537,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgemm2_1bufferS
     csrSortedRowPtrD_native = (int *)getPointer(env, csrSortedRowPtrD);
     csrSortedColIndD_native = (int *)getPointer(env, csrSortedColIndD);
     info_native = (csrgemm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -20561,7 +20562,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgemm2_1bufferS
     // csrSortedRowPtrD is a native pointer
     // csrSortedColIndD is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -20672,7 +20673,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgemm2_1bufferS
     int * csrSortedRowPtrD_native = NULL;
     int * csrSortedColIndD_native = NULL;
     csrgemm2Info_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -20704,10 +20705,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgemm2_1bufferS
     csrSortedRowPtrD_native = (int *)getPointer(env, csrSortedRowPtrD);
     csrSortedColIndD_native = (int *)getPointer(env, csrSortedColIndD);
     info_native = (csrgemm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -20729,7 +20730,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgemm2_1bufferS
     // csrSortedRowPtrD is a native pointer
     // csrSortedColIndD is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -20840,7 +20841,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgemm2_1bufferS
     int * csrSortedRowPtrD_native = NULL;
     int * csrSortedColIndD_native = NULL;
     csrgemm2Info_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -20872,10 +20873,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgemm2_1bufferS
     csrSortedRowPtrD_native = (int *)getPointer(env, csrSortedRowPtrD);
     csrSortedColIndD_native = (int *)getPointer(env, csrSortedColIndD);
     info_native = (csrgemm2Info_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsrgemm2_bufferSizeExt(handle_native, m_native, n_native, k_native, alpha_native, descrA_native, nnzA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, descrB_native, nnzB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, beta_native, descrD_native, nnzD_native, csrSortedRowPtrD_native, csrSortedColIndD_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -20897,7 +20898,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgemm2_1bufferS
     // csrSortedRowPtrD is a native pointer
     // csrSortedColIndD is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -22088,7 +22089,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgeam2_1bufferS
     float * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -22120,10 +22121,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgeam2_1bufferS
     csrSortedValC_native = (float *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -22145,7 +22146,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsrgeam2_1bufferS
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -22264,7 +22265,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgeam2_1bufferS
     double * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -22296,10 +22297,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgeam2_1bufferS
     csrSortedValC_native = (double *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -22321,7 +22322,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsrgeam2_1bufferS
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -22440,7 +22441,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgeam2_1bufferS
     cuComplex * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -22472,10 +22473,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgeam2_1bufferS
     csrSortedValC_native = (cuComplex *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -22497,7 +22498,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsrgeam2_1bufferS
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -22616,7 +22617,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeam2_1bufferS
     cuDoubleComplex * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -22648,10 +22649,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeam2_1bufferS
     csrSortedValC_native = (cuDoubleComplex *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsrgeam2_bufferSizeExt(handle_native, m_native, n_native, alpha_native, descrA_native, nnzA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, beta_native, descrB_native, nnzB_native, csrSortedValB_native, csrSortedRowPtrB_native, csrSortedColIndB_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -22673,7 +22674,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsrgeam2_1bufferS
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -27613,7 +27614,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsc_1buff
     int * bsrSortedColInd_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -27625,10 +27626,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsc_1buff
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -27640,7 +27641,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsc_1buff
     // bsrSortedColInd is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -27695,7 +27696,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsc_1buff
     int * bsrSortedColInd_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -27707,10 +27708,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsc_1buff
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -27722,7 +27723,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsc_1buff
     // bsrSortedColInd is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -27777,7 +27778,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsc_1buff
     int * bsrSortedColInd_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -27789,10 +27790,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsc_1buff
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -27804,7 +27805,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsc_1buff
     // bsrSortedColInd is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -27859,7 +27860,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsc_1buff
     int * bsrSortedColInd_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -27871,10 +27872,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsc_1buff
     bsrSortedColInd_native = (int *)getPointer(env, bsrSortedColInd);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsc_bufferSize(handle_native, mb_native, nb_native, nnzb_native, bsrSortedVal_native, bsrSortedRowPtr_native, bsrSortedColInd_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -27886,7 +27887,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsc_1buff
     // bsrSortedColInd is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -28859,7 +28860,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsr2gebsr_1buffer
     int * csrSortedColIndA_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -28872,10 +28873,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsr2gebsr_1buffer
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -28888,7 +28889,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsr2gebsr_1buffer
     // csrSortedColIndA is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -28949,7 +28950,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsr2gebsr_1buffer
     int * csrSortedColIndA_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -28962,10 +28963,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsr2gebsr_1buffer
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -28978,7 +28979,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsr2gebsr_1buffer
     // csrSortedColIndA is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -29039,7 +29040,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsr2gebsr_1buffer
     int * csrSortedColIndA_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -29052,10 +29053,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsr2gebsr_1buffer
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -29068,7 +29069,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsr2gebsr_1buffer
     // csrSortedColIndA is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -29129,7 +29130,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsr2gebsr_1buffer
     int * csrSortedColIndA_native = NULL;
     int rowBlockDim_native = 0;
     int colBlockDim_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -29142,10 +29143,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsr2gebsr_1buffer
     csrSortedColIndA_native = (int *)getPointer(env, csrSortedColIndA);
     rowBlockDim_native = (int)rowBlockDim;
     colBlockDim_native = (int)colBlockDim;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsr2gebsr_bufferSize(handle_native, dirA_native, m_native, n_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, rowBlockDim_native, colBlockDim_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -29158,7 +29159,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsr2gebsr_1buffer
     // csrSortedColIndA is a native pointer
     // rowBlockDim is primitive
     // colBlockDim is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -29829,7 +29830,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsr_1buff
     int colBlockDimA_native = 0;
     int rowBlockDimC_native = 0;
     int colBlockDimC_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -29845,10 +29846,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsr_1buff
     colBlockDimA_native = (int)colBlockDimA;
     rowBlockDimC_native = (int)rowBlockDimC;
     colBlockDimC_native = (int)colBlockDimC;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -29864,7 +29865,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSgebsr2gebsr_1buff
     // colBlockDimA is primitive
     // rowBlockDimC is primitive
     // colBlockDimC is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -29931,7 +29932,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsr_1buff
     int colBlockDimA_native = 0;
     int rowBlockDimC_native = 0;
     int colBlockDimC_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -29947,10 +29948,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsr_1buff
     colBlockDimA_native = (int)colBlockDimA;
     rowBlockDimC_native = (int)rowBlockDimC;
     colBlockDimC_native = (int)colBlockDimC;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -29966,7 +29967,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDgebsr2gebsr_1buff
     // colBlockDimA is primitive
     // rowBlockDimC is primitive
     // colBlockDimC is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -30033,7 +30034,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsr_1buff
     int colBlockDimA_native = 0;
     int rowBlockDimC_native = 0;
     int colBlockDimC_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -30049,10 +30050,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsr_1buff
     colBlockDimA_native = (int)colBlockDimA;
     rowBlockDimC_native = (int)rowBlockDimC;
     colBlockDimC_native = (int)colBlockDimC;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -30068,7 +30069,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCgebsr2gebsr_1buff
     // colBlockDimA is primitive
     // rowBlockDimC is primitive
     // colBlockDimC is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -30135,7 +30136,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsr_1buff
     int colBlockDimA_native = 0;
     int rowBlockDimC_native = 0;
     int colBlockDimC_native = 0;
-    int pBufferSizeInBytes_native;
+    int * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -30151,10 +30152,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsr_1buff
     colBlockDimA_native = (int)colBlockDimA;
     rowBlockDimC_native = (int)rowBlockDimC;
     colBlockDimC_native = (int)colBlockDimC;
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZgebsr2gebsr_bufferSize(handle_native, dirA_native, mb_native, nb_native, nnzb_native, descrA_native, bsrSortedValA_native, bsrSortedRowPtrA_native, bsrSortedColIndA_native, rowBlockDimA_native, colBlockDimA_native, rowBlockDimC_native, colBlockDimC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -30170,7 +30171,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZgebsr2gebsr_1buff
     // colBlockDimA is primitive
     // rowBlockDimC is primitive
     // colBlockDimC is primitive
-    if (!set(env, pBufferSizeInBytes, 0, (jint)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -30924,7 +30925,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcoosort_1bufferSi
     int nnz_native = 0;
     int * cooRowsA_native = NULL;
     int * cooColsA_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -30933,10 +30934,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcoosort_1bufferSi
     nnz_native = (int)nnz;
     cooRowsA_native = (int *)getPointer(env, cooRowsA);
     cooColsA_native = (int *)getPointer(env, cooColsA);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseXcoosort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, cooRowsA_native, cooColsA_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseXcoosort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, cooRowsA_native, cooColsA_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -30945,7 +30946,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcoosort_1bufferSi
     // nnz is primitive
     // cooRowsA is a native pointer
     // cooColsA is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31138,7 +31139,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrsort_1bufferSi
     int nnz_native = 0;
     int * csrRowPtrA_native = NULL;
     int * csrColIndA_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31147,10 +31148,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrsort_1bufferSi
     nnz_native = (int)nnz;
     csrRowPtrA_native = (int *)getPointer(env, csrRowPtrA);
     csrColIndA_native = (int *)getPointer(env, csrColIndA);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseXcsrsort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrRowPtrA_native, csrColIndA_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseXcsrsort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrRowPtrA_native, csrColIndA_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31159,7 +31160,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcsrsort_1bufferSi
     // nnz is primitive
     // csrRowPtrA is a native pointer
     // csrColIndA is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31286,7 +31287,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcscsort_1bufferSi
     int nnz_native = 0;
     int * cscColPtrA_native = NULL;
     int * cscRowIndA_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31295,10 +31296,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcscsort_1bufferSi
     nnz_native = (int)nnz;
     cscColPtrA_native = (int *)getPointer(env, cscColPtrA);
     cscRowIndA_native = (int *)getPointer(env, cscRowIndA);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseXcscsort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, cscColPtrA_native, cscRowIndA_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseXcscsort_bufferSizeExt(handle_native, m_native, n_native, nnz_native, cscColPtrA_native, cscRowIndA_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31307,7 +31308,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseXcscsort_1bufferSi
     // nnz is primitive
     // cscColPtrA is a native pointer
     // cscRowIndA is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31446,7 +31447,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsru2csr_1bufferS
     int * csrRowPtr_native = NULL;
     int * csrColInd_native = NULL;
     csru2csrInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31457,10 +31458,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsru2csr_1bufferS
     csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
     csrColInd_native = (int *)getPointer(env, csrColInd);
     info_native = (csru2csrInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseScsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseScsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31471,7 +31472,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseScsru2csr_1bufferS
     // csrRowPtr is a native pointer
     // csrColInd is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31528,7 +31529,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsru2csr_1bufferS
     int * csrRowPtr_native = NULL;
     int * csrColInd_native = NULL;
     csru2csrInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31539,10 +31540,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsru2csr_1bufferS
     csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
     csrColInd_native = (int *)getPointer(env, csrColInd);
     info_native = (csru2csrInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31553,7 +31554,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDcsru2csr_1bufferS
     // csrRowPtr is a native pointer
     // csrColInd is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31610,7 +31611,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsru2csr_1bufferS
     int * csrRowPtr_native = NULL;
     int * csrColInd_native = NULL;
     csru2csrInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31621,10 +31622,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsru2csr_1bufferS
     csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
     csrColInd_native = (int *)getPointer(env, csrColInd);
     info_native = (csru2csrInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseCcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31635,7 +31636,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCcsru2csr_1bufferS
     // csrRowPtr is a native pointer
     // csrColInd is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -31692,7 +31693,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsru2csr_1bufferS
     int * csrRowPtr_native = NULL;
     int * csrColInd_native = NULL;
     csru2csrInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -31703,10 +31704,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsru2csr_1bufferS
     csrRowPtr_native = (int *)getPointer(env, csrRowPtr);
     csrColInd_native = (int *)getPointer(env, csrColInd);
     info_native = (csru2csrInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseZcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseZcsru2csr_bufferSizeExt(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -31717,7 +31718,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseZcsru2csr_1bufferS
     // csrRowPtr is a native pointer
     // csrColInd is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -32506,7 +32507,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csr_1b
     float * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -32519,10 +32520,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csr_1b
     csrSortedValC_native = (float *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpruneDense2csr_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSpruneDense2csr_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -32535,7 +32536,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csr_1b
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -32604,7 +32605,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csr_1b
     double * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -32617,10 +32618,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csr_1b
     csrSortedValC_native = (double *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDpruneDense2csr_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDpruneDense2csr_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -32633,7 +32634,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csr_1b
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -33116,7 +33117,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csr_1buf
     float * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -33132,10 +33133,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csr_1buf
     csrSortedValC_native = (float *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpruneCsr2csr_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSpruneCsr2csr_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -33151,7 +33152,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csr_1buf
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -33238,7 +33239,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csr_1buf
     double * csrSortedValC_native = NULL;
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -33254,10 +33255,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csr_1buf
     csrSortedValC_native = (double *)getPointer(env, csrSortedValC);
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDpruneCsr2csr_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDpruneCsr2csr_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, threshold_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -33273,7 +33274,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csr_1buf
     // csrSortedValC is a native pointer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -33836,7 +33837,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csrByP
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
     pruneInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -33850,10 +33851,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csrByP
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
     info_native = (pruneInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpruneDense2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSpruneDense2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -33867,7 +33868,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneDense2csrByP
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -33938,7 +33939,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csrByP
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
     pruneInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -33952,10 +33953,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csrByP
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
     info_native = (pruneInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDpruneDense2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDpruneDense2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, A_native, lda_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -33969,7 +33970,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneDense2csrByP
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -34470,7 +34471,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csrByPer
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
     pruneInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -34487,10 +34488,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csrByPer
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
     info_native = (pruneInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpruneCsr2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseSpruneCsr2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -34507,7 +34508,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpruneCsr2csrByPer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -34596,7 +34597,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csrByPer
     int * csrSortedRowPtrC_native = NULL;
     int * csrSortedColIndC_native = NULL;
     pruneInfo_t info_native;
-    size_t pBufferSizeInBytes_native;
+    size_t * pBufferSizeInBytes_native = NULL;
 
     // Obtain native variable values
     handle_native = (cusparseHandle_t)getNativePointerValue(env, handle);
@@ -34613,10 +34614,10 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csrByPer
     csrSortedRowPtrC_native = (int *)getPointer(env, csrSortedRowPtrC);
     csrSortedColIndC_native = (int *)getPointer(env, csrSortedColIndC);
     info_native = (pruneInfo_t)getNativePointerValue(env, info);
-    // pBufferSizeInBytes is write-only
+    if (!initNative(env, pBufferSizeInBytes, pBufferSizeInBytes_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDpruneCsr2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, &pBufferSizeInBytes_native);
+    cusparseStatus_t jniResult_native = cusparseDpruneCsr2csrByPercentage_bufferSizeExt(handle_native, m_native, n_native, nnzA_native, descrA_native, csrSortedValA_native, csrSortedRowPtrA_native, csrSortedColIndA_native, percentage_native, descrC_native, csrSortedValC_native, csrSortedRowPtrC_native, csrSortedColIndC_native, info_native, pBufferSizeInBytes_native);
 
     // Write back native variable values
     // handle is read-only
@@ -34633,7 +34634,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDpruneCsr2csrByPer
     // csrSortedRowPtrC is a native pointer
     // csrSortedColIndC is a native pointer
     // info is read-only
-    if (!set(env, pBufferSizeInBytes, 0, (jlong)pBufferSizeInBytes_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!releaseNative(env, pBufferSizeInBytes_native, pBufferSizeInBytes, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -35525,8 +35526,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVecGetNative(JNI
 
     // Native variable declarations
     cusparseSpVecDescr_t spVecDescr_native;
-    int64_t * size_native = NULL;
-    int64_t * nnz_native = NULL;
+    int64_t size_native;
+    int64_t nnz_native;
     void * * indices_native;
     void * * values_native;
     cusparseIndexType_t * idxType_native = NULL;
@@ -35535,8 +35536,8 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVecGetNative(JNI
 
     // Obtain native variable values
     spVecDescr_native = (cusparseSpVecDescr_t)getNativePointerValue(env, spVecDescr);
-    size_native = (int64_t *)getPointer(env, size);
-    nnz_native = (int64_t *)getPointer(env, nnz);
+    // size is write-only
+    // nnz is write-only
     indices_native = (void * *)getPointer(env, indices);
     values_native = (void * *)getPointer(env, values);
     idxType_native = (cusparseIndexType_t *)getPointer(env, idxType);
@@ -35544,12 +35545,12 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVecGetNative(JNI
     valueType_native = (cudaDataType *)getPointer(env, valueType);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpVecGet(spVecDescr_native, size_native, nnz_native, indices_native, values_native, idxType_native, idxBase_native, valueType_native);
+    cusparseStatus_t jniResult_native = cusparseSpVecGet(spVecDescr_native, &size_native, &nnz_native, indices_native, values_native, idxType_native, idxBase_native, valueType_native);
 
     // Write back native variable values
     // spVecDescr is read-only
-    // size is a native pointer
-    // nnz is a native pointer
+    if (!set(env, size, 0, (jlong)size_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // indices is a native pointer
     // values is a native pointer
     // idxType is a native pointer
@@ -35784,22 +35785,22 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnVecGetNative(JNI
 
     // Native variable declarations
     cusparseDnVecDescr_t dnVecDescr_native;
-    int64_t * size_native = NULL;
+    int64_t size_native;
     void * * values_native;
     cudaDataType * valueType_native = NULL;
 
     // Obtain native variable values
     dnVecDescr_native = (cusparseDnVecDescr_t)getNativePointerValue(env, dnVecDescr);
-    size_native = (int64_t *)getPointer(env, size);
+    // size is write-only
     values_native = (void * *)getPointer(env, values);
     valueType_native = (cudaDataType *)getPointer(env, valueType);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDnVecGet(dnVecDescr_native, size_native, values_native, valueType_native);
+    cusparseStatus_t jniResult_native = cusparseDnVecGet(dnVecDescr_native, &size_native, values_native, valueType_native);
 
     // Write back native variable values
     // dnVecDescr is read-only
-    // size is a native pointer
+    if (!set(env, size, 0, (jlong)size_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // values is a native pointer
     // valueType is a native pointer
 
@@ -36099,24 +36100,24 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMatGetSizeNative
 
     // Native variable declarations
     cusparseSpMatDescr_t spMatDescr_native;
-    int64_t * rows_native = NULL;
-    int64_t * cols_native = NULL;
-    int64_t * nnz_native = NULL;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t nnz_native;
 
     // Obtain native variable values
     spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
-    rows_native = (int64_t *)getPointer(env, rows);
-    cols_native = (int64_t *)getPointer(env, cols);
-    nnz_native = (int64_t *)getPointer(env, nnz);
+    // rows is write-only
+    // cols is write-only
+    // nnz is write-only
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseSpMatGetSize(spMatDescr_native, rows_native, cols_native, nnz_native);
+    cusparseStatus_t jniResult_native = cusparseSpMatGetSize(spMatDescr_native, &rows_native, &cols_native, &nnz_native);
 
     // Write back native variable values
     // spMatDescr is read-only
-    // rows is a native pointer
-    // cols is a native pointer
-    // nnz is a native pointer
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -36586,9 +36587,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrGetNative(JNIEn
 
     // Native variable declarations
     cusparseSpMatDescr_t spMatDescr_native;
-    int64_t * rows_native = NULL;
-    int64_t * cols_native = NULL;
-    int64_t * nnz_native = NULL;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t nnz_native;
     void * * csrRowOffsets_native;
     void * * csrColInd_native;
     void * * csrValues_native;
@@ -36599,9 +36600,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrGetNative(JNIEn
 
     // Obtain native variable values
     spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
-    rows_native = (int64_t *)getPointer(env, rows);
-    cols_native = (int64_t *)getPointer(env, cols);
-    nnz_native = (int64_t *)getPointer(env, nnz);
+    // rows is write-only
+    // cols is write-only
+    // nnz is write-only
     csrRowOffsets_native = (void * *)getPointer(env, csrRowOffsets);
     csrColInd_native = (void * *)getPointer(env, csrColInd);
     csrValues_native = (void * *)getPointer(env, csrValues);
@@ -36611,13 +36612,13 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrGetNative(JNIEn
     valueType_native = (cudaDataType *)getPointer(env, valueType);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCsrGet(spMatDescr_native, rows_native, cols_native, nnz_native, csrRowOffsets_native, csrColInd_native, csrValues_native, csrRowOffsetsType_native, csrColIndType_native, idxBase_native, valueType_native);
+    cusparseStatus_t jniResult_native = cusparseCsrGet(spMatDescr_native, &rows_native, &cols_native, &nnz_native, csrRowOffsets_native, csrColInd_native, csrValues_native, csrRowOffsetsType_native, csrColIndType_native, idxBase_native, valueType_native);
 
     // Write back native variable values
     // spMatDescr is read-only
-    // rows is a native pointer
-    // cols is a native pointer
-    // nnz is a native pointer
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // csrRowOffsets is a native pointer
     // csrColInd is a native pointer
     // csrValues is a native pointer
@@ -36949,9 +36950,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooGetNative(JNIEn
 
     // Native variable declarations
     cusparseSpMatDescr_t spMatDescr_native;
-    int64_t * rows_native = NULL;
-    int64_t * cols_native = NULL;
-    int64_t * nnz_native = NULL;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t nnz_native;
     void * * cooRowInd_native;
     void * * cooColInd_native;
     void * * cooValues_native;
@@ -36961,9 +36962,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooGetNative(JNIEn
 
     // Obtain native variable values
     spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
-    rows_native = (int64_t *)getPointer(env, rows);
-    cols_native = (int64_t *)getPointer(env, cols);
-    nnz_native = (int64_t *)getPointer(env, nnz);
+    // rows is write-only
+    // cols is write-only
+    // nnz is write-only
     cooRowInd_native = (void * *)getPointer(env, cooRowInd);
     cooColInd_native = (void * *)getPointer(env, cooColInd);
     cooValues_native = (void * *)getPointer(env, cooValues);
@@ -36972,13 +36973,13 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooGetNative(JNIEn
     valueType_native = (cudaDataType *)getPointer(env, valueType);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCooGet(spMatDescr_native, rows_native, cols_native, nnz_native, cooRowInd_native, cooColInd_native, cooValues_native, idxType_native, idxBase_native, valueType_native);
+    cusparseStatus_t jniResult_native = cusparseCooGet(spMatDescr_native, &rows_native, &cols_native, &nnz_native, cooRowInd_native, cooColInd_native, cooValues_native, idxType_native, idxBase_native, valueType_native);
 
     // Write back native variable values
     // spMatDescr is read-only
-    // rows is a native pointer
-    // cols is a native pointer
-    // nnz is a native pointer
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // cooRowInd is a native pointer
     // cooColInd is a native pointer
     // cooValues is a native pointer
@@ -37046,9 +37047,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooAoSGetNative(JN
 
     // Native variable declarations
     cusparseSpMatDescr_t spMatDescr_native;
-    int64_t * rows_native = NULL;
-    int64_t * cols_native = NULL;
-    int64_t * nnz_native = NULL;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t nnz_native;
     void * * cooInd_native;
     void * * cooValues_native;
     cusparseIndexType_t * idxType_native = NULL;
@@ -37057,9 +37058,9 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooAoSGetNative(JN
 
     // Obtain native variable values
     spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
-    rows_native = (int64_t *)getPointer(env, rows);
-    cols_native = (int64_t *)getPointer(env, cols);
-    nnz_native = (int64_t *)getPointer(env, nnz);
+    // rows is write-only
+    // cols is write-only
+    // nnz is write-only
     cooInd_native = (void * *)getPointer(env, cooInd);
     cooValues_native = (void * *)getPointer(env, cooValues);
     idxType_native = (cusparseIndexType_t *)getPointer(env, idxType);
@@ -37067,13 +37068,13 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCooAoSGetNative(JN
     valueType_native = (cudaDataType *)getPointer(env, valueType);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseCooAoSGet(spMatDescr_native, rows_native, cols_native, nnz_native, cooInd_native, cooValues_native, idxType_native, idxBase_native, valueType_native);
+    cusparseStatus_t jniResult_native = cusparseCooAoSGet(spMatDescr_native, &rows_native, &cols_native, &nnz_native, cooInd_native, cooValues_native, idxType_native, idxBase_native, valueType_native);
 
     // Write back native variable values
     // spMatDescr is read-only
-    // rows is a native pointer
-    // cols is a native pointer
-    // nnz is a native pointer
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // cooInd is a native pointer
     // cooValues is a native pointer
     // idxType is a native pointer
@@ -37351,30 +37352,30 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnMatGetNative(JNI
 
     // Native variable declarations
     cusparseDnMatDescr_t dnMatDescr_native;
-    int64_t * rows_native = NULL;
-    int64_t * cols_native = NULL;
-    int64_t * ld_native = NULL;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t ld_native;
     void * * values_native;
     cudaDataType * type_native = NULL;
     cusparseOrder_t * order_native = NULL;
 
     // Obtain native variable values
     dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
-    rows_native = (int64_t *)getPointer(env, rows);
-    cols_native = (int64_t *)getPointer(env, cols);
-    ld_native = (int64_t *)getPointer(env, ld);
+    // rows is write-only
+    // cols is write-only
+    // ld is write-only
     values_native = (void * *)getPointer(env, values);
     type_native = (cudaDataType *)getPointer(env, type);
     order_native = (cusparseOrder_t *)getPointer(env, order);
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDnMatGet(dnMatDescr_native, rows_native, cols_native, ld_native, values_native, type_native, order_native);
+    cusparseStatus_t jniResult_native = cusparseDnMatGet(dnMatDescr_native, &rows_native, &cols_native, &ld_native, values_native, type_native, order_native);
 
     // Write back native variable values
     // dnMatDescr is read-only
-    // rows is a native pointer
-    // cols is a native pointer
-    // ld is a native pointer
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, ld, 0, (jlong)ld_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // values is a native pointer
     // type is a native pointer
     // order is a native pointer
@@ -37524,20 +37525,20 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDnMatGetStridedBat
     // Native variable declarations
     cusparseDnMatDescr_t dnMatDescr_native;
     int * batchCount_native = NULL;
-    int64_t * batchStride_native = NULL;
+    int64_t batchStride_native;
 
     // Obtain native variable values
     dnMatDescr_native = (cusparseDnMatDescr_t)getNativePointerValue(env, dnMatDescr);
     batchCount_native = (int *)getPointer(env, batchCount);
-    batchStride_native = (int64_t *)getPointer(env, batchStride);
+    // batchStride is write-only
 
     // Native function call
-    cusparseStatus_t jniResult_native = cusparseDnMatGetStridedBatch(dnMatDescr_native, batchCount_native, batchStride_native);
+    cusparseStatus_t jniResult_native = cusparseDnMatGetStridedBatch(dnMatDescr_native, batchCount_native, &batchStride_native);
 
     // Write back native variable values
     // dnMatDescr is read-only
     // batchCount is a native pointer
-    // batchStride is a native pointer
+    if (!set(env, batchStride, 0, (jlong)batchStride_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -39555,7 +39556,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1workEstima
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpGEMMAlg_t)alg;
     spgemmDescr_native = (cusparseSpGEMMDescr_t)getNativePointerValue(env, spgemmDescr);
-    bufferSize1_native = (size_t *)getPointer(env, bufferSize1);
+    if (!initNative(env, bufferSize1, bufferSize1_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer1_native = (void *)getPointer(env, externalBuffer1);
 
     // Native function call
@@ -39573,7 +39574,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1workEstima
     // computeType is primitive
     // alg is primitive
     // spgemmDescr is read-only
-    // bufferSize1 is a native pointer
+    if (!releaseNative(env, bufferSize1_native, bufferSize1, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer1 is a native pointer
 
     // Return the result
@@ -39675,7 +39676,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1computeNat
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpGEMMAlg_t)alg;
     spgemmDescr_native = (cusparseSpGEMMDescr_t)getNativePointerValue(env, spgemmDescr);
-    bufferSize2_native = (size_t *)getPointer(env, bufferSize2);
+    if (!initNative(env, bufferSize2, bufferSize2_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer2_native = (void *)getPointer(env, externalBuffer2);
 
     // Native function call
@@ -39693,7 +39694,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1computeNat
     // computeType is primitive
     // alg is primitive
     // spgemmDescr is read-only
-    // bufferSize2 is a native pointer
+    if (!releaseNative(env, bufferSize2_native, bufferSize2, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer2 is a native pointer
 
     // Return the result
@@ -39875,7 +39876,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1workE
     matC_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matC);
     alg_native = (cusparseSpGEMMAlg_t)alg;
     spgemmDescr_native = (cusparseSpGEMMDescr_t)getNativePointerValue(env, spgemmDescr);
-    bufferSize1_native = (size_t *)getPointer(env, bufferSize1);
+    if (!initNative(env, bufferSize1, bufferSize1_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer1_native = (void *)getPointer(env, externalBuffer1);
 
     // Native function call
@@ -39890,7 +39891,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1workE
     // matC is read-only
     // alg is primitive
     // spgemmDescr is read-only
-    // bufferSize1 is a native pointer
+    if (!releaseNative(env, bufferSize1_native, bufferSize1, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer1 is a native pointer
 
     // Return the result
@@ -39989,11 +39990,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1nnzNa
     matC_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matC);
     alg_native = (cusparseSpGEMMAlg_t)alg;
     spgemmDescr_native = (cusparseSpGEMMDescr_t)getNativePointerValue(env, spgemmDescr);
-    bufferSize2_native = (size_t *)getPointer(env, bufferSize2);
+    if (!initNative(env, bufferSize2, bufferSize2_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer2_native = (void *)getPointer(env, externalBuffer2);
-    bufferSize3_native = (size_t *)getPointer(env, bufferSize3);
+    if (!initNative(env, bufferSize3, bufferSize3_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer3_native = (void *)getPointer(env, externalBuffer3);
-    bufferSize4_native = (size_t *)getPointer(env, bufferSize4);
+    if (!initNative(env, bufferSize4, bufferSize4_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer4_native = (void *)getPointer(env, externalBuffer4);
 
     // Native function call
@@ -40008,11 +40009,11 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1nnzNa
     // matC is read-only
     // alg is primitive
     // spgemmDescr is read-only
-    // bufferSize2 is a native pointer
+    if (!releaseNative(env, bufferSize2_native, bufferSize2, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer2 is a native pointer
-    // bufferSize3 is a native pointer
+    if (!releaseNative(env, bufferSize3_native, bufferSize3, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer3 is a native pointer
-    // bufferSize4 is a native pointer
+    if (!releaseNative(env, bufferSize4_native, bufferSize4, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer4 is a native pointer
 
     // Return the result
@@ -40087,7 +40088,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1copyN
     matC_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matC);
     alg_native = (cusparseSpGEMMAlg_t)alg;
     spgemmDescr_native = (cusparseSpGEMMDescr_t)getNativePointerValue(env, spgemmDescr);
-    bufferSize5_native = (size_t *)getPointer(env, bufferSize5);
+    if (!initNative(env, bufferSize5, bufferSize5_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     externalBuffer5_native = (void *)getPointer(env, externalBuffer5);
 
     // Native function call
@@ -40102,7 +40103,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1copyN
     // matC is read-only
     // alg is primitive
     // spgemmDescr is read-only
-    // bufferSize5 is a native pointer
+    if (!releaseNative(env, bufferSize5_native, bufferSize5, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // externalBuffer5 is a native pointer
 
     // Return the result
