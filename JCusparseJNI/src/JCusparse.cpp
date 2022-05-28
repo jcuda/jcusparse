@@ -37869,11 +37869,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVVNative(JNIEnv 
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // computeType is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpVV");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpVV(handle=%p, opX=%d, vecX=%p, vecY=%p, result=%p, computeType=%d, externalBuffer=%p)\n",
@@ -37991,11 +37987,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSparseToDenseNativ
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSparseToDense");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSparseToDense(handle=%p, matA=%p, matB=%p, alg=%d, externalBuffer=%p)\n",
@@ -38107,11 +38099,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDenseToSparse_1ana
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseDenseToSparse_analysis");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseDenseToSparse_analysis(handle=%p, matA=%p, matB=%p, alg=%d, externalBuffer=%p)\n",
@@ -38165,11 +38153,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDenseToSparse_1con
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseDenseToSparse_convert");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseDenseToSparse_convert(handle=%p, matA=%p, matB=%p, alg=%d, externalBuffer=%p)\n",
@@ -38240,11 +38224,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMVNative(JNIEnv 
     }
     // computeType is primitive
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpMV");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpMV(handle=%p, opA=%d, alpha=%p, matA=%p, vecX=%p, beta=%p, vecY=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
@@ -38595,11 +38575,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSV_1analysisNati
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spsvDescr' is null for cusparseSpSV_analysis");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpSV_analysis");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpSV_analysis(handle=%p, opA=%d, alpha=%p, matA=%p, vecX=%p, vecY=%p, computeType=%d, alg=%d, spsvDescr=%p, externalBuffer=%p)\n",
@@ -38937,11 +38913,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSM_1analysisNati
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spsmDescr' is null for cusparseSpSM_analysis");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpSM_analysis");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpSM_analysis(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, matC=%p, computeType=%d, alg=%d, spsmDescr=%p, externalBuffer=%p)\n",
@@ -39231,11 +39203,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMM_1preprocessNa
     }
     // computeType is primitive
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpMM_preprocess");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpMM_preprocess(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
@@ -39335,11 +39303,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMNative(JNIEnv 
     }
     // computeType is primitive
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpMM");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpMM(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
@@ -39509,11 +39473,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1workEstima
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize1' is null for cusparseSpGEMM_workEstimation");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer1 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer1' is null for cusparseSpGEMM_workEstimation");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer1 may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpGEMM_workEstimation(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, spgemmDescr=%p, bufferSize1=%p, externalBuffer1=%p)\n",
@@ -39629,11 +39589,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMM_1computeNat
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize2' is null for cusparseSpGEMM_compute");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer2 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer2' is null for cusparseSpGEMM_compute");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer2 may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpGEMM_compute(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, spgemmDescr=%p, bufferSize2=%p, externalBuffer2=%p)\n",
@@ -39845,11 +39801,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1workE
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize1' is null for cusparseSpGEMMreuse_workEstimation");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer1 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer1' is null for cusparseSpGEMMreuse_workEstimation");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer1 may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpGEMMreuse_workEstimation(handle=%p, opA=%d, opB=%d, matA=%p, matB=%p, matC=%p, alg=%d, spgemmDescr=%p, bufferSize1=%p, externalBuffer1=%p)\n",
@@ -39935,31 +39887,19 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1nnzNa
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize2' is null for cusparseSpGEMMreuse_nnz");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer2 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer2' is null for cusparseSpGEMMreuse_nnz");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer2 may be NULL
     if (bufferSize3 == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize3' is null for cusparseSpGEMMreuse_nnz");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer3 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer3' is null for cusparseSpGEMMreuse_nnz");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer3 may be NULL
     if (bufferSize4 == NULL)
     {
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize4' is null for cusparseSpGEMMreuse_nnz");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer4 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer4' is null for cusparseSpGEMMreuse_nnz");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer4 may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpGEMMreuse_nnz(handle=%p, opA=%d, opB=%d, matA=%p, matB=%p, matC=%p, alg=%d, spgemmDescr=%p, bufferSize2=%p, externalBuffer2=%p, bufferSize3=%p, externalBuffer3=%p, bufferSize4=%p, externalBuffer4=%p)\n",
@@ -40057,11 +39997,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpGEMMreuse_1copyN
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'bufferSize5' is null for cusparseSpGEMMreuse_copy");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer5 == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer5' is null for cusparseSpGEMMreuse_copy");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer5 may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpGEMMreuse_copy(handle=%p, opA=%d, opB=%d, matA=%p, matB=%p, matC=%p, alg=%d, spgemmDescr=%p, bufferSize5=%p, externalBuffer5=%p)\n",
@@ -40254,11 +40190,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseConstrainedGeMMNat
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
     // computeType is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseConstrainedGeMM");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseConstrainedGeMM(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, externalBuffer=%p)\n",
@@ -40559,11 +40491,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMM_1preprocessN
     }
     // computeType is primitive
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSDDMM_preprocess");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSDDMM_preprocess(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
@@ -40663,11 +40591,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMMNative(JNIEnv
     }
     // computeType is primitive
     // alg is primitive
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSDDMM");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSDDMM(handle=%p, opA=%d, opB=%d, alpha=%p, matA=%p, matB=%p, beta=%p, matC=%p, computeType=%d, alg=%d, externalBuffer=%p)\n",
@@ -40860,11 +40784,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMOpNative(JNIEn
         ThrowByName(env, "java/lang/NullPointerException", "Parameter 'plan' is null for cusparseSpMMOp");
         return JCUSPARSE_STATUS_INTERNAL_ERROR;
     }
-    if (externalBuffer == NULL)
-    {
-        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'externalBuffer' is null for cusparseSpMMOp");
-        return JCUSPARSE_STATUS_INTERNAL_ERROR;
-    }
+    // externalBuffer may be NULL
 
     // Log message
     Logger::log(LOG_TRACE, "Executing cusparseSpMMOp(plan=%p, externalBuffer=%p)\n",
