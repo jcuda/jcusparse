@@ -3707,6 +3707,30 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMM_1preprocessN
 JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMMNative
   (JNIEnv *, jclass, jobject, jint, jint, jobject, jobject, jobject, jobject, jobject, jint, jint, jobject);
 
+/*
+ * Class:     jcuda_jcusparse_JCusparse
+ * Method:    cusparseSpMMOp_createPlanNative
+ * Signature: (Ljcuda/jcusparse/cusparseHandle;Ljcuda/jcusparse/cusparseSpMMOpPlan;IILjcuda/jcusparse/cusparseSpMatDescr;Ljcuda/jcusparse/cusparseDnMatDescr;Ljcuda/jcusparse/cusparseDnMatDescr;IILjcuda/Pointer;JLjcuda/Pointer;JLjcuda/Pointer;J[J)I
+ */
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMOp_1createPlanNative
+  (JNIEnv *, jclass, jobject, jobject, jint, jint, jobject, jobject, jobject, jint, jint, jobject, jlong, jobject, jlong, jobject, jlong, jlongArray);
+
+/*
+ * Class:     jcuda_jcusparse_JCusparse
+ * Method:    cusparseSpMMOpNative
+ * Signature: (Ljcuda/jcusparse/cusparseSpMMOpPlan;Ljcuda/Pointer;)I
+ */
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMOpNative
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     jcuda_jcusparse_JCusparse
+ * Method:    cusparseSpMMOp_destroyPlanNative
+ * Signature: (Ljcuda/jcusparse/cusparseSpMMOpPlan;)I
+ */
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMMOp_1destroyPlanNative
+  (JNIEnv *, jclass, jobject);
+
 #ifdef __cplusplus
 }
 #endif

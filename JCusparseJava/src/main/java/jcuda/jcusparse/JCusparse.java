@@ -11668,16 +11668,16 @@ public class JCusparse
         cusparseSpMatDescr matA, 
         cusparseDnMatDescr matB, 
         int alg, 
-        Pointer buffer)
+        Pointer externalBuffer)
     {
-        return checkResult(cusparseSparseToDenseNative(handle, matA, matB, alg, buffer));
+        return checkResult(cusparseSparseToDenseNative(handle, matA, matB, alg, externalBuffer));
     }
     private static native int cusparseSparseToDenseNative(
         cusparseHandle handle, 
         cusparseSpMatDescr matA, 
         cusparseDnMatDescr matB, 
         int alg, 
-        Pointer buffer);
+        Pointer externalBuffer);
 
 
     public static int cusparseDenseToSparse_bufferSize(
@@ -11702,16 +11702,16 @@ public class JCusparse
         cusparseDnMatDescr matA, 
         cusparseSpMatDescr matB, 
         int alg, 
-        Pointer buffer)
+        Pointer externalBuffer)
     {
-        return checkResult(cusparseDenseToSparse_analysisNative(handle, matA, matB, alg, buffer));
+        return checkResult(cusparseDenseToSparse_analysisNative(handle, matA, matB, alg, externalBuffer));
     }
     private static native int cusparseDenseToSparse_analysisNative(
         cusparseHandle handle, 
         cusparseDnMatDescr matA, 
         cusparseSpMatDescr matB, 
         int alg, 
-        Pointer buffer);
+        Pointer externalBuffer);
 
 
     public static int cusparseDenseToSparse_convert(
@@ -11719,16 +11719,16 @@ public class JCusparse
         cusparseDnMatDescr matA, 
         cusparseSpMatDescr matB, 
         int alg, 
-        Pointer buffer)
+        Pointer externalBuffer)
     {
-        return checkResult(cusparseDenseToSparse_convertNative(handle, matA, matB, alg, buffer));
+        return checkResult(cusparseDenseToSparse_convertNative(handle, matA, matB, alg, externalBuffer));
     }
     private static native int cusparseDenseToSparse_convertNative(
         cusparseHandle handle, 
         cusparseDnMatDescr matA, 
         cusparseSpMatDescr matB, 
         int alg, 
-        Pointer buffer);
+        Pointer externalBuffer);
 
 
     public static int cusparseSpMV(
@@ -12450,6 +12450,65 @@ public class JCusparse
         int computeType, 
         int alg, 
         Pointer externalBuffer);
+
+
+    public static int cusparseSpMMOp_createPlan(
+        cusparseHandle handle, 
+        cusparseSpMMOpPlan plan, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer addOperationNvvmBuffer, 
+        long addOperationBufferSize, 
+        Pointer mulOperationNvvmBuffer, 
+        long mulOperationBufferSize, 
+        Pointer epilogueNvvmBuffer, 
+        long epilogueBufferSize, 
+        long[] SpMMWorkspaceSize)
+    {
+        return checkResult(cusparseSpMMOp_createPlanNative(handle, plan, opA, opB, matA, matB, matC, computeType, alg, addOperationNvvmBuffer, addOperationBufferSize, mulOperationNvvmBuffer, mulOperationBufferSize, epilogueNvvmBuffer, epilogueBufferSize, SpMMWorkspaceSize));
+    }
+    private static native int cusparseSpMMOp_createPlanNative(
+        cusparseHandle handle, 
+        cusparseSpMMOpPlan plan, 
+        int opA, 
+        int opB, 
+        cusparseSpMatDescr matA, 
+        cusparseDnMatDescr matB, 
+        cusparseDnMatDescr matC, 
+        int computeType, 
+        int alg, 
+        Pointer addOperationNvvmBuffer, 
+        long addOperationBufferSize, 
+        Pointer mulOperationNvvmBuffer, 
+        long mulOperationBufferSize, 
+        Pointer epilogueNvvmBuffer, 
+        long epilogueBufferSize, 
+        long[] SpMMWorkspaceSize);
+
+
+    public static int cusparseSpMMOp(
+        cusparseSpMMOpPlan plan, 
+        Pointer externalBuffer)
+    {
+        return checkResult(cusparseSpMMOpNative(plan, externalBuffer));
+    }
+    private static native int cusparseSpMMOpNative(
+        cusparseSpMMOpPlan plan, 
+        Pointer externalBuffer);
+
+
+    public static int cusparseSpMMOp_destroyPlan(
+        cusparseSpMMOpPlan plan)
+    {
+        return checkResult(cusparseSpMMOp_destroyPlanNative(plan));
+    }
+    private static native int cusparseSpMMOp_destroyPlanNative(
+        cusparseSpMMOpPlan plan);
 
 
 }
