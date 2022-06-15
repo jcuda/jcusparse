@@ -11257,6 +11257,35 @@ public class JCusparse
         int[] valueType);
 
 
+    public static int cusparseCscGet(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues, 
+        int[] cscColOffsetsType, 
+        int[] cscRowIndType, 
+        int[] idxBase, 
+        int[] valueType)
+    {
+        return checkResult(cusparseCscGetNative(spMatDescr, rows, cols, nnz, cscColOffsets, cscRowInd, cscValues, cscColOffsetsType, cscRowIndType, idxBase, valueType));
+    }
+    private static native int cusparseCscGetNative(
+        cusparseSpMatDescr spMatDescr, 
+        long[] rows, 
+        long[] cols, 
+        long[] nnz, 
+        Pointer cscColOffsets, 
+        Pointer cscRowInd, 
+        Pointer cscValues, 
+        int[] cscColOffsetsType, 
+        int[] cscRowIndType, 
+        int[] idxBase, 
+        int[] valueType);
+
+
     public static int cusparseCsrSetPointers(
         cusparseSpMatDescr spMatDescr, 
         Pointer csrRowOffsets, 

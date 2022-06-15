@@ -3269,6 +3269,14 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrGetNative
 
 /*
  * Class:     jcuda_jcusparse_JCusparse
+ * Method:    cusparseCscGetNative
+ * Signature: (Ljcuda/jcusparse/cusparseSpMatDescr;[J[J[JLjcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;[I[I[I[I)I
+ */
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCscGetNative
+  (JNIEnv *, jclass, jobject, jlongArray, jlongArray, jlongArray, jobject, jobject, jobject, jintArray, jintArray, jintArray, jintArray);
+
+/*
+ * Class:     jcuda_jcusparse_JCusparse
  * Method:    cusparseCsrSetPointersNative
  * Signature: (Ljcuda/jcusparse/cusparseSpMatDescr;Ljcuda/Pointer;Ljcuda/Pointer;Ljcuda/Pointer;)I
  */

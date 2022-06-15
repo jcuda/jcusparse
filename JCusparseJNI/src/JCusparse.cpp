@@ -36632,6 +36632,116 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrGetNative(JNIEn
     return jniResult;
 }
 
+JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCscGetNative(JNIEnv *env, jclass cls, jobject spMatDescr, jlongArray rows, jlongArray cols, jlongArray nnz, jobject cscColOffsets, jobject cscRowInd, jobject cscValues, jintArray cscColOffsetsType, jintArray cscRowIndType, jintArray idxBase, jintArray valueType)
+{
+    // Null-checks for non-primitive arguments
+    if (spMatDescr == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'spMatDescr' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (rows == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'rows' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cols == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cols' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (nnz == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'nnz' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscColOffsets == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscColOffsets' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscRowInd == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscRowInd' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscValues == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscValues' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscColOffsetsType == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscColOffsetsType' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (cscRowIndType == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'cscRowIndType' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (idxBase == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'idxBase' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+    if (valueType == NULL)
+    {
+        ThrowByName(env, "java/lang/NullPointerException", "Parameter 'valueType' is null for cusparseCscGet");
+        return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    }
+
+    // Log message
+    Logger::log(LOG_TRACE, "Executing cusparseCscGet(spMatDescr=%p, rows=%p, cols=%p, nnz=%p, cscColOffsets=%p, cscRowInd=%p, cscValues=%p, cscColOffsetsType=%p, cscRowIndType=%p, idxBase=%p, valueType=%p)\n",
+        spMatDescr, rows, cols, nnz, cscColOffsets, cscRowInd, cscValues, cscColOffsetsType, cscRowIndType, idxBase, valueType);
+
+    // Native variable declarations
+    cusparseSpMatDescr_t spMatDescr_native;
+    int64_t rows_native;
+    int64_t cols_native;
+    int64_t nnz_native;
+    void * * cscColOffsets_native;
+    void * * cscRowInd_native;
+    void * * cscValues_native;
+    cusparseIndexType_t * cscColOffsetsType_native = NULL;
+    cusparseIndexType_t * cscRowIndType_native = NULL;
+    cusparseIndexBase_t * idxBase_native = NULL;
+    cudaDataType * valueType_native = NULL;
+
+    // Obtain native variable values
+    spMatDescr_native = (cusparseSpMatDescr_t)getNativePointerValue(env, spMatDescr);
+    // rows is write-only
+    // cols is write-only
+    // nnz is write-only
+    cscColOffsets_native = (void * *)getPointer(env, cscColOffsets);
+    cscRowInd_native = (void * *)getPointer(env, cscRowInd);
+    cscValues_native = (void * *)getPointer(env, cscValues);
+    cscColOffsetsType_native = (cusparseIndexType_t *)getPointer(env, cscColOffsetsType);
+    cscRowIndType_native = (cusparseIndexType_t *)getPointer(env, cscRowIndType);
+    idxBase_native = (cusparseIndexBase_t *)getPointer(env, idxBase);
+    valueType_native = (cudaDataType *)getPointer(env, valueType);
+
+    // Native function call
+    cusparseStatus_t jniResult_native = cusparseCscGet(spMatDescr_native, &rows_native, &cols_native, &nnz_native, cscColOffsets_native, cscRowInd_native, cscValues_native, cscColOffsetsType_native, cscRowIndType_native, idxBase_native, valueType_native);
+
+    // Write back native variable values
+    // spMatDescr is read-only
+    if (!set(env, rows, 0, (jlong)rows_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, cols, 0, (jlong)cols_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    if (!set(env, nnz, 0, (jlong)nnz_native)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
+    // cscColOffsets is a native pointer
+    // cscRowInd is a native pointer
+    // cscValues is a native pointer
+    // cscColOffsetsType is a native pointer
+    // cscRowIndType is a native pointer
+    // idxBase is a native pointer
+    // valueType is a native pointer
+
+    // Return the result
+    jint jniResult = (jint)jniResult_native;
+    return jniResult;
+}
+
 JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsrSetPointersNative(JNIEnv *env, jclass cls, jobject spMatDescr, jobject csrRowOffsets, jobject csrColInd, jobject csrValues)
 {
     // Null-checks for non-primitive arguments
