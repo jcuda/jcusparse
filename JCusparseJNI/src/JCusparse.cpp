@@ -35350,7 +35350,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsr2cscEx2_1buffer
     copyValues_native = (cusparseAction_t)copyValues;
     idxBase_native = (cusparseIndexBase_t)idxBase;
     alg_native = (cusparseCsr2CscAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseCsr2cscEx2_bufferSize(handle_native, m_native, n_native, nnz_native, csrVal_native, csrRowPtr_native, csrColInd_native, cscVal_native, cscColPtr_native, cscRowInd_native, valType_native, copyValues_native, idxBase_native, alg_native, bufferSize_native);
@@ -35370,7 +35370,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseCsr2cscEx2_1buffer
     // copyValues is primitive
     // idxBase is primitive
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -37935,7 +37935,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVV_1bufferSizeNa
     vecY_native = (cusparseDnVecDescr_t)getNativePointerValue(env, vecY);
     result_native = (void *)getPointer(env, result);
     computeType_native = (cudaDataType)computeType;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSpVV_bufferSize(handle_native, opX_native, vecX_native, vecY_native, result_native, computeType_native, bufferSize_native);
@@ -37947,7 +37947,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpVV_1bufferSizeNa
     // vecY is read-only
     // result is a native pointer
     // computeType is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38061,7 +38061,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSparseToDense_1buf
     matA_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matA);
     matB_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matB);
     alg_native = (cusparseSparseToDenseAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSparseToDense_bufferSize(handle_native, matA_native, matB_native, alg_native, bufferSize_native);
@@ -38071,7 +38071,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSparseToDense_1buf
     // matA is read-only
     // matB is read-only
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38173,7 +38173,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDenseToSparse_1buf
     matA_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matA);
     matB_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matB);
     alg_native = (cusparseDenseToSparseAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseDenseToSparse_bufferSize(handle_native, matA_native, matB_native, alg_native, bufferSize_native);
@@ -38183,7 +38183,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseDenseToSparse_1buf
     // matA is read-only
     // matB is read-only
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38472,7 +38472,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMV_1bufferSizeNa
     vecY_native = (cusparseDnVecDescr_t)getNativePointerValue(env, vecY);
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpMVAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSpMV_bufferSize(handle_native, opA_native, alpha_native, matA_native, vecX_native, beta_native, vecY_native, computeType_native, alg_native, bufferSize_native);
@@ -38487,7 +38487,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMV_1bufferSizeNa
     // vecY is read-only
     // computeType is primitive
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38627,7 +38627,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSV_1bufferSizeNa
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpSVAlg_t)alg;
     spsvDescr_native = (cusparseSpSVDescr_t)getNativePointerValue(env, spsvDescr);
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSpSV_bufferSize(handle_native, opA_native, alpha_native, matA_native, vecX_native, vecY_native, computeType_native, alg_native, spsvDescr_native, bufferSize_native);
@@ -38642,7 +38642,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSV_1bufferSizeNa
     // computeType is primitive
     // alg is primitive
     // spsvDescr is read-only
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -38963,7 +38963,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSM_1bufferSizeNa
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpSMAlg_t)alg;
     spsmDescr_native = (cusparseSpSMDescr_t)getNativePointerValue(env, spsmDescr);
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSpSM_bufferSize(handle_native, opA_native, opB_native, alpha_native, matA_native, matB_native, matC_native, computeType_native, alg_native, spsmDescr_native, bufferSize_native);
@@ -38979,7 +38979,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpSM_1bufferSizeNa
     // computeType is primitive
     // alg is primitive
     // spsmDescr is read-only
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -39253,7 +39253,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMM_1bufferSizeNa
     matC_native = (cusparseDnMatDescr_t)getNativePointerValue(env, matC);
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSpMMAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSpMM_bufferSize(handle_native, opA_native, opB_native, alpha_native, matA_native, matB_native, beta_native, matC_native, computeType_native, alg_native, bufferSize_native);
@@ -39269,7 +39269,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSpMM_1bufferSizeNa
     // matC is read-only
     // computeType is primitive
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -40438,7 +40438,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseConstrainedGeMM_1b
     beta_native = (void *)beta_pointerData->getPointer(env);
     matC_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matC);
     computeType_native = (cudaDataType)computeType;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseConstrainedGeMM_bufferSize(handle_native, opA_native, opB_native, alpha_native, matA_native, matB_native, beta_native, matC_native, computeType_native, bufferSize_native);
@@ -40453,7 +40453,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseConstrainedGeMM_1b
     if (!releasePointerData(env, beta_pointerData, JNI_ABORT)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
     // matC is read-only
     // computeType is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
@@ -40541,7 +40541,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMM_1bufferSizeN
     matC_native = (cusparseSpMatDescr_t)getNativePointerValue(env, matC);
     computeType_native = (cudaDataType)computeType;
     alg_native = (cusparseSDDMMAlg_t)alg;
-    bufferSize_native = (size_t *)getPointer(env, bufferSize);
+    if (!initNative(env, bufferSize, bufferSize_native, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Native function call
     cusparseStatus_t jniResult_native = cusparseSDDMM_bufferSize(handle_native, opA_native, opB_native, alpha_native, matA_native, matB_native, beta_native, matC_native, computeType_native, alg_native, bufferSize_native);
@@ -40557,7 +40557,7 @@ JNIEXPORT jint JNICALL Java_jcuda_jcusparse_JCusparse_cusparseSDDMM_1bufferSizeN
     // matC is read-only
     // computeType is primitive
     // alg is primitive
-    // bufferSize is a native pointer
+    if (!releaseNative(env, bufferSize_native, bufferSize, true)) return JCUSPARSE_STATUS_INTERNAL_ERROR;
 
     // Return the result
     jint jniResult = (jint)jniResult_native;
