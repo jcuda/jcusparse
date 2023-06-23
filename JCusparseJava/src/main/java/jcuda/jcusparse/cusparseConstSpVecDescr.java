@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -27,57 +27,32 @@
  */
 package jcuda.jcusparse;
 
+import jcuda.NativePointerObject;
+
 /**
- * Algorithm modes
+ * Java port of a cusparseConstSpVecDescr
  */
-public class cusparseAlgMode
+public class cusparseConstSpVecDescr extends NativePointerObject
 {
     /**
-     * Default, naive
-     * 
-     * @deprecated Removed in CUDA 11.0
+     * Creates a new, uninitialized cusparseConstSpVecDescr
      */
-    public static final int CUSPARSE_ALG0 = 0;
-    
-    /**
-     * Merge path
-     * 
-     * @deprecated Removed in CUDA 11.0
-     */
-    public static final int CUSPARSE_ALG1 = 1;
-    
-    /**
-     * Default, naive
-     * 
-     * @deprecated Removed in CUDA 11.0
-     */
-    public static final int CUSPARSE_ALG_NAIVE = 0;
-    
-    /**
-     * Merge path alias
-     */
-    public static final int CUSPARSE_ALG_MERGE_PATH = 0;
-
-    /**
-     * Private constructor to prevent instantiation
-     */
-    private cusparseAlgMode()
+    public cusparseConstSpVecDescr()
     {
-        // Private constructor to prevent instantiation
+        // Default constructor
     }
 
-    /**
-     * Returns a string representation of the given constant
+     /**
+     * Returns a String representation of this object.
      *
-     * @return A string representation of the given constant
+     * @return A String representation of this object.
      */
-    public static String stringFor(int n)
+    @Override
+    public String toString()
     {
-        switch (n)
-        {
-            case CUSPARSE_ALG_MERGE_PATH: return "CUSPARSE_ALG_MERGE_PATH";
-        }
-        return "INVALID cusparseAlgMode: "+n;
+        return "cusparseConstSpVecDescr["+
+            "nativePointer=0x"+Long.toHexString(getNativePointer())+"]";
     }
 }
+
 

@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -32,14 +32,8 @@ package jcuda.jcusparse;
  */
 public class cusparseCsr2CscAlg
 {
-    /**
-     * faster than V2 (in general), deterministc
-     */
+    public static final int CUSPARSE_CSR2CSC_ALG_DEFAULT = 1;
     public static final int CUSPARSE_CSR2CSC_ALG1 = 1;
-    /**
-     * low memory requirement, non-deterministc
-     */
-    public static final int CUSPARSE_CSR2CSC_ALG2 = 2;
 
     /**
      * Private constructor to prevent instantiation
@@ -58,8 +52,8 @@ public class cusparseCsr2CscAlg
     {
         switch (n)
         {
-            case CUSPARSE_CSR2CSC_ALG1: return "CUSPARSE_CSR2CSC_ALG1";
-            case CUSPARSE_CSR2CSC_ALG2: return "CUSPARSE_CSR2CSC_ALG2";
+            case CUSPARSE_CSR2CSC_ALG_DEFAULT: return "CUSPARSE_CSR2CSC_ALG_DEFAULT";
+            //case CUSPARSE_CSR2CSC_ALG1: return "CUSPARSE_CSR2CSC_ALG1";
         }
         return "INVALID cusparseCsr2CscAlg: "+n;
     }

@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -29,20 +29,15 @@ package jcuda.jcusparse;
 
 public class cusparseSpMMAlg
 {
-    public static final int CUSPARSE_MM_ALG_DEFAULT = 0;
-    /**
-     * non-deterministc results
-     */
-    public static final int CUSPARSE_COOMM_ALG1 = 1;
-    /**
-     * deterministic results
-     */
-    public static final int CUSPARSE_COOMM_ALG2 = 2;
-    /**
-     * non-deterministc results, for large matrices
-     */
-    public static final int CUSPARSE_COOMM_ALG3 = 3;
-    public static final int CUSPARSE_CSRMM_ALG1 = 4;
+    public static final int CUSPARSE_SPMM_ALG_DEFAULT = 0;
+    public static final int CUSPARSE_SPMM_COO_ALG1 = 1;
+    public static final int CUSPARSE_SPMM_COO_ALG2 = 2;
+    public static final int CUSPARSE_SPMM_COO_ALG3 = 3;
+    public static final int CUSPARSE_SPMM_COO_ALG4 = 5;
+    public static final int CUSPARSE_SPMM_CSR_ALG1 = 4;
+    public static final int CUSPARSE_SPMM_CSR_ALG2 = 6;
+    public static final int CUSPARSE_SPMM_CSR_ALG3 = 12;
+    public static final int CUSPARSE_SPMM_BLOCKED_ELL_ALG1 = 13;
 
     /**
      * Private constructor to prevent instantiation
@@ -61,11 +56,15 @@ public class cusparseSpMMAlg
     {
         switch (n)
         {
-            case CUSPARSE_MM_ALG_DEFAULT: return "CUSPARSE_MM_ALG_DEFAULT";
-            case CUSPARSE_COOMM_ALG1: return "CUSPARSE_COOMM_ALG1";
-            case CUSPARSE_COOMM_ALG2: return "CUSPARSE_COOMM_ALG2";
-            case CUSPARSE_COOMM_ALG3: return "CUSPARSE_COOMM_ALG3";
-            case CUSPARSE_CSRMM_ALG1: return "CUSPARSE_CSRMM_ALG1";
+            case CUSPARSE_SPMM_ALG_DEFAULT: return "CUSPARSE_SPMM_ALG_DEFAULT";
+            case CUSPARSE_SPMM_COO_ALG1: return "CUSPARSE_SPMM_COO_ALG1";
+            case CUSPARSE_SPMM_COO_ALG2: return "CUSPARSE_SPMM_COO_ALG2";
+            case CUSPARSE_SPMM_COO_ALG3: return "CUSPARSE_SPMM_COO_ALG3";
+            case CUSPARSE_SPMM_COO_ALG4: return "CUSPARSE_SPMM_COO_ALG4";
+            case CUSPARSE_SPMM_CSR_ALG1: return "CUSPARSE_SPMM_CSR_ALG1";
+            case CUSPARSE_SPMM_CSR_ALG2: return "CUSPARSE_SPMM_CSR_ALG2";
+            case CUSPARSE_SPMM_CSR_ALG3: return "CUSPARSE_SPMM_CSR_ALG3";
+            case CUSPARSE_SPMM_BLOCKED_ELL_ALG1: return "CUSPARSE_SPMM_BLOCKED_ELL_ALG1";
         }
         return "INVALID cusparseSpMMAlg: "+n;
     }

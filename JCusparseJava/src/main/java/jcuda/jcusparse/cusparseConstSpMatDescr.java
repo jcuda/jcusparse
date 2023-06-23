@@ -30,14 +30,14 @@ package jcuda.jcusparse;
 import jcuda.NativePointerObject;
 
 /**
- * Java port of a bsrilu02Info
+ * Java port of a cusparseConstSpMatDescr
  */
-public class bsrilu02Info extends NativePointerObject
+public class cusparseConstSpMatDescr extends NativePointerObject
 {
     /**
-     * Creates a new, uninitialized bsrilu02Info
+     * Creates a new, uninitialized cusparseConstSpMatDescr
      */
-    public bsrilu02Info()
+    public cusparseConstSpMatDescr()
     {
         // Default constructor
     }
@@ -50,7 +50,7 @@ public class bsrilu02Info extends NativePointerObject
     @Override
     public String toString()
     {
-        return "bsrilu02Info["+
+        return "cusparseConstSpMatDescr["+
             "nativePointer=0x"+Long.toHexString(getNativePointer())+"]";
     }
 }

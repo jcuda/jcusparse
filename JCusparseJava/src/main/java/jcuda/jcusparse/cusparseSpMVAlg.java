@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -29,10 +29,11 @@ package jcuda.jcusparse;
 
 public class cusparseSpMVAlg
 {
-    public static final int CUSPARSE_MV_ALG_DEFAULT = 0;
-    public static final int CUSPARSE_COOMV_ALG = 1;
-    public static final int CUSPARSE_CSRMV_ALG1 = 2;
-    public static final int CUSPARSE_CSRMV_ALG2 = 3;
+    public static final int CUSPARSE_SPMV_ALG_DEFAULT = 0;
+    public static final int CUSPARSE_SPMV_CSR_ALG1 = 2;
+    public static final int CUSPARSE_SPMV_CSR_ALG2 = 3;
+    public static final int CUSPARSE_SPMV_COO_ALG1 = 1;
+    public static final int CUSPARSE_SPMV_COO_ALG2 = 4;
 
     /**
      * Private constructor to prevent instantiation
@@ -51,10 +52,11 @@ public class cusparseSpMVAlg
     {
         switch (n)
         {
-            case CUSPARSE_MV_ALG_DEFAULT: return "CUSPARSE_MV_ALG_DEFAULT";
-            case CUSPARSE_COOMV_ALG: return "CUSPARSE_COOMV_ALG";
-            case CUSPARSE_CSRMV_ALG1: return "CUSPARSE_CSRMV_ALG1";
-            case CUSPARSE_CSRMV_ALG2: return "CUSPARSE_CSRMV_ALG2";
+            case CUSPARSE_SPMV_ALG_DEFAULT: return "CUSPARSE_SPMV_ALG_DEFAULT";
+            case CUSPARSE_SPMV_CSR_ALG1: return "CUSPARSE_SPMV_CSR_ALG1";
+            case CUSPARSE_SPMV_CSR_ALG2: return "CUSPARSE_SPMV_CSR_ALG2";
+            case CUSPARSE_SPMV_COO_ALG1: return "CUSPARSE_SPMV_COO_ALG1";
+            case CUSPARSE_SPMV_COO_ALG2: return "CUSPARSE_SPMV_COO_ALG2";
         }
         return "INVALID cusparseSpMVAlg: "+n;
     }

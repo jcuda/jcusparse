@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2016 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -33,7 +33,7 @@ package jcuda.jcusparse;
 public class cusparseColorAlg
 {
     /**
-     * Default
+     * default
      */
     public static final int CUSPARSE_COLOR_ALG0 = 0;
     public static final int CUSPARSE_COLOR_ALG1 = 1;

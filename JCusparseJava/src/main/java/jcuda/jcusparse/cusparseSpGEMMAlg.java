@@ -27,29 +27,22 @@
  */
 package jcuda.jcusparse;
 
-public class cusparseFormat
+// #############################################################################
+// # SPARSE MATRIX - SPARSE MATRIX MULTIPLICATION (SpGEMM)
+// #############################################################################
+public class cusparseSpGEMMAlg
 {
-    /**
-     * Compressed Sparse Row (CSR)
-     */
-    public static final int CUSPARSE_FORMAT_CSR = 1;
-    /**
-     * Compressed Sparse Column (CSC)
-     */
-    public static final int CUSPARSE_FORMAT_CSC = 2;
-    /**
-     * Coordinate (COO) - Structure of Arrays
-     */
-    public static final int CUSPARSE_FORMAT_COO = 3;
-    /**
-     * Blocked ELL
-     */
-    public static final int CUSPARSE_FORMAT_BLOCKED_ELL = 5;
+    public static final int CUSPARSE_SPGEMM_DEFAULT = 0;
+    public static final int CUSPARSE_SPGEMM_CSR_ALG_DETERMINITIC = 1;
+    public static final int CUSPARSE_SPGEMM_CSR_ALG_NONDETERMINITIC = 2;
+    public static final int CUSPARSE_SPGEMM_ALG1 = 3;
+    public static final int CUSPARSE_SPGEMM_ALG2 = 4;
+    public static final int CUSPARSE_SPGEMM_ALG3 = 5;
 
     /**
      * Private constructor to prevent instantiation
      */
-    private cusparseFormat()
+    private cusparseSpGEMMAlg()
     {
         // Private constructor to prevent instantiation
     }
@@ -63,12 +56,14 @@ public class cusparseFormat
     {
         switch (n)
         {
-            case CUSPARSE_FORMAT_CSR: return "CUSPARSE_FORMAT_CSR";
-            case CUSPARSE_FORMAT_CSC: return "CUSPARSE_FORMAT_CSC";
-            case CUSPARSE_FORMAT_COO: return "CUSPARSE_FORMAT_COO";
-            case CUSPARSE_FORMAT_BLOCKED_ELL: return "CUSPARSE_FORMAT_BLOCKED_ELL";
+            case CUSPARSE_SPGEMM_DEFAULT: return "CUSPARSE_SPGEMM_DEFAULT";
+            case CUSPARSE_SPGEMM_CSR_ALG_DETERMINITIC: return "CUSPARSE_SPGEMM_CSR_ALG_DETERMINITIC";
+            case CUSPARSE_SPGEMM_CSR_ALG_NONDETERMINITIC: return "CUSPARSE_SPGEMM_CSR_ALG_NONDETERMINITIC";
+            case CUSPARSE_SPGEMM_ALG1: return "CUSPARSE_SPGEMM_ALG1";
+            case CUSPARSE_SPGEMM_ALG2: return "CUSPARSE_SPGEMM_ALG2";
+            case CUSPARSE_SPGEMM_ALG3: return "CUSPARSE_SPGEMM_ALG3";
         }
-        return "INVALID cusparseFormat: "+n;
+        return "INVALID cusparseSpGEMMAlg: "+n;
     }
 }
 

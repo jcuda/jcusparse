@@ -2,7 +2,7 @@
  * JCusparse - Java bindings for CUSPARSE, the NVIDIA CUDA sparse
  * matrix library, to be used with JCuda
  *
- * Copyright (c) 2010-2015 Marco Hutter - http://www.jcuda.org
+ * Copyright (c) 2010-2020 Marco Hutter - http://www.jcuda.org
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -33,7 +33,7 @@ package jcuda.jcusparse;
  */
 public class cusparseOperation
 {
-    /**
+    /** 
      * The non-transpose operation is selected.
      */
     public static final int CUSPARSE_OPERATION_NON_TRANSPOSE = 0;
@@ -51,7 +51,10 @@ public class cusparseOperation
     /**
      * Private constructor to prevent instantiation
      */
-    private cusparseOperation(){}
+    private cusparseOperation()
+    {
+        // Private constructor to prevent instantiation
+    }
 
     /**
      * Returns a string representation of the given constant
@@ -66,7 +69,7 @@ public class cusparseOperation
             case CUSPARSE_OPERATION_TRANSPOSE: return "CUSPARSE_OPERATION_TRANSPOSE";
             case CUSPARSE_OPERATION_CONJUGATE_TRANSPOSE: return "CUSPARSE_OPERATION_CONJUGATE_TRANSPOSE";
         }
-        return "INVALID cusparseOperation";
+        return "INVALID cusparseOperation: "+n;
     }
 }
 
