@@ -41,8 +41,18 @@ public class cusparseConstDnMatDescr extends NativePointerObject
     {
         // Default constructor
     }
+    
+    /**
+     * Copy constructor for use in the non-const version
+     * 
+     * @param other The other descriptor
+     */
+    cusparseConstDnMatDescr(cusparseDnMatDescr other) 
+    {
+        super(other);
+    }
 
-     /**
+    /**
      * Returns a String representation of this object.
      *
      * @return A String representation of this object.

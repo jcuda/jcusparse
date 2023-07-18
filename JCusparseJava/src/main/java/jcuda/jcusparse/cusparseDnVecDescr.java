@@ -42,6 +42,16 @@ public class cusparseDnVecDescr extends NativePointerObject
         // Default constructor
     }
 
+    /**
+     * Returns a <code>const</code> version of this descriptor
+     * 
+     * @return The new descriptor
+     */
+    public cusparseConstDnVecDescr asConst() 
+    {
+        return new cusparseConstDnVecDescr(this);
+    }
+
      /**
      * Returns a String representation of this object.
      *

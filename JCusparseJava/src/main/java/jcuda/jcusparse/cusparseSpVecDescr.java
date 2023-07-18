@@ -42,6 +42,16 @@ public class cusparseSpVecDescr extends NativePointerObject
         // Default constructor
     }
 
+    /**
+     * Returns a <code>const</code> version of this descriptor
+     * 
+     * @return The new descriptor
+     */
+    public cusparseConstSpVecDescr asConst() 
+    {
+        return new cusparseConstSpVecDescr(this);
+    }
+    
      /**
      * Returns a String representation of this object.
      *
